@@ -1,0 +1,28 @@
+﻿shapes get deselected after each use
+
+
+Extra features:
+
+	a better drawing system than the 2 point clicking system found in the demo code
+		This allows you to see what you are drawing as you draw it
+
+	///drag and drop shape
+	extra shapes
+	graphics produced can be stored to file
+	Graphics are not cleared after resizing control like a lot of c# graphic programs
+
+	Potential change background colour
+
+	change shape line thickness
+
+	change shape line colour
+
+	Undo and Redo drawing
+
+
+	Right angled triangle, Diamond, Star, 6-Point star, Pentagon, Heptagon, Octagon
+
+
+	Shapes like traingles can be drawn in reverse
+
+	choose fill shape
