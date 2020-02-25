@@ -9,24 +9,16 @@ namespace GraphProg
 {
     public abstract class Star : Shape
     {
-        //Class built using information from
-        //csharphelper.com/blog/2014/08/draw-a-star-with-a-given-number-of-points-in-c/
-
-        //http://csharphelper.com/blog/2014/08/determine-where-two-lines-intersect-in-c/
         protected Star(Graphics g, Pen pen) : base(g, pen) { }
 
-        protected void DrawStar(int num_points, int skip)
+        protected void DrawStar(int num_points)
         {
-            // Get the star's points.
-            PointF[] star_points =
-                MakeStarPoints(-Math.PI / 2, num_points, skip);
+            PointF[] star_points = MakeStarPoints(num_points);
 
-            // Draw the star.
-            //gr.FillPolygon(the_brush, star_points);
             g.DrawPolygon(pen, star_points);
         }
 
-        private PointF[] MakeStarPoints(double start_theta, int num_points, int skip)
+        private PointF[] MakeStarPoints(int num_points)
         {
             double theta, dtheta;
             PointF[] result;
@@ -35,30 +27,16 @@ namespace GraphProg
             float cx = Rect.X + rx;
             float cy = Rect.Y + ry;
 
-            // If this is a polygon, don't bother with concave points.
-            if (skip == 1)
-            {
-                result = new PointF[num_points];
-                theta = start_theta;
-                dtheta = 2 * Math.PI / num_points;
-                for (int i = 0; i < num_points; i++)
-                {
-                    result[i] = new PointF(
-                        (float)(cx + rx * Math.Cos(theta)),
-                        (float)(cy + ry * Math.Sin(theta)));
-                    theta += dtheta;
-                }
-                return result;
-            }
+            int skip = 2;
 
-            // Find the radius for the concave vertices.
-            double concave_radius =
-                CalculateConcaveRadius(num_points, skip);
+            // Radius for the concave vertices.
+            double concave_radius = skip == 1 ? 1 : CalculateConcaveRadius(num_points, skip);
 
             // Make the points.
             result = new PointF[2 * num_points];
-            theta = start_theta;
+            theta = -Math.PI / 2;
             dtheta = Math.PI / num_points;
+
             for (int i = 0; i < num_points; i++)
             {
                 result[2 * i] = new PointF(
@@ -70,6 +48,7 @@ namespace GraphProg
                     (float)(cy + ry * Math.Sin(theta) * concave_radius));
                 theta += dtheta;
             }
+
             return result;
         }
 
@@ -179,6 +158,15 @@ namespace GraphProg
         }
     }
 
+    public class ThreePointedStar : Star
+    {
+        public ThreePointedStar(Graphics g, Pen p) : base(g, p) { }
+
+        public override void Draw()
+        {
+            DrawStar(3);
+        }
+    }
 
     public class FourPointedStar : Star
     {
@@ -186,7 +174,7 @@ namespace GraphProg
 
         public override void Draw()
         {
-            DrawStar(4, 2);
+            DrawStar(4);
         }
     }
 
@@ -196,7 +184,7 @@ namespace GraphProg
 
         public override void Draw()
         {
-            DrawStar(5, 2);
+            DrawStar(5);
         }
     }
 
@@ -206,7 +194,7 @@ namespace GraphProg
 
         public override void Draw()
         {
-            DrawStar(6, 2);
+            DrawStar(6);
         }
     }
 

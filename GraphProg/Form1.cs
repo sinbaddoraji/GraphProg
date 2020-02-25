@@ -206,5 +206,15 @@ namespace GraphProg
 
             canvas1.SelectShape(Canvas.ShapeType.FourPointedStar);
         }
+
+        private void threePointStarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UncheckToolstrips();
+
+            threePointStarToolStripMenuItem.Checked = true;
+            threeRadioButton.Checked = true;
+
+            canvas1.SelectShape(Canvas.ShapeType.ThreePointedStar);
+        }
     }
 }
