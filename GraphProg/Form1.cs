@@ -216,5 +216,12 @@ namespace GraphProg
 
             canvas1.SelectShape(Canvas.ShapeType.ThreePointedStar);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Fill shape
+            //outline colour
+            //inside colour
+        }
     }
 }
