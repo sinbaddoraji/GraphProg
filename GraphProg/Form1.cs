@@ -141,10 +141,40 @@ namespace GraphProg
         {
             UncheckToolstrips();
 
+            hexagonToolStripMenuItem.Checked = true;
+            hexagonRadioButton.Checked = true;
+
+            canvas1.SelectShape(Canvas.ShapeType.Hexagon);
+        }
+
+        private void heptagonToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            UncheckToolstrips();
+
             heptagonToolStripMenuItem.Checked = true;
-            hepatagonRadioButton.Checked = true;
+            heptagonRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Heptagon);
+        }
+
+        private void trapezoidToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UncheckToolstrips();
+
+            trapezoidToolStripMenuItem.Checked = true;
+            TrapezoidRadioButton.Checked = true;
+
+            canvas1.SelectShape(Canvas.ShapeType.Trapezoid);
+        }
+
+        private void octagonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UncheckToolstrips();
+
+            octagonToolStripMenuItem.Checked = true;
+            octagonRadioButton.Checked = true;
+
+            canvas1.SelectShape(Canvas.ShapeType.Octagon);
         }
     }
 }

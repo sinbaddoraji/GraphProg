@@ -102,6 +102,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />
+    <None Include="Resources\Trapezoid.png" />
+    <None Include="Resources\Hexagon.png" />
     <None Include="Resources\Octagon.png" />
     <None Include="Resources\Star.png" />
     <None Include="Resources\rTriangle.png" />

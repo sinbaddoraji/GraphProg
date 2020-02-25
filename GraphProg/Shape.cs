@@ -1,37 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphProg
 {
-
     public abstract class Shape
     {
         //Change to private later
         private DrawInformation drawInformation; // made public to allow redrawing
 
-        public Rectangle Rect => drawInformation.rect;
+        protected Rectangle Rect => drawInformation.Rect;
 
-        public Point DrawStart => drawInformation.drawStart;
+        protected Point DrawStart => drawInformation.drawStart;
 
-        public Point DrawEnd => drawInformation.drawEnd;
+        protected Point DrawEnd => drawInformation.drawEnd;
 
-        public int Xstart => drawInformation.rect.X; //starting X cordinate of rectangle stored in the drawinformation object
+        protected int Xstart => drawInformation.Rect.X; //starting X cordinate of rectangle stored in the drawinformation object
 
-        public int Ystart => drawInformation.rect.Y; //starting Y cordinate of rectangle stored in the drawinformation object
+        protected int Ystart => drawInformation.Rect.Y; //starting Y cordinate of rectangle stored in the drawinformation object
 
-        public int Xend => drawInformation.rect.X + drawInformation.rect.Width; //Ending X cordinate of rectangle stored in the drawinformation object
+        protected int Xend => drawInformation.Rect.X + drawInformation.Rect.Width; //Ending X cordinate of rectangle stored in the drawinformation object
 
-        public int Yend => drawInformation.rect.Y + drawInformation.rect.Height; //Ending Y cordinate of rectangle stored in the drawinformation object
+        protected int Yend => drawInformation.Rect.Y + drawInformation.Rect.Height; //Ending Y cordinate of rectangle stored in the drawinformation object
 
-        public Shape()   // constructor
+        protected Graphics g;
+
+        protected Pen pen;
+
+        protected Shape(Graphics g, Pen pen)
         {
+            this.g = g;
+            this.pen = pen;
         }
 
-        public static void DrawLinesThrough(Graphics g, Pen pen, Point[] points)
+        public void SetPen(Pen pen)
+        {
+            this.pen = pen;
+        }
+
+        protected void DrawLinesThrough(Point[] points)
         {
             for (int i = 0; i < points.Length; i++)
             {
@@ -45,19 +51,58 @@ namespace GraphProg
             }
         }
 
-        public abstract void Draw(Graphics g, Pen pen);
+        public abstract void Draw();
 
-        public void GetDrawLocationInformation(DrawInformation drwInfo) => this.drawInformation = drwInfo;
+        public void GetDrawLocationInformation(DrawInformation drwInfo)
+        {
+            drawInformation = drwInfo;
+        }
+    }
+
+    public abstract class Polygon : Shape
+    {
+        protected Polygon(Graphics g, Pen pen) : base(g, pen) { }
+
+        protected void DrawPolygon(int numberOfSides)
+        {
+            //180 * (N - 2)
+            float shapeAngle = (180f * (numberOfSides - 2)) / numberOfSides;
+
+            if (shapeAngle > 100)
+            {
+                shapeAngle = 180f - shapeAngle;
+            }
+
+            //Convert angle to radians
+            shapeAngle = (shapeAngle * (float)Math.PI) / 180f;
+
+            //Change icon of this in the image list
+
+            int x_0 = (DrawStart.X + DrawEnd.X) / 2; //Starting x value
+            int y_0 = (DrawStart.Y + DrawEnd.Y) / 2; //Starting y value
+
+            //Half the diameter of the rectangle the shape is being drawn in
+            int radius = Math.Max(Math.Abs(DrawEnd.X - DrawStart.X) / 2, Math.Abs(DrawEnd.Y - DrawStart.Y) / 2);
+
+            PointF[] points = new PointF[numberOfSides]; //Point list
+
+            //50
+            for (int a = 0; a < numberOfSides; a++)
+            {
+                points[a] = new PointF(
+                    x_0 + radius * (float)Math.Cos(a * shapeAngle),
+                    y_0 + radius * (float)Math.Sin(a * shapeAngle));
+            }
+
+            g.DrawPolygon(pen, points);
+        }
     }
 
     public class Square : Shape
     {
-        public Square()
-        {
+        public Square(Graphics g, Pen p) : base(g, p) { }
 
-        }
-
-        public override void Draw(Graphics g, Pen pen)
+        public override void Draw()
         {
             //Upper left corner of square
             Point a = new Point(Xstart, Ystart);
@@ -68,33 +113,28 @@ namespace GraphProg
             //Upper right corner of square
             Point d = new Point(Xstart, Yend);
 
-            DrawLinesThrough(g, pen, new[] { a, b, c, d });
+            DrawLinesThrough(new[] { a, b, c, d });
         }
-
     }
 
     public class Circle : Shape
     {
-        public Circle()
-        {
+        public Circle(Graphics g, Pen p) : base(g, p) { }
 
-        }
-        public override void Draw(Graphics g, Pen pen)
+        //Draw circle using bresenham circle algorithm
+        public override void Draw()
         {
-            //Draw circle using bresenham circle algorithm
             CircleBres(g, Rect, pen);
         }
 
-
         // Method fills in one pixel only
-        void PutPixel(Graphics g, Point pixel, Pen pen)
+        private void PutPixel(Graphics g, Point pixel, Pen pen)
         {
             // FillRectangle call fills at location x y and is 1 pixel high by 1 pixel wide
             g.FillRectangle(pen.Brush, pixel.X, pixel.Y, pen.Width, pen.Width);
-            
         }
 
-        void DrawCircle(Graphics g, Pen b, int xc, int yc, int x, int y)
+        private void DrawCircle(Graphics g, Pen b, int xc, int yc, int x, int y)
         {
             PutPixel(g, new Point(xc + x, yc + y), b);
             PutPixel(g, new Point(xc - x, yc + y), b);
@@ -106,7 +146,7 @@ namespace GraphProg
             PutPixel(g, new Point(xc - y, yc - x), b);
         }
 
-        void CircleBres(Graphics g, Rectangle rect, Pen brush)
+        private void CircleBres(Graphics g, Rectangle rect, Pen brush)
         {
             int radius = Math.Max(rect.Width / 2, rect.Height / 2);
 
@@ -134,7 +174,10 @@ namespace GraphProg
                     d = d + 4 * (x - y) + 10;
                 }
                 else
+                {
                     d = d + 4 * x + 6;
+                }
+
                 DrawCircle(g, brush, centreX, centreY, x, y);
             }
         }
@@ -142,43 +185,41 @@ namespace GraphProg
 
     }
 
+    public class RightAngledTriangle : Shape
+    {
+        public RightAngledTriangle(Graphics g, Pen p) : base(g, p) { }
+
+        public override void Draw()
+        {
+            Point[] points = new Point[3] { new Point(DrawStart.X, DrawEnd.Y), DrawStart, DrawEnd };
+
+            DrawLinesThrough(points);
+        }
+    }
+
     public class Triangle : Shape
     {
-        private readonly bool rightAngled;
+        public Triangle(Graphics g, Pen p) : base(g, p) { }
 
-        public Triangle(bool isRightAngled = false) => rightAngled = isRightAngled;
 
-        public override void Draw(Graphics g, Pen pen)
+        public override void Draw()
         {
-            if(rightAngled)
-            {
-                //Points to create right angled triangle
-                var points = new Point[3] { new Point(DrawStart.X, DrawEnd.Y), DrawStart, DrawEnd };
-
-                DrawLinesThrough(g, pen, points);
-            }
-            else
-            {
-                //Points for triangle
-                var points = new Point[3];
-                points[1] = DrawEnd; // lower right end of triangle
-                points[2] = new Point(DrawStart.X, DrawEnd.Y);// lower left end of triangle
-                points[0] = new Point((points[1].X + points[2].X) / 2, DrawStart.Y); //Mid point of triangle
-                DrawLinesThrough(g, pen, points);
-            }
+            Point[] points = new Point[3];
+            points[1] = DrawEnd; // lower right end of triangle
+            points[2] = new Point(DrawStart.X, DrawEnd.Y);// lower left end of triangle
+            points[0] = new Point((points[1].X + points[2].X) / 2, DrawStart.Y); //Mid point of triangle
+            DrawLinesThrough(points);
         }
 
     }
 
     public class Diamond : Shape
     {
-        public Diamond()
-        {
-        }
+        public Diamond(Graphics g, Pen p) : base(g, p) { }
 
-        public override void Draw(Graphics g, Pen pen)
+        public override void Draw()
         {
-            var points = new Point[4];
+            Point[] points = new Point[4];
             //Upper point of diamond
             points[0] = new Point((DrawStart.X + DrawEnd.X) / 2, DrawStart.Y);
             //Left point of diamond
@@ -188,28 +229,29 @@ namespace GraphProg
             //Right point of diamond
             points[3] = new Point(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
 
-            DrawLinesThrough(g, pen, points);
+            DrawLinesThrough(points);
         }
 
     }
 
 
-    public class Pentagon: Shape
+    public class Pentagon : Shape
     {
-        public Pentagon()
-        {
-        }
+        public Pentagon(Graphics g, Pen p) : base(g, p) { }
 
-        public override void Draw(Graphics g, Pen pen)
+        public override void Draw()
         {
             int diameter = Math.Abs(DrawEnd.X - DrawStart.X);
 
             // Gap between X boundaries of rectangle being drawn in and the start/end of the lower line of a pentagon
             int tint = Convert.ToInt32(0.256 * diameter);
 
-            if (DrawStart.X > DrawEnd.X) tint *= -1;
+            if (DrawStart.X > DrawEnd.X)
+            {
+                tint *= -1;
+            }
 
-            var points = new Point[5];
+            Point[] points = new Point[5];
 
             //Middle of horizontal line in the upper rectangle
             points[0] = new Point((DrawStart.X + DrawEnd.X) / 2, DrawStart.Y);
@@ -222,51 +264,52 @@ namespace GraphProg
             //Middle of the right vertical line in the rectangle
             points[4] = new Point(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
 
-            DrawLinesThrough(g, pen, points);
+            DrawLinesThrough(points);
         }
 
     }
     //Note stars can be drawn from pentagons
 
-    public class Heptagon : Shape
+    public class Hexagon : Polygon
     {
-        public Heptagon()
+        public Hexagon(Graphics g, Pen p) : base(g, p) { }
+
+        //Change icon of this in the image list
+        public override void Draw()
         {
+            DrawPolygon(6);
         }
+    }
 
-        public override void Draw(Graphics g, Pen pen)
+    public class Trapizoid : Polygon
+    {
+        public Trapizoid(Graphics g, Pen p) : base(g, p) { }
+
+        public override void Draw()
         {
-            //Get the middle of the panel
-            //var x_0 = Xend / 2;
-            //var y_0 = Yend / 2;
-
-            //var x_0 = Xend / 2;
-            //var y_0 = Yend / 2;
-
-            //CHange icon of this in the image list
-
-            var x_0 = (DrawStart.X + DrawEnd.X) / 2;
-            var y_0 = (DrawStart.Y + DrawEnd.Y) / 2;
-
-            
-            var r = Math.Max(Math.Abs(DrawEnd.X - DrawStart.X) / 2, Math.Abs(DrawEnd.Y - DrawStart.Y) / 2); //70 px radius 
-            
-            var points = new PointF[6];
-
-
-            //Create 6 points
-            for (int a = 0; a < 6; a++)
-            {
-                points[a] = new PointF(
-                    x_0 + r * (float)Math.Cos(a * 60 * Math.PI / 180f),
-                    y_0 + r * (float)Math.Sin(a * 60 * Math.PI / 180f));
-            }
-
-
-            //g.DrawRectangle(pen, Rect);
-            g.DrawPolygon(pen, points);
+            DrawPolygon(4);
         }
+    }
 
+    public class Heptagon : Polygon
+    {
+        public Heptagon(Graphics g, Pen p) : base(g, p) { }
+
+        public override void Draw()
+        {
+            DrawPolygon(7);
+        }
+    }
+
+
+    public class Octagon : Polygon
+    {
+        public Octagon(Graphics g, Pen p) : base(g, p) { }
+
+        public override void Draw()
+        {
+            DrawPolygon(8);
+        }
     }
 
 }
