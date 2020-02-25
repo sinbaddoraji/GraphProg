@@ -176,5 +176,15 @@ namespace GraphProg
 
             canvas1.SelectShape(Canvas.ShapeType.Octagon);
         }
+
+        private void fivePointStarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UncheckToolstrips();
+
+            fivePointStarToolStripMenuItem.Checked = true;
+            fiveStarRadioButton.Checked = true;
+
+            canvas1.SelectShape(Canvas.ShapeType.FivePointedStar);
+        }
     }
 }

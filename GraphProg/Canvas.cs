@@ -11,7 +11,7 @@ namespace GraphProg
 {
     class Canvas : PictureBox
     {
-        public enum ShapeType { None, Square, Circle, Triangle, RightAngTriangle, Trapezoid, Diamond, Pentagon, Hexagon, Heptagon, Octagon };
+        public enum ShapeType { None, Square, Circle, Triangle, RightAngTriangle, Trapezoid, Diamond, Pentagon, Hexagon, Heptagon, Octagon,FivePointedStar };
         private ShapeType selectedShape;
 
         public bool IsDrawing { get; set; } = false;
@@ -130,6 +130,7 @@ namespace GraphProg
 
             if (selectedShape == ShapeType.Octagon) currentShape = new Octagon(g, pen);
 
+            if (selectedShape == ShapeType.FivePointedStar) currentShape = new FivePointedStar(g, pen);
             currentShape.GetDrawLocationInformation(drwInfo);
             currentShape.Draw();
 

@@ -63,26 +63,27 @@ namespace GraphProg
     {
         protected Polygon(Graphics g, Pen pen) : base(g, pen) { }
 
-        protected void DrawPolygon(int numberOfSides)
+        protected void DrawPolygon(int numberOfSides, float angle = -1)
         {
             //180 * (N - 2)
-            float shapeAngle = (180f * (numberOfSides - 2)) / numberOfSides;
+            float shapeAngle;
+            if (angle == -1) shapeAngle = (180f * (numberOfSides - 2)) / numberOfSides;
+            else shapeAngle = angle;
 
-            if (shapeAngle > 100)
-            {
-                shapeAngle = 180f - shapeAngle;
-            }
+            if (shapeAngle > 100) shapeAngle = 180f - shapeAngle;
 
             //Convert angle to radians
             shapeAngle = (shapeAngle * (float)Math.PI) / 180f;
 
             //Change icon of this in the image list
 
+            //int x_0 = (DrawStart.X + DrawEnd.X) / 2; //Starting x value
+            // int y_0 = (DrawStart.Y + DrawEnd.Y) / 2; //Starting y value
             int x_0 = (DrawStart.X + DrawEnd.X) / 2; //Starting x value
             int y_0 = (DrawStart.Y + DrawEnd.Y) / 2; //Starting y value
 
             //Half the diameter of the rectangle the shape is being drawn in
-            int radius = Math.Max(Math.Abs(DrawEnd.X - DrawStart.X) / 2, Math.Abs(DrawEnd.Y - DrawStart.Y) / 2);
+            int radius = Math.Min(Math.Abs(DrawEnd.X - DrawStart.X) / 2, Math.Abs(DrawEnd.Y - DrawStart.Y) / 2);
 
             PointF[] points = new PointF[numberOfSides]; //Point list
 
@@ -97,6 +98,8 @@ namespace GraphProg
             g.DrawPolygon(pen, points);
         }
     }
+
+    
 
     public class Square : Shape
     {
@@ -117,72 +120,15 @@ namespace GraphProg
         }
     }
 
-    public class Circle : Shape
+    public class Circle : Polygon
     {
         public Circle(Graphics g, Pen p) : base(g, p) { }
 
         //Draw circle using bresenham circle algorithm
         public override void Draw()
         {
-            CircleBres(g, Rect, pen);
+            DrawPolygon(360);
         }
-
-        // Method fills in one pixel only
-        private void PutPixel(Graphics g, Point pixel, Pen pen)
-        {
-            // FillRectangle call fills at location x y and is 1 pixel high by 1 pixel wide
-            g.FillRectangle(pen.Brush, pixel.X, pixel.Y, pen.Width, pen.Width);
-        }
-
-        private void DrawCircle(Graphics g, Pen b, int xc, int yc, int x, int y)
-        {
-            PutPixel(g, new Point(xc + x, yc + y), b);
-            PutPixel(g, new Point(xc - x, yc + y), b);
-            PutPixel(g, new Point(xc + x, yc - y), b);
-            PutPixel(g, new Point(xc - x, yc - y), b);
-            PutPixel(g, new Point(xc + y, yc + x), b);
-            PutPixel(g, new Point(xc - y, yc + x), b);
-            PutPixel(g, new Point(xc + y, yc - x), b);
-            PutPixel(g, new Point(xc - y, yc - x), b);
-        }
-
-        private void CircleBres(Graphics g, Rectangle rect, Pen brush)
-        {
-            int radius = Math.Max(rect.Width / 2, rect.Height / 2);
-
-            int centreX = rect.X + (rect.Width / 2);
-            int centreY = rect.Y + (rect.Height / 2);
-
-            int x = 0;
-            int y = radius;
-            int d = 3 - 2 * radius;  // initial value
-
-            DrawCircle(g, brush, centreX, centreY, x, y);
-            while (y >= x)
-            {
-                // for each pixel we will 
-                // draw all eight pixels 
-
-                x++;
-
-                // check for decision parameter 
-                // and correspondingly  
-                // update d, x, y 
-                if (d > 0)
-                {
-                    y--;
-                    d = d + 4 * (x - y) + 10;
-                }
-                else
-                {
-                    d = d + 4 * x + 6;
-                }
-
-                DrawCircle(g, brush, centreX, centreY, x, y);
-            }
-        }
-
-
     }
 
     public class RightAngledTriangle : Shape
@@ -234,7 +180,6 @@ namespace GraphProg
 
     }
 
-
     public class Pentagon : Shape
     {
         public Pentagon(Graphics g, Pen p) : base(g, p) { }
@@ -268,7 +213,6 @@ namespace GraphProg
         }
 
     }
-    //Note stars can be drawn from pentagons
 
     public class Hexagon : Polygon
     {
@@ -287,7 +231,7 @@ namespace GraphProg
 
         public override void Draw()
         {
-            DrawPolygon(4);
+            DrawPolygon(4,60);
         }
     }
 
@@ -300,7 +244,6 @@ namespace GraphProg
             DrawPolygon(7);
         }
     }
-
 
     public class Octagon : Polygon
     {
