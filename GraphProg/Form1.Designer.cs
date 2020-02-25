@@ -38,14 +38,16 @@
             this.squareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.triangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.rightangledTriangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diamondToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.pentagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hexagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.heptagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trapezoidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.octagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.threePointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fourPointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fivePointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sixPointedStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,37 +59,37 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.canvas1 = new GraphProg.Canvas();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.noShapeRadioButton = new System.Windows.Forms.RadioButton();
             this.squareRadioButton = new System.Windows.Forms.RadioButton();
             this.circleRadioButton = new System.Windows.Forms.RadioButton();
             this.triangleRadioButton = new System.Windows.Forms.RadioButton();
             this.diamondRadioButton = new System.Windows.Forms.RadioButton();
             this.rTriangleRadioButton = new System.Windows.Forms.RadioButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.TrapezoidRadioButton = new System.Windows.Forms.RadioButton();
             this.pentagonRadioButton = new System.Windows.Forms.RadioButton();
             this.hexagonRadioButton = new System.Windows.Forms.RadioButton();
             this.heptagonRadioButton = new System.Windows.Forms.RadioButton();
             this.octagonRadioButton = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.threeRadioButton = new System.Windows.Forms.RadioButton();
             this.fourRadioButton = new System.Windows.Forms.RadioButton();
             this.fiveStarRadioButton = new System.Windows.Forms.RadioButton();
             this.SixRadioButton = new System.Windows.Forms.RadioButton();
-            this.threeRadioButton = new System.Windows.Forms.RadioButton();
-            this.threePointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.canvas1 = new GraphProg.Canvas();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -156,103 +158,115 @@
             this.noShapeToolStripMenuItem.Checked = true;
             this.noShapeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.noShapeToolStripMenuItem.Name = "noShapeToolStripMenuItem";
-            this.noShapeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noShapeToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.noShapeToolStripMenuItem.Text = "No Shape";
             this.noShapeToolStripMenuItem.Click += new System.EventHandler(this.noShapeToolStripMenuItem_Click);
             // 
             // squareToolStripMenuItem
             // 
             this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
-            this.squareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.squareToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.squareToolStripMenuItem.Text = "Square";
             this.squareToolStripMenuItem.Click += new System.EventHandler(this.squareToolStripMenuItem_Click);
             // 
             // circleToolStripMenuItem
             // 
             this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
-            this.circleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.circleToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.circleToolStripMenuItem.Text = "Circle";
             this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
             // 
             // triangleToolStripMenuItem
             // 
             this.triangleToolStripMenuItem.Name = "triangleToolStripMenuItem";
-            this.triangleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.triangleToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.triangleToolStripMenuItem.Text = "Triangle";
             this.triangleToolStripMenuItem.Click += new System.EventHandler(this.triangleToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // rightangledTriangleToolStripMenuItem
             // 
             this.rightangledTriangleToolStripMenuItem.Name = "rightangledTriangleToolStripMenuItem";
-            this.rightangledTriangleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rightangledTriangleToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.rightangledTriangleToolStripMenuItem.Text = "Right-angled Triangle";
             this.rightangledTriangleToolStripMenuItem.Click += new System.EventHandler(this.rightangledTriangleToolStripMenuItem_Click);
             // 
             // diamondToolStripMenuItem
             // 
             this.diamondToolStripMenuItem.Name = "diamondToolStripMenuItem";
-            this.diamondToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.diamondToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.diamondToolStripMenuItem.Text = "Diamond";
             this.diamondToolStripMenuItem.Click += new System.EventHandler(this.diamondToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(173, 6);
             // 
             // pentagonToolStripMenuItem
             // 
             this.pentagonToolStripMenuItem.Name = "pentagonToolStripMenuItem";
-            this.pentagonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pentagonToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.pentagonToolStripMenuItem.Text = "Pentagon";
             this.pentagonToolStripMenuItem.Click += new System.EventHandler(this.pentagonToolStripMenuItem_Click);
             // 
             // hexagonToolStripMenuItem
             // 
             this.hexagonToolStripMenuItem.Name = "hexagonToolStripMenuItem";
-            this.hexagonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hexagonToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.hexagonToolStripMenuItem.Text = "Hexagon";
             this.hexagonToolStripMenuItem.Click += new System.EventHandler(this.heptagonToolStripMenuItem_Click);
             // 
             // heptagonToolStripMenuItem
             // 
             this.heptagonToolStripMenuItem.Name = "heptagonToolStripMenuItem";
-            this.heptagonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.heptagonToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.heptagonToolStripMenuItem.Text = "Heptagon";
             this.heptagonToolStripMenuItem.Click += new System.EventHandler(this.heptagonToolStripMenuItem_Click_1);
             // 
             // trapezoidToolStripMenuItem
             // 
             this.trapezoidToolStripMenuItem.Name = "trapezoidToolStripMenuItem";
-            this.trapezoidToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.trapezoidToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.trapezoidToolStripMenuItem.Text = "Trapezoid";
             this.trapezoidToolStripMenuItem.Click += new System.EventHandler(this.trapezoidToolStripMenuItem_Click);
             // 
             // octagonToolStripMenuItem
             // 
             this.octagonToolStripMenuItem.Name = "octagonToolStripMenuItem";
-            this.octagonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.octagonToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.octagonToolStripMenuItem.Text = "Octagon";
             this.octagonToolStripMenuItem.Click += new System.EventHandler(this.octagonToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(173, 6);
+            // 
+            // threePointStarToolStripMenuItem
+            // 
+            this.threePointStarToolStripMenuItem.Name = "threePointStarToolStripMenuItem";
+            this.threePointStarToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.threePointStarToolStripMenuItem.Text = "Three-Point Star";
+            this.threePointStarToolStripMenuItem.Click += new System.EventHandler(this.threePointStarToolStripMenuItem_Click);
             // 
             // fourPointStarToolStripMenuItem
             // 
             this.fourPointStarToolStripMenuItem.Name = "fourPointStarToolStripMenuItem";
-            this.fourPointStarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fourPointStarToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.fourPointStarToolStripMenuItem.Text = "Four-Point Star";
             this.fourPointStarToolStripMenuItem.Click += new System.EventHandler(this.fourPointStarToolStripMenuItem_Click);
             // 
             // fivePointStarToolStripMenuItem
             // 
             this.fivePointStarToolStripMenuItem.Name = "fivePointStarToolStripMenuItem";
-            this.fivePointStarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fivePointStarToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.fivePointStarToolStripMenuItem.Text = "Five-Point Star";
             this.fivePointStarToolStripMenuItem.Click += new System.EventHandler(this.fivePointStarToolStripMenuItem_Click);
             // 
             // sixPointedStarToolStripMenuItem
             // 
             this.sixPointedStarToolStripMenuItem.Name = "sixPointedStarToolStripMenuItem";
-            this.sixPointedStarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sixPointedStarToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.sixPointedStarToolStripMenuItem.Text = "Six-Pointed Star";
             this.sixPointedStarToolStripMenuItem.Click += new System.EventHandler(this.sixPointedStarToolStripMenuItem_Click);
             // 
@@ -318,6 +332,19 @@
             this.panel2.Size = new System.Drawing.Size(800, 587);
             this.panel2.TabIndex = 2;
             // 
+            // canvas1
+            // 
+            this.canvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.canvas1.Image = ((System.Drawing.Image)(resources.GetObject("canvas1.Image")));
+            this.canvas1.IsDrawing = false;
+            this.canvas1.Location = new System.Drawing.Point(112, -3);
+            this.canvas1.Name = "canvas1";
+            this.canvas1.Size = new System.Drawing.Size(796, 628);
+            this.canvas1.TabIndex = 0;
+            this.canvas1.TabStop = false;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Silver;
@@ -337,15 +364,17 @@
             this.flowLayoutPanel1.Controls.Add(this.hexagonRadioButton);
             this.flowLayoutPanel1.Controls.Add(this.heptagonRadioButton);
             this.flowLayoutPanel1.Controls.Add(this.octagonRadioButton);
+            this.flowLayoutPanel1.Controls.Add(this.radioButton1);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.threeRadioButton);
             this.flowLayoutPanel1.Controls.Add(this.fourRadioButton);
             this.flowLayoutPanel1.Controls.Add(this.fiveStarRadioButton);
             this.flowLayoutPanel1.Controls.Add(this.SixRadioButton);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel1.Controls.Add(this.radioButton2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(102, 568);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(102, 579);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // panel5
@@ -369,58 +398,6 @@
             this.label3.Size = new System.Drawing.Size(94, 15);
             this.label3.TabIndex = 8;
             this.label3.Text = "    Basic Shapes     ";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Gray;
-            this.panel4.Location = new System.Drawing.Point(3, 184);
-            this.panel4.MaximumSize = new System.Drawing.Size(95, 13);
-            this.panel4.MinimumSize = new System.Drawing.Size(95, 13);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(95, 13);
-            this.panel4.TabIndex = 11;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(3, 200);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "       Polygons";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Location = new System.Drawing.Point(3, 365);
-            this.panel3.MaximumSize = new System.Drawing.Size(95, 13);
-            this.panel3.MinimumSize = new System.Drawing.Size(95, 13);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(95, 13);
-            this.panel3.TabIndex = 10;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(3, 381);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "          Stars";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Gray;
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(108, 587);
-            this.panel1.TabIndex = 4;
             // 
             // noShapeRadioButton
             // 
@@ -524,6 +501,27 @@
             this.rTriangleRadioButton.UseVisualStyleBackColor = false;
             this.rTriangleRadioButton.Click += new System.EventHandler(this.rightangledTriangleToolStripMenuItem_Click);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Location = new System.Drawing.Point(3, 184);
+            this.panel4.MaximumSize = new System.Drawing.Size(95, 13);
+            this.panel4.MinimumSize = new System.Drawing.Size(95, 13);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(95, 13);
+            this.panel4.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(3, 200);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "       Polygons";
+            // 
             // TrapezoidRadioButton
             // 
             this.TrapezoidRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
@@ -609,6 +607,59 @@
             this.octagonRadioButton.UseVisualStyleBackColor = false;
             this.octagonRadioButton.Click += new System.EventHandler(this.octagonToolStripMenuItem_Click);
             // 
+            // radioButton1
+            // 
+            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.White;
+            this.radioButton1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
+            this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButton1.Image = global::GraphProg.Properties.Resources.CustomPolygon;
+            this.radioButton1.Location = new System.Drawing.Point(52, 316);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(43, 43);
+            this.radioButton1.TabIndex = 18;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "    ";
+            this.radioButton1.UseVisualStyleBackColor = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Gray;
+            this.panel3.Location = new System.Drawing.Point(3, 365);
+            this.panel3.MaximumSize = new System.Drawing.Size(95, 13);
+            this.panel3.MinimumSize = new System.Drawing.Size(95, 13);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(95, 13);
+            this.panel3.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(3, 381);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "          Stars";
+            // 
+            // threeRadioButton
+            // 
+            this.threeRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.threeRadioButton.AutoSize = true;
+            this.threeRadioButton.BackColor = System.Drawing.Color.White;
+            this.threeRadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
+            this.threeRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.threeRadioButton.Image = global::GraphProg.Properties.Resources._3Star;
+            this.threeRadioButton.Location = new System.Drawing.Point(3, 399);
+            this.threeRadioButton.Name = "threeRadioButton";
+            this.threeRadioButton.Size = new System.Drawing.Size(43, 43);
+            this.threeRadioButton.TabIndex = 17;
+            this.threeRadioButton.TabStop = true;
+            this.threeRadioButton.Text = "    ";
+            this.threeRadioButton.UseVisualStyleBackColor = false;
+            // 
             // fourRadioButton
             // 
             this.fourRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
@@ -660,46 +711,31 @@
             this.SixRadioButton.UseVisualStyleBackColor = false;
             this.SixRadioButton.Click += new System.EventHandler(this.sixPointedStarToolStripMenuItem_Click);
             // 
-            // threeRadioButton
+            // radioButton2
             // 
-            this.threeRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.threeRadioButton.AutoSize = true;
-            this.threeRadioButton.BackColor = System.Drawing.Color.White;
-            this.threeRadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
-            this.threeRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.threeRadioButton.Image = global::GraphProg.Properties.Resources._3Star;
-            this.threeRadioButton.Location = new System.Drawing.Point(3, 399);
-            this.threeRadioButton.Name = "threeRadioButton";
-            this.threeRadioButton.Size = new System.Drawing.Size(43, 43);
-            this.threeRadioButton.TabIndex = 17;
-            this.threeRadioButton.TabStop = true;
-            this.threeRadioButton.Text = "    ";
-            this.threeRadioButton.UseVisualStyleBackColor = false;
+            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.White;
+            this.radioButton2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
+            this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButton2.Image = global::GraphProg.Properties.Resources.CustomStar;
+            this.radioButton2.Location = new System.Drawing.Point(3, 497);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(43, 43);
+            this.radioButton2.TabIndex = 19;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "    ";
+            this.radioButton2.UseVisualStyleBackColor = false;
             // 
-            // threePointStarToolStripMenuItem
+            // panel1
             // 
-            this.threePointStarToolStripMenuItem.Name = "threePointStarToolStripMenuItem";
-            this.threePointStarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.threePointStarToolStripMenuItem.Text = "Three-Point Star";
-            this.threePointStarToolStripMenuItem.Click += new System.EventHandler(this.threePointStarToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // canvas1
-            // 
-            this.canvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.canvas1.Image = ((System.Drawing.Image)(resources.GetObject("canvas1.Image")));
-            this.canvas1.IsDrawing = false;
-            this.canvas1.Location = new System.Drawing.Point(112, -3);
-            this.canvas1.Name = "canvas1";
-            this.canvas1.Size = new System.Drawing.Size(796, 628);
-            this.canvas1.TabIndex = 0;
-            this.canvas1.TabStop = false;
+            this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(108, 587);
+            this.panel1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -715,10 +751,10 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -780,6 +816,8 @@
         private System.Windows.Forms.RadioButton threeRadioButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem threePointStarToolStripMenuItem;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
 
