@@ -180,6 +180,16 @@ namespace GraphProg
     }
 
 
+    public class FourPointedStar : Star
+    {
+        public FourPointedStar(Graphics g, Pen p) : base(g, p) { }
+
+        public override void Draw()
+        {
+            DrawStar(4, 2);
+        }
+    }
+
     public class FivePointedStar : Star
     {
         public FivePointedStar(Graphics g, Pen p) : base(g, p) { }
@@ -187,6 +197,16 @@ namespace GraphProg
         public override void Draw()
         {
             DrawStar(5, 2);
+        }
+    }
+
+    public class SixPointedStar : Star
+    {
+        public SixPointedStar(Graphics g, Pen p) : base(g, p) { }
+
+        public override void Draw()
+        {
+            DrawStar(6, 2);
         }
     }
 

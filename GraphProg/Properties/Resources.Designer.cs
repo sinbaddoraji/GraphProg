@@ -63,6 +63,16 @@ namespace GraphProg.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4Star {
+            get {
+                object obj = ResourceManager.GetObject("4Star", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _6Star {
             get {
                 object obj = ResourceManager.GetObject("6Star", resourceCulture);
