@@ -11,7 +11,7 @@ namespace GraphProg
 {
     class Canvas : PictureBox
     {
-        public enum ShapeType { None, Square, Circle, Triangle, RightAngTriangle, Trapezoid, Diamond, Pentagon, Hexagon, Heptagon, Octagon, ThreePointedStar, FourPointedStar ,FivePointedStar, SixPointedStar };
+        public enum ShapeType { None, Square, Circle, Triangle, RightAngTriangle, Trapezoid, Diamond, Pentagon, Hexagon, Heptagon, Octagon, ThreePointedStar, FourPointedStar ,FivePointedStar, SixPointedStar, VariableStar, VariablePolygon };
         private ShapeType selectedShape;
 
         public bool IsDrawing { get; set; } = false;
@@ -124,19 +124,19 @@ namespace GraphProg
 
             if (selectedShape == ShapeType.Pentagon) currentShape = new Pentagon(g, pen);
 
-            if (selectedShape == ShapeType.Hexagon) currentShape = new Hexagon(g, pen);
+            if (selectedShape == ShapeType.Hexagon) currentShape = new VariableSidedPolygon(g, pen, 6);
 
-            if (selectedShape == ShapeType.Heptagon) currentShape = new Heptagon(g, pen);
+            if (selectedShape == ShapeType.Heptagon) currentShape = new VariableSidedPolygon(g, pen, 7);
 
-            if (selectedShape == ShapeType.Octagon) currentShape = new Octagon(g, pen);
+            if (selectedShape == ShapeType.Octagon) currentShape = new VariableSidedPolygon(g, pen, 8);
 
-            if (selectedShape == ShapeType.SixPointedStar) currentShape = new SixPointedStar(g, pen);
+            if (selectedShape == ShapeType.SixPointedStar) currentShape = new VariablePointedStar(g, pen, 6);
 
-            if (selectedShape == ShapeType.FivePointedStar) currentShape = new FivePointedStar(g, pen);
+            if (selectedShape == ShapeType.FivePointedStar) currentShape = new VariablePointedStar(g, pen, 5);
 
-            if (selectedShape == ShapeType.FourPointedStar) currentShape = new FourPointedStar(g, pen);
+            if (selectedShape == ShapeType.FourPointedStar) currentShape = new VariablePointedStar(g, pen, 4);
 
-            if (selectedShape == ShapeType.ThreePointedStar) currentShape = new ThreePointedStar(g, pen);
+            if (selectedShape == ShapeType.ThreePointedStar) currentShape = new VariablePointedStar(g, pen, 3);
 
             currentShape.GetDrawLocationInformation(drwInfo);
             currentShape.Draw();

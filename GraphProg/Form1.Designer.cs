@@ -46,11 +46,13 @@
             this.heptagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trapezoidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.octagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.variableSidedPolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.threePointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fourPointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fivePointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sixPointedStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.variablePointedStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +62,8 @@
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.noShapeRadioButton = new System.Windows.Forms.RadioButton();
@@ -84,16 +88,12 @@
             this.SixRadioButton = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.variablePointedStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.variableSidedPolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.canvas1 = new GraphProg.Canvas();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -255,6 +255,13 @@
             this.octagonToolStripMenuItem.Text = "Octagon";
             this.octagonToolStripMenuItem.Click += new System.EventHandler(this.octagonToolStripMenuItem_Click);
             // 
+            // variableSidedPolygonToolStripMenuItem
+            // 
+            this.variableSidedPolygonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.CustomPolygon;
+            this.variableSidedPolygonToolStripMenuItem.Name = "variableSidedPolygonToolStripMenuItem";
+            this.variableSidedPolygonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.variableSidedPolygonToolStripMenuItem.Text = "Variable-Sided Polygon";
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -291,6 +298,13 @@
             this.sixPointedStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.sixPointedStarToolStripMenuItem.Text = "Six-Pointed Star";
             this.sixPointedStarToolStripMenuItem.Click += new System.EventHandler(this.sixPointedStarToolStripMenuItem_Click);
+            // 
+            // variablePointedStarToolStripMenuItem
+            // 
+            this.variablePointedStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources.CustomStar;
+            this.variablePointedStarToolStripMenuItem.Name = "variablePointedStarToolStripMenuItem";
+            this.variablePointedStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.variablePointedStarToolStripMenuItem.Text = "Variable-Pointed Star";
             // 
             // imageToolStripMenuItem
             // 
@@ -386,6 +400,24 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(102, 592);
             this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.button1);
+            this.panel6.Location = new System.Drawing.Point(3, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(95, 39);
+            this.panel6.TabIndex = 20;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(10, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 36);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Shape settings";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel5
             // 
@@ -682,6 +714,7 @@
             this.threeRadioButton.Tag = "3-pointed star";
             this.threeRadioButton.Text = "    ";
             this.threeRadioButton.UseVisualStyleBackColor = false;
+            this.threeRadioButton.Click += new System.EventHandler(this.threePointStarToolStripMenuItem_Click);
             // 
             // fourRadioButton
             // 
@@ -764,38 +797,6 @@
             this.panel1.Size = new System.Drawing.Size(108, 604);
             this.panel1.TabIndex = 4;
             // 
-            // variablePointedStarToolStripMenuItem
-            // 
-            this.variablePointedStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources.CustomStar;
-            this.variablePointedStarToolStripMenuItem.Name = "variablePointedStarToolStripMenuItem";
-            this.variablePointedStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.variablePointedStarToolStripMenuItem.Text = "Variable-Pointed Star";
-            // 
-            // variableSidedPolygonToolStripMenuItem
-            // 
-            this.variableSidedPolygonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.CustomPolygon;
-            this.variableSidedPolygonToolStripMenuItem.Name = "variableSidedPolygonToolStripMenuItem";
-            this.variableSidedPolygonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.variableSidedPolygonToolStripMenuItem.Text = "Variable-Sided Polygon";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.button1);
-            this.panel6.Location = new System.Drawing.Point(3, 3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(95, 39);
-            this.panel6.TabIndex = 20;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(10, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 36);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Shape settings";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // canvas1
             // 
             this.canvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -825,8 +826,8 @@
             this.panel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

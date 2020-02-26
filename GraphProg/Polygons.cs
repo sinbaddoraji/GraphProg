@@ -83,16 +83,21 @@ namespace GraphProg
 
     }
 
-    public class Hexagon : Polygon
+    public class VariableSidedPolygon : Polygon
     {
-        public Hexagon(Graphics g, Pen p) : base(g, p) { }
+        readonly int sides;
 
-        //Change icon of this in the image list
+        public VariableSidedPolygon(Graphics g, Pen p, int sides) : base(g, p)
+        {
+            this.sides = sides;
+        }
+
         public override void Draw()
         {
-            DrawPolygon(6);
+            DrawPolygon(sides);
         }
     }
+
 
     public class Trapizoid : Polygon
     {
@@ -100,28 +105,36 @@ namespace GraphProg
 
         public override void Draw()
         {
-            DrawPolygon(4, 60);
+            int diameter = Math.Abs(DrawEnd.X - DrawStart.X);
+
+            // Gap between X boundaries of rectangle being drawn in and the start/end of the lower line of a pentagon
+            int tint = Convert.ToInt32(0.256 * diameter);
+
+            //Upper left corner of square
+            Point a = new Point(Xstart, Ystart);
+            //Lower left corner of square
+            Point b = new Point(Xend, Ystart);
+            //Lower right corner of square
+            Point c = new Point(Xend, Yend);
+            //Upper right corner of square
+            Point d = new Point(Xstart, Yend);
+
+            if(DrawEnd.X < DrawStart.X)
+            {
+                c.X -= tint;
+                d.X += tint;
+            }
+            else
+            {
+                a.X += tint;
+                b.X -= tint;
+            }
+            DrawLinesThrough(new[] { a, b, c, d });
+
+            //DrawPolygon(4, 60);
         }
     }
 
-    public class Heptagon : Polygon
-    {
-        public Heptagon(Graphics g, Pen p) : base(g, p) { }
 
-        public override void Draw()
-        {
-            DrawPolygon(7);
-        }
-    }
-
-    public class Octagon : Polygon
-    {
-        public Octagon(Graphics g, Pen p) : base(g, p) { }
-
-        public override void Draw()
-        {
-            DrawPolygon(8);
-        }
-    }
 
 }

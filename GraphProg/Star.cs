@@ -158,44 +158,16 @@ namespace GraphProg
         }
     }
 
-    public class ThreePointedStar : Star
+    public class VariablePointedStar : Star
     {
-        public ThreePointedStar(Graphics g, Pen p) : base(g, p) { }
+        readonly int pointNumber;
 
-        public override void Draw()
+        public VariablePointedStar(Graphics g, Pen p, int numberOfPoints) : base(g, p) 
         {
-            DrawStar(3);
+            pointNumber = numberOfPoints;
         }
-    }
 
-    public class FourPointedStar : Star
-    {
-        public FourPointedStar(Graphics g, Pen p) : base(g, p) { }
-
-        public override void Draw()
-        {
-            DrawStar(4);
-        }
-    }
-
-    public class FivePointedStar : Star
-    {
-        public FivePointedStar(Graphics g, Pen p) : base(g, p) { }
-
-        public override void Draw()
-        {
-            DrawStar(5);
-        }
-    }
-
-    public class SixPointedStar : Star
-    {
-        public SixPointedStar(Graphics g, Pen p) : base(g, p) { }
-
-        public override void Draw()
-        {
-            DrawStar(6);
-        }
+        public override void Draw() => DrawStar(pointNumber);
     }
 
 }
