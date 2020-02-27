@@ -85,11 +85,24 @@ namespace GraphProg
 
     public class VariableSidedPolygon : Polygon
     {
-        readonly int sides;
+        int sides;
 
         public VariableSidedPolygon(Graphics g, Pen p, int sides) : base(g, p)
         {
             this.sides = sides;
+        }
+
+        public VariableSidedPolygon(int sides) : this(null, null, sides) { }
+
+        public void InitalizeDrawSettings(Graphics g, Pen p)
+        {
+            SetGraphics(g);
+            SetPen(p);
+        }
+
+        public void SetSideNum(int num)
+        {
+            sides = num;
         }
 
         public override void Draw()

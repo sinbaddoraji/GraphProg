@@ -19,8 +19,8 @@ namespace GraphProg
 
         private Size oldSize;
 
-        private Graphics imageGraphics;
-        private Graphics outerGraphics;
+        public Graphics imageGraphics;
+        public Graphics outerGraphics;
 
         private Point mousePosition;
         private Point drawStart;
@@ -35,6 +35,9 @@ namespace GraphProg
         private Color imageBackground = Color.White;
 
         bool drawBackwards => drawEnd.X < drawStart.X && drawEnd.Y > drawStart.Y; //Draw shapes like triangles upside
+
+        public Shape variablePolygon;
+        public Shape variableStar;
 
         public Canvas()
         {
@@ -137,6 +140,18 @@ namespace GraphProg
             if (selectedShape == ShapeType.FourPointedStar) currentShape = new VariablePointedStar(g, pen, 4);
 
             if (selectedShape == ShapeType.ThreePointedStar) currentShape = new VariablePointedStar(g, pen, 3);
+
+            if (selectedShape == ShapeType.VariablePolygon)
+            {
+                ((VariableSidedPolygon)variablePolygon).InitalizeDrawSettings(g, pen);
+                currentShape = variablePolygon;
+            }
+
+            if (selectedShape == ShapeType.VariableStar)
+            {
+                ((VariablePointedStar)variableStar).InitalizeDrawSettings(g, pen);
+                currentShape = variableStar;
+            }
 
             currentShape.GetDrawLocationInformation(drwInfo);
             currentShape.Draw();

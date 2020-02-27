@@ -13,6 +13,10 @@ namespace GraphProg
     public partial class Form1 : Form
     {
         SaveFileDialog saveFileDialog;
+
+        VariableShape VariablePolygon;
+        VariableShape VariableStar;
+
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +34,9 @@ namespace GraphProg
              "|TIFF Files (*.tif, *.tiff)|*.tif;*.tiff" +
              "|All Image Files|*.bmp;*.jpg;*.jpeg;*.pcx;*.png;*.gif;*.wbm;*.wbmp;*.psd;*.tif;*.tiff"
             };
+
+            VariablePolygon = new VariableShape(VariableShape.Type.Polygon);
+            VariableStar = new VariableShape(VariableShape.Type.Star);
         }
 
         private void UncheckToolstrips()
@@ -68,6 +75,11 @@ namespace GraphProg
         }
 
         private void noShapeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeselectAllShapes();
+        }
+
+        private void DeselectAllShapes()
         {
             UncheckToolstrips();
 
@@ -222,6 +234,39 @@ namespace GraphProg
             //Fill shape
             //outline colour
             //inside colour
+        }
+
+        private void varPolygonRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(VariablePolygon.ShowDialog() == DialogResult.OK)
+            {
+                canvas1.variablePolygon = VariablePolygon.customShape;
+
+                UncheckToolstrips();
+
+                variablePointedStarToolStripMenuItem.Checked = true;
+                varPolygonRadioButton.Checked = true;
+
+                canvas1.SelectShape(Canvas.ShapeType.VariablePolygon);
+            }
+
+        }
+
+        private void VarStarRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            VariableStar.ShowDialog();
+
+            if (VariableStar.ShowDialog() == DialogResult.OK)
+            {
+                canvas1.variableStar = VariableStar.customShape;
+
+                UncheckToolstrips();
+
+                variablePointedStarToolStripMenuItem.Checked = true;
+                VarStarRadioButton.Checked = true;
+
+                canvas1.SelectShape(Canvas.ShapeType.VariableStar);
+            }
         }
     }
 }

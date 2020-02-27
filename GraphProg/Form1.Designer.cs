@@ -86,7 +86,7 @@
             this.fourRadioButton = new System.Windows.Forms.RadioButton();
             this.fiveStarRadioButton = new System.Windows.Forms.RadioButton();
             this.SixRadioButton = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.VarStarRadioButton = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.canvas1 = new GraphProg.Canvas();
             this.menuStrip1.SuspendLayout();
@@ -261,6 +261,7 @@
             this.variableSidedPolygonToolStripMenuItem.Name = "variableSidedPolygonToolStripMenuItem";
             this.variableSidedPolygonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.variableSidedPolygonToolStripMenuItem.Text = "Variable-Sided Polygon";
+            this.variableSidedPolygonToolStripMenuItem.Click += new System.EventHandler(this.varPolygonRadioButton_CheckedChanged);
             // 
             // toolStripSeparator2
             // 
@@ -305,6 +306,7 @@
             this.variablePointedStarToolStripMenuItem.Name = "variablePointedStarToolStripMenuItem";
             this.variablePointedStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.variablePointedStarToolStripMenuItem.Text = "Variable-Pointed Star";
+            this.variablePointedStarToolStripMenuItem.Click += new System.EventHandler(this.VarStarRadioButton_CheckedChanged);
             // 
             // imageToolStripMenuItem
             // 
@@ -395,7 +397,7 @@
             this.flowLayoutPanel1.Controls.Add(this.fourRadioButton);
             this.flowLayoutPanel1.Controls.Add(this.fiveStarRadioButton);
             this.flowLayoutPanel1.Controls.Add(this.SixRadioButton);
-            this.flowLayoutPanel1.Controls.Add(this.radioButton2);
+            this.flowLayoutPanel1.Controls.Add(this.VarStarRadioButton);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(102, 592);
@@ -676,6 +678,7 @@
             this.varPolygonRadioButton.Tag = "Variable sized polygon";
             this.varPolygonRadioButton.Text = "    ";
             this.varPolygonRadioButton.UseVisualStyleBackColor = false;
+            this.varPolygonRadioButton.Click += new System.EventHandler(this.varPolygonRadioButton_CheckedChanged);
             // 
             // panel3
             // 
@@ -770,22 +773,23 @@
             this.SixRadioButton.UseVisualStyleBackColor = false;
             this.SixRadioButton.Click += new System.EventHandler(this.sixPointedStarToolStripMenuItem_Click);
             // 
-            // radioButton2
+            // VarStarRadioButton
             // 
-            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.BackColor = System.Drawing.Color.White;
-            this.radioButton2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
-            this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton2.Image = global::GraphProg.Properties.Resources.CustomStar;
-            this.radioButton2.Location = new System.Drawing.Point(3, 542);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(43, 43);
-            this.radioButton2.TabIndex = 19;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Tag = "Variable pointed star ";
-            this.radioButton2.Text = "    ";
-            this.radioButton2.UseVisualStyleBackColor = false;
+            this.VarStarRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.VarStarRadioButton.AutoSize = true;
+            this.VarStarRadioButton.BackColor = System.Drawing.Color.White;
+            this.VarStarRadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
+            this.VarStarRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VarStarRadioButton.Image = global::GraphProg.Properties.Resources.CustomStar;
+            this.VarStarRadioButton.Location = new System.Drawing.Point(3, 542);
+            this.VarStarRadioButton.Name = "VarStarRadioButton";
+            this.VarStarRadioButton.Size = new System.Drawing.Size(43, 43);
+            this.VarStarRadioButton.TabIndex = 19;
+            this.VarStarRadioButton.TabStop = true;
+            this.VarStarRadioButton.Tag = "Variable pointed star ";
+            this.VarStarRadioButton.Text = "    ";
+            this.VarStarRadioButton.UseVisualStyleBackColor = false;
+            this.VarStarRadioButton.Click += new System.EventHandler(this.VarStarRadioButton_CheckedChanged);
             // 
             // panel1
             // 
@@ -891,7 +895,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem threePointStarToolStripMenuItem;
         private System.Windows.Forms.RadioButton varPolygonRadioButton;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton VarStarRadioButton;
         private System.Windows.Forms.ToolStripMenuItem variableSidedPolygonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem variablePointedStarToolStripMenuItem;
         private System.Windows.Forms.Panel panel6;

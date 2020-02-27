@@ -37,6 +37,11 @@ namespace GraphProg
             this.pen = pen;
         }
 
+        public void SetGraphics(Graphics g)
+        {
+            this.g = g;
+        }
+
         protected void DrawLinesThrough(Point[] points)
         {
             for (int i = 0; i < points.Length; i++)

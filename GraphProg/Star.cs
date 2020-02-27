@@ -160,11 +160,24 @@ namespace GraphProg
 
     public class VariablePointedStar : Star
     {
-        readonly int pointNumber;
+        int pointNumber;
 
         public VariablePointedStar(Graphics g, Pen p, int numberOfPoints) : base(g, p) 
         {
             pointNumber = numberOfPoints;
+        }
+
+        public VariablePointedStar(int numberOfPoints) : this(null, null, numberOfPoints) { }
+
+        public void InitalizeDrawSettings(Graphics g, Pen p)
+        {
+            SetGraphics(g);
+            SetPen(p);
+        }
+
+        public void SetShapePoints(int num)
+        {
+            pointNumber = num;
         }
 
         public override void Draw() => DrawStar(pointNumber);
