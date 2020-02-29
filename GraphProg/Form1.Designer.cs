@@ -109,7 +109,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(874, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -242,7 +242,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 24);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 604);
+            this.panel2.Size = new System.Drawing.Size(874, 663);
             this.panel2.TabIndex = 2;
             // 
             // flowLayoutPanel1
@@ -276,7 +276,7 @@
             this.flowLayoutPanel1.Controls.Add(this.VarStarRadioButton);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(102, 592);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(102, 646);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // panel6
@@ -368,7 +368,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(108, 604);
+            this.panel1.Size = new System.Drawing.Size(108, 663);
             this.panel1.TabIndex = 4;
             // 
             // noShapeRadioButton
@@ -704,7 +704,7 @@
             this.canvas1.IsDrawing = false;
             this.canvas1.Location = new System.Drawing.Point(107, -1);
             this.canvas1.Name = "canvas1";
-            this.canvas1.Size = new System.Drawing.Size(802, 645);
+            this.canvas1.Size = new System.Drawing.Size(876, 704);
             this.canvas1.TabIndex = 0;
             this.canvas1.TabStop = false;
             this.canvas1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseDown);
@@ -850,7 +850,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 628);
+            this.ClientSize = new System.Drawing.Size(874, 687);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
