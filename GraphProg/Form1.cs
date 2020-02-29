@@ -254,8 +254,6 @@ namespace GraphProg
 
         private void VarStarRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            VariableStar.ShowDialog();
-
             if (VariableStar.ShowDialog() == DialogResult.OK)
             {
                 canvas1.variableStar = VariableStar.customShape;
