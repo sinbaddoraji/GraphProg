@@ -26,10 +26,15 @@ namespace GraphProg
 
         protected Pen pen;
 
+        protected static int index = 0;
+        public int shapeIndex;
+
         protected Shape(Graphics g, Pen pen)
         {
             this.g = g;
             this.pen = pen;
+
+            shapeIndex = index++;
         }
 
         public void SetPen(Pen pen)
@@ -58,9 +63,14 @@ namespace GraphProg
 
         public abstract void Draw();
 
-        public void GetDrawLocationInformation(DrawInformation drwInfo)
+        public void SetDrawLocationInformation(DrawInformation drwInfo)
         {
             drawInformation = drwInfo;
+        }
+
+        public DrawInformation GetDrawLocationInformation()
+        {
+            return drawInformation;
         }
     }
 }

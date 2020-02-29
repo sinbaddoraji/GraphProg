@@ -13,8 +13,7 @@ namespace GraphProg
 
         protected void DrawPolygon(int numberOfSides, float angle = -1)
         {
-            //180 * (N - 2)
-            float shapeAngle;
+            float shapeAngle; //180 * (N - 2)
             if (angle == -1) shapeAngle = (180f * (numberOfSides - 2)) / numberOfSides;
             else shapeAngle = angle;
 
@@ -25,8 +24,6 @@ namespace GraphProg
 
             //Change icon of this in the image list
 
-            //int x_0 = (DrawStart.X + DrawEnd.X) / 2; //Starting x value
-            // int y_0 = (DrawStart.Y + DrawEnd.Y) / 2; //Starting y value
             int x_0 = (DrawStart.X + DrawEnd.X) / 2; //Starting x value
             int y_0 = (DrawStart.Y + DrawEnd.Y) / 2; //Starting y value
 
@@ -35,7 +32,6 @@ namespace GraphProg
 
             PointF[] points = new PointF[numberOfSides]; //Point list
 
-            //50
             for (int a = 0; a < numberOfSides; a++)
             {
                 points[a] = new PointF(

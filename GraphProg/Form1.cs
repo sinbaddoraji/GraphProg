@@ -266,5 +266,28 @@ namespace GraphProg
                 canvas1.SelectShape(Canvas.ShapeType.VariableStar);
             }
         }
+
+        private void selectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UncheckToolstrips();
+
+            selectToolStripMenuItem.Checked = true;
+            selectRadioButton.Checked = true;
+
+            canvas1.SelectShape(Canvas.ShapeType.None);
+        }
+
+        private void canvas1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(selectRadioButton.Checked)
+            {
+                var selectedShapes = canvas1.GetShapesSurrounding(e.Location);
+                canvas1.Redraw(selectedShapes);
+            }
+        }
+
+        private void canvas1_MouseUp(object sender, MouseEventArgs e)
+        {
+        }
     }
 }

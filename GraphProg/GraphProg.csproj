@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />
+    <None Include="Resources\Hand-Touch-2-icon.png" />
     <None Include="Resources\CustomStar.png" />
     <None Include="Resources\CustomPolygon.png" />
     <None Include="Resources\3Star.png" />

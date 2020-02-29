@@ -22,8 +22,8 @@ namespace GraphProg
 
         private PointF[] MakeStarPoints(int num_points)
         {
-            double theta, dtheta;
-            PointF[] result;
+            PointF[] result = new PointF[2 * num_points];
+
             float rx = Rect.Width / 2f;
             float ry = Rect.Height / 2f;
             float cx = Rect.X + rx;
@@ -33,16 +33,17 @@ namespace GraphProg
             double concave_radius = CalculateConcaveRadius(num_points);
 
             // Make the points.
-            result = new PointF[2 * num_points];
-            theta = -Math.PI / 2;
-            dtheta = Math.PI / num_points;
+            double theta = -Math.PI / 2;
+            double dtheta = Math.PI / num_points;
 
             for (int i = 0; i < num_points; i++)
             {
                 result[2 * i] = new PointF(
-                    (float)(cx + rx * Math.Cos(theta)),
+                    (float)(cx + rx * Math.Cos(theta)), 
                     (float)(cy + ry * Math.Sin(theta)));
+
                 theta += dtheta;
+
                 result[2 * i + 1] = new PointF(
                     (float)(cx + rx * Math.Cos(theta) * concave_radius),
                     (float)(cy + ry * Math.Sin(theta) * concave_radius));

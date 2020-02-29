@@ -70,7 +70,7 @@ namespace GraphProg
 
 
             var drawInformation = new DrawInformation(new Point(0, 0), new Point(canvas1.Width - 8, canvas1.Height - 8));
-            shape.GetDrawLocationInformation(drawInformation);
+            shape.SetDrawLocationInformation(drawInformation);
 
             canvas1.imageGraphics.Clear(canvas1.BackColor);
             shape.Draw();

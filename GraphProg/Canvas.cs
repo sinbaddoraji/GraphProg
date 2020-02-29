@@ -34,10 +34,37 @@ namespace GraphProg
 
         private Color imageBackground = Color.White;
 
-        bool drawBackwards => drawEnd.X < drawStart.X && drawEnd.Y > drawStart.Y; //Draw shapes like triangles upside
+        bool isSelecting = false;
 
         public Shape variablePolygon;
         public Shape variableStar;
+
+        public Shape[] GetShapesSurrounding(Point p)
+        {
+            return shapeList.Where(x =>
+            {
+                var drawInfo = x.GetDrawLocationInformation();
+                return drawInfo.Rect.Contains(p);
+            }).ToArray();
+        }
+
+        public void Redraw(Shape[] selectedShapes = null)
+        {
+            imageGraphics.Clear(BackColor);
+
+            foreach (Shape shape in shapeList)
+            {
+                if(selectedShapes != null && selectedShapes.Contains(shape))
+                {
+                    shape.SetPen(redPen);
+                }
+                else
+                {
+                    shape.SetPen(blackPen);
+                }
+                shape.Draw();
+            }
+        }
 
         public Canvas()
         {
@@ -153,7 +180,7 @@ namespace GraphProg
                 currentShape = variableStar;
             }
 
-            currentShape.GetDrawLocationInformation(drwInfo);
+            currentShape.SetDrawLocationInformation(drwInfo);
             currentShape.Draw();
 
             if (g == imageGraphics)

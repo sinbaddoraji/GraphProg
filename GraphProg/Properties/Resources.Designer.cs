@@ -133,6 +133,16 @@ namespace GraphProg.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Hand_Touch_2_icon {
+            get {
+                object obj = ResourceManager.GetObject("Hand-Touch-2-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Heptagon {
             get {
                 object obj = ResourceManager.GetObject("Heptagon", resourceCulture);
