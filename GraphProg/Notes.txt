@@ -26,3 +26,7 @@ Extra features:
 	Shapes like traingles can be drawn in reverse
 
 	choose fill shape
+
+	Ability to select multiple shapes
+
+	Drag over multiple shapes even

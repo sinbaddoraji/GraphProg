@@ -60,6 +60,12 @@
     <Compile Include="Polygons.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectShapes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectShapes.Designer.cs">
+      <DependentUpon>SelectShapes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shape.cs" />
     <Compile Include="Star.cs" />
     <Compile Include="VariableShape.cs">
@@ -81,6 +87,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SelectShapes.resx">
+      <DependentUpon>SelectShapes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VariableShape.resx">
       <DependentUpon>VariableShape.cs</DependentUpon>
     </EmbeddedResource>

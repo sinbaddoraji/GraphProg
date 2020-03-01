@@ -37,6 +37,8 @@ namespace GraphProg
 
             VariablePolygon = new VariableShape(VariableShape.Type.Polygon);
             VariableStar = new VariableShape(VariableShape.Type.Star);
+
+            this.KeyPreview = true;
         }
 
         private void UncheckToolstrips()
@@ -282,6 +284,12 @@ namespace GraphProg
             if (selectRadioButton.Checked)
             {
                 var selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
+                if(selectedShapes.Count > 1)
+                {
+                    var msg = MessageBox.Show("Multiple Shapes have been selected", "Do you want to choose the shapes to stay selected",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+                    if(msg == DialogResult.Yes)
+                }
                 canvas1.Redraw(selectedShapes);
             }
         }
@@ -293,6 +301,16 @@ namespace GraphProg
         private void canvas1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            var selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
+
+            if(e.KeyCode == Keys.Delete)
+            {
+                canvas1.DeletShapes(selectedShapes);
+            }
         }
     }
 }

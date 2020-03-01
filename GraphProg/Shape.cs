@@ -34,10 +34,11 @@ namespace GraphProg
             this.g = g;
             this.pen = pen;
 
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-
-
+            if(g != null)
+            {
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            }
             shapeIndex = index++;
         }
 
@@ -49,8 +50,11 @@ namespace GraphProg
         public void SetGraphics(Graphics g)
         {
             this.g = g;
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            if (g != null)
+            {
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            }
         }
 
         protected void DrawLinesThrough(PointF[] points)

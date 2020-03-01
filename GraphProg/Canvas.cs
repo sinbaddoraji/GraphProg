@@ -36,6 +36,7 @@ namespace GraphProg
         public Shape variablePolygon;
         public Shape variableStar;
 
+
         public List<Shape> GetShapesSurrounding(Point p)
         {
             List<Shape> shapes = new List<Shape>();
@@ -48,6 +49,15 @@ namespace GraphProg
                 }
             }
             return shapes;
+        }
+
+        public void DeletShapes(List<Shape> shapes)
+        {
+            foreach (Shape shape in shapes)
+            {
+                shapeList.Remove(shape);
+            }
+            Invalidate();
         }
 
         public void Redraw(List<Shape> selectedShapes = null)
