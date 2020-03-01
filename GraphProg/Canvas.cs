@@ -99,7 +99,7 @@ namespace GraphProg
                 {
                     if (shape.Rect.Y > 0)
                     {
-                        shape.MoveUp(displacement);
+                        shape.MoveUp(amount);
                     }
                 }
             }
@@ -110,7 +110,7 @@ namespace GraphProg
                 {
                     if (shape.Rect.Y < Height)
                     {
-                        shape.MoveDown(displacement);
+                        shape.MoveDown(amount);
                     }
                 }
             }

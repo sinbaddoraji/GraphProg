@@ -329,9 +329,9 @@ namespace GraphProg
                 canvas1.MoveShapes(selectedShapes, 0, 2);
             }
 
-            if (e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.Right)
             {
-                canvas1.MoveShapes(selectedShapes, 0, 2);
+                canvas1.MoveShapes(selectedShapes, 2, 2);
             }
         }
     }
