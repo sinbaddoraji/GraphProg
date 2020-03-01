@@ -279,15 +279,20 @@ namespace GraphProg
 
         private void canvas1_MouseDown(object sender, MouseEventArgs e)
         {
-            if(selectRadioButton.Checked)
+            if (selectRadioButton.Checked)
             {
-                var selectedShapes = canvas1.GetShapesSurrounding(e.Location);
+                var selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
                 canvas1.Redraw(selectedShapes);
             }
         }
 
         private void canvas1_MouseUp(object sender, MouseEventArgs e)
         {
+        }
+
+        private void canvas1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

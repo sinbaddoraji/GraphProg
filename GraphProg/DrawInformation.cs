@@ -5,16 +5,16 @@ namespace GraphProg
 {
     public class DrawInformation
     {
-        public Rectangle Rect => new Rectangle(
+        public RectangleF Rect => new RectangleF(
             Math.Min(drawStart.X, drawEnd.X),
             Math.Min(drawStart.Y, drawEnd.Y),
             Math.Abs(drawStart.X - drawEnd.X),
             Math.Abs(drawStart.Y - drawEnd.Y));
 
-        public Point drawStart; // First point clicked when drawing a shape
-        public Point drawEnd; // Last  mouse point when mouse is relased after drawing a shape
+        public PointF drawStart; // First point clicked when drawing a shape
+        public PointF drawEnd; // Last  mouse point when mouse is relased after drawing a shape
 
-        public DrawInformation(Point drawStart, Point drawEnd)
+        public DrawInformation(PointF drawStart, PointF drawEnd)
         {
             this.drawStart = drawStart;
             this.drawEnd = drawEnd;

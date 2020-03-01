@@ -15,14 +15,13 @@ namespace GraphProg
         private ShapeType selectedShape;
 
         public bool IsDrawing { get; set; } = false;
-        public Image canvasImage;
 
         private Size oldSize;
 
         public Graphics imageGraphics;
         public Graphics outerGraphics;
 
-        private Point mousePosition;
+        public Point mousePosition;
         private Point drawStart;
         private Point drawEnd;
 
@@ -34,23 +33,27 @@ namespace GraphProg
 
         private Color imageBackground = Color.White;
 
-        bool isSelecting = false;
-
         public Shape variablePolygon;
         public Shape variableStar;
 
-        public Shape[] GetShapesSurrounding(Point p)
+        public List<Shape> GetShapesSurrounding(Point p)
         {
-            return shapeList.Where(x =>
+            List<Shape> shapes = new List<Shape>();
+            for (int i = 0; i < shapeList.Count; i++)
             {
-                var drawInfo = x.GetDrawLocationInformation();
-                return drawInfo.Rect.Contains(p);
-            }).ToArray();
+                var shapeRectangle = shapeList[i].GetDrawLocationInformation().Rect;
+                if(shapeRectangle.Contains(p))
+                {
+                    shapes.Add(shapeList[i]);
+                }
+            }
+            return shapes;
         }
 
-        public void Redraw(Shape[] selectedShapes = null)
+        public void Redraw(List<Shape> selectedShapes = null)
         {
             imageGraphics.Clear(BackColor);
+            outerGraphics.Clear(BackColor);
 
             foreach (Shape shape in shapeList)
             {
@@ -62,8 +65,10 @@ namespace GraphProg
                 {
                     shape.SetPen(blackPen);
                 }
+
                 shape.Draw();
             }
+            Invalidate();
         }
 
         public Canvas()
@@ -84,8 +89,8 @@ namespace GraphProg
             Paint += Canvas_Paint;
             //canvasImage = System
 
-            blackPen = new Pen(new SolidBrush(Color.Black), lineSize);
-            redPen = new Pen(new SolidBrush(Color.Red), lineSize);
+            blackPen = new Pen(Brushes.Black, lineSize);
+            redPen = new Pen(Brushes.Red, lineSize);
 
             //Round out line edges for better quality of shapes
             blackPen.StartCap = blackPen.EndCap = LineCap.Round;
@@ -93,7 +98,7 @@ namespace GraphProg
 
             outerGraphics = this.CreateGraphics();
 
-            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+            //SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
 
         }
 
@@ -134,9 +139,6 @@ namespace GraphProg
         private void DrawShape(Graphics g, Pen pen, DrawInformation drwInfo)
         {
             Shape currentShape = null;
-            
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
             if (selectedShape == ShapeType.None) return;
 
@@ -217,8 +219,6 @@ namespace GraphProg
                 imageGraphics = Graphics.FromImage(Image);
                 DrawShape(imageGraphics, blackPen, new DrawInformation(drawStart,drawEnd));
             }
-
-            
 
             //Keep track of all shapes
         }

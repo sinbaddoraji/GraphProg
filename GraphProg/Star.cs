@@ -16,8 +16,7 @@ namespace GraphProg
         protected void DrawStar(int num_points)
         {
             PointF[] star_points = MakeStarPoints(num_points);
-
-            g.DrawPolygon(pen, star_points);
+            DrawLinesThrough(star_points);
         }
 
         private PointF[] MakeStarPoints(int num_points)

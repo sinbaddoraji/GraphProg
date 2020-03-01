@@ -14,26 +14,26 @@ namespace GraphProg
         public override void Draw()
         {
             //Upper left corner of square
-            Point a = new Point(Xstart, Ystart);
+            PointF a = new PointF(Xstart, Ystart);
             //Lower left corner of square
-            Point b = new Point(Xend, Ystart);
+            PointF b = new PointF(Xend, Ystart);
             //Lower right corner of square
-            Point c = new Point(Xend, Yend);
+            PointF c = new PointF(Xend, Yend);
             //Upper right corner of square
-            Point d = new Point(Xstart, Yend);
+            PointF d = new PointF(Xstart, Yend);
 
             DrawLinesThrough(new[] { a, b, c, d });
         }
     }
 
-    public class Circle : Polygon
+    public class Circle : Shape
     {
         public Circle(Graphics g, Pen p) : base(g, p) { }
 
-        //Draw circle using bresenham circle algorithm
         public override void Draw()
         {
-            DrawPolygon(360);
+            // c# lib used because bresenham circle and alternatives create unstable curcles
+            g.DrawEllipse(pen, Rect); 
         }
     }
 
@@ -43,7 +43,7 @@ namespace GraphProg
 
         public override void Draw()
         {
-            Point[] points = new Point[3] { new Point(DrawStart.X, DrawEnd.Y), DrawStart, DrawEnd };
+            PointF[] points = new PointF[3] { new PointF(DrawStart.X, DrawEnd.Y), DrawStart, DrawEnd };
 
             DrawLinesThrough(points);
         }
@@ -56,10 +56,10 @@ namespace GraphProg
 
         public override void Draw()
         {
-            Point[] points = new Point[3];
+            PointF[] points = new PointF[3];
             points[1] = DrawEnd; // lower right end of triangle
-            points[2] = new Point(DrawStart.X, DrawEnd.Y);// lower left end of triangle
-            points[0] = new Point((points[1].X + points[2].X) / 2, DrawStart.Y); //Mid point of triangle
+            points[2] = new PointF(DrawStart.X, DrawEnd.Y);// lower left end of triangle
+            points[0] = new PointF((points[1].X + points[2].X) / 2, DrawStart.Y); //Mid point of triangle
             DrawLinesThrough(points);
         }
 
@@ -71,15 +71,15 @@ namespace GraphProg
 
         public override void Draw()
         {
-            Point[] points = new Point[4];
+            PointF[] points = new PointF[4];
             //Upper point of diamond
-            points[0] = new Point((DrawStart.X + DrawEnd.X) / 2, DrawStart.Y);
+            points[0] = new PointF((DrawStart.X + DrawEnd.X) / 2, DrawStart.Y);
             //Left point of diamond
-            points[1] = new Point(DrawStart.X, (DrawStart.Y + DrawEnd.Y) / 2);
+            points[1] = new PointF(DrawStart.X, (DrawStart.Y + DrawEnd.Y) / 2);
             //Lower point of diamond
-            points[2] = new Point((DrawStart.X + DrawEnd.X) / 2, DrawEnd.Y);
+            points[2] = new PointF((DrawStart.X + DrawEnd.X) / 2, DrawEnd.Y);
             //Right point of diamond
-            points[3] = new Point(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
+            points[3] = new PointF(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
 
             DrawLinesThrough(points);
         }

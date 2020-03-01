@@ -24,11 +24,11 @@ namespace GraphProg
 
             //Change icon of this in the image list
 
-            int x_0 = (DrawStart.X + DrawEnd.X) / 2; //Starting x value
-            int y_0 = (DrawStart.Y + DrawEnd.Y) / 2; //Starting y value
+            float x_0 = (DrawStart.X + DrawEnd.X) / 2; //Starting x value
+            float y_0 = (DrawStart.Y + DrawEnd.Y) / 2; //Starting y value
 
             //Half the diameter of the rectangle the shape is being drawn in
-            int radius = Math.Max(Math.Abs(DrawEnd.X - DrawStart.X) / 2, Math.Abs(DrawEnd.Y - DrawStart.Y) / 2);
+            float radius = Math.Max(Math.Abs(DrawEnd.X - DrawStart.X) / 2, Math.Abs(DrawEnd.Y - DrawStart.Y) / 2);
 
             PointF[] points = new PointF[numberOfSides]; //Point list
 
@@ -38,6 +38,7 @@ namespace GraphProg
                     x_0 + radius * (float)Math.Cos(a * shapeAngle),
                     y_0 + radius * (float)Math.Sin(a * shapeAngle));
             }
+
 
             g.DrawPolygon(pen, points);
         }
@@ -51,7 +52,7 @@ namespace GraphProg
 
         public override void Draw()
         {
-            int diameter = Math.Abs(DrawEnd.X - DrawStart.X);
+            float diameter = Math.Abs(DrawEnd.X - DrawStart.X);
 
             // Gap between X boundaries of rectangle being drawn in and the start/end of the lower line of a pentagon
             int tint = Convert.ToInt32(0.256 * diameter);
@@ -61,18 +62,18 @@ namespace GraphProg
                 tint *= -1;
             }
 
-            Point[] points = new Point[5];
+            PointF[] points = new PointF[5];
 
             //Middle of horizontal line in the upper rectangle
-            points[0] = new Point((DrawStart.X + DrawEnd.X) / 2, DrawStart.Y);
+            points[0] = new PointF((DrawStart.X + DrawEnd.X) / 2, DrawStart.Y);
             //Middle of the left vertical line in therectangle
-            points[1] = new Point(DrawStart.X, (DrawStart.Y + DrawEnd.Y) / 2);
+            points[1] = new PointF(DrawStart.X, (DrawStart.Y + DrawEnd.Y) / 2);
             //Begining of line at the bottom of the pentagon
-            points[2] = new Point(tint + DrawStart.X, DrawEnd.Y);
+            points[2] = new PointF(tint + DrawStart.X, DrawEnd.Y);
             //End of line at the bottom
-            points[3] = new Point(DrawEnd.X - tint, DrawEnd.Y);
+            points[3] = new PointF(DrawEnd.X - tint, DrawEnd.Y);
             //Middle of the right vertical line in the rectangle
-            points[4] = new Point(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
+            points[4] = new PointF(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
 
             DrawLinesThrough(points);
         }
@@ -114,19 +115,19 @@ namespace GraphProg
 
         public override void Draw()
         {
-            int diameter = Math.Abs(DrawEnd.X - DrawStart.X);
+            float diameter = Math.Abs(DrawEnd.X - DrawStart.X);
 
             // Gap between X boundaries of rectangle being drawn in and the start/end of the lower line of a pentagon
-            int tint = Convert.ToInt32(0.256 * diameter);
+            float tint = Convert.ToInt32(0.256 * diameter);
 
             //Upper left corner of square
-            Point a = new Point(Xstart, Ystart);
+            PointF a = new PointF(Xstart, Ystart);
             //Lower left corner of square
-            Point b = new Point(Xend, Ystart);
+            PointF b = new PointF(Xend, Ystart);
             //Lower right corner of square
-            Point c = new Point(Xend, Yend);
+            PointF c = new PointF(Xend, Yend);
             //Upper right corner of square
-            Point d = new Point(Xstart, Yend);
+            PointF d = new PointF(Xstart, Yend);
 
             if(DrawEnd.X < DrawStart.X)
             {

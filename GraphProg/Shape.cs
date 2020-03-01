@@ -8,19 +8,19 @@ namespace GraphProg
         //Change to private later
         private DrawInformation drawInformation; // made public to allow redrawing
 
-        protected Rectangle Rect => drawInformation.Rect;
+        public RectangleF Rect => drawInformation.Rect;
 
-        protected Point DrawStart => drawInformation.drawStart;
+        protected PointF DrawStart => drawInformation.drawStart;
 
-        protected Point DrawEnd => drawInformation.drawEnd;
+        protected PointF DrawEnd => drawInformation.drawEnd;
 
-        protected int Xstart => drawInformation.Rect.X; //starting X cordinate of rectangle stored in the drawinformation object
+        protected float Xstart => drawInformation.Rect.X; //starting X cordinate of rectangle stored in the drawinformation object
 
-        protected int Ystart => drawInformation.Rect.Y; //starting Y cordinate of rectangle stored in the drawinformation object
+        protected float Ystart => drawInformation.Rect.Y; //starting Y cordinate of rectangle stored in the drawinformation object
 
-        protected int Xend => drawInformation.Rect.X + drawInformation.Rect.Width; //Ending X cordinate of rectangle stored in the drawinformation object
+        protected float Xend => drawInformation.Rect.X + drawInformation.Rect.Width; //Ending X cordinate of rectangle stored in the drawinformation object
 
-        protected int Yend => drawInformation.Rect.Y + drawInformation.Rect.Height; //Ending Y cordinate of rectangle stored in the drawinformation object
+        protected float Yend => drawInformation.Rect.Y + drawInformation.Rect.Height; //Ending Y cordinate of rectangle stored in the drawinformation object
 
         protected Graphics g;
 
@@ -34,6 +34,10 @@ namespace GraphProg
             this.g = g;
             this.pen = pen;
 
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
+
             shapeIndex = index++;
         }
 
@@ -45,17 +49,19 @@ namespace GraphProg
         public void SetGraphics(Graphics g)
         {
             this.g = g;
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
         }
 
-        protected void DrawLinesThrough(Point[] points)
+        protected void DrawLinesThrough(PointF[] points)
         {
             for (int i = 0; i < points.Length; i++)
             {
-                Point currentPoint = points[i];
-                Point nextPoint = i == points.Length - 1 ? points[0] : points[i + 1];
+                PointF currentPoint = points[i];
+                PointF nextPoint = i == points.Length - 1 ? points[0] : points[i + 1];
 
-                int x1 = currentPoint.X, x2 = nextPoint.X;
-                int y1 = currentPoint.Y, y2 = nextPoint.Y;
+                float x1 = currentPoint.X, x2 = nextPoint.X;
+                float y1 = currentPoint.Y, y2 = nextPoint.Y;
 
                 g.DrawLine(pen, x1, y1, x2, y2);
             }
