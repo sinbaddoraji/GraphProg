@@ -83,10 +83,28 @@ namespace GraphProg
             return drawInformation;
         }
 
-        public string GetString()
+        public void MoveLeft(int amount)
         {
-            var str = this.ToString().Split();
-            return str[str.Length - 1];
+            drawInformation.drawStart.X -= amount;
+            drawInformation.drawEnd.X -= amount;
+        }
+
+        public void MoveRight(int amount)
+        {
+            drawInformation.drawStart.X += amount;
+            drawInformation.drawEnd.X += amount;
+        }
+
+        public void MoveUp(int amount)
+        {
+            drawInformation.drawStart.Y -= amount;
+            drawInformation.drawEnd.Y -= amount;
+        }
+
+        public void MoveDown(int amount)
+        {
+            drawInformation.drawStart.Y -= amount;
+            drawInformation.drawEnd.Y -= amount;
         }
     }
 }

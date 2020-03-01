@@ -13,7 +13,7 @@ namespace GraphProg
     public partial class SelectShapes : Form
     {
         List<Shape> shapes;
-        List<Shape> internalShapes = new List<Shape>();
+        public List<Shape> internalShapes = new List<Shape>();
 
         Canvas.methodPointer redraw;
 
@@ -26,6 +26,7 @@ namespace GraphProg
             for (int i = 0; i < shapes.Count; i++)
             {
                 listView1.Items.Add((i + 1).ToString());
+                listView1.Items[i].Checked = true;
             }
         }
 
@@ -38,15 +39,22 @@ namespace GraphProg
         {
             internalShapes.Clear();
 
-            if (listView1.CheckedItems.Count == 0) return;
-
             for (int i = 0; i < listView1.Items.Count; i++)
             {
                 var item = listView1.Items[i];
                 if (item.Checked) internalShapes.Add(shapes[i]);
             }
 
-            redraw(internalShapes);
+            if (listView1.CheckedItems.Count == 0)
+            {
+                redraw(null);
+            }
+            else
+            {
+                redraw(internalShapes);
+            }
+
+            
         }
     }
 }

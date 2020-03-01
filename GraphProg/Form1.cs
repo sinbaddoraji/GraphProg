@@ -286,7 +286,7 @@ namespace GraphProg
                 var selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
                 if(selectedShapes.Count > 1)
                 {
-                    var msg = MessageBox.Show("Multiple Shapes have been selected", "Do you want to choose the shapes to stay selected",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    var msg = MessageBox.Show("Do you want to choose the shapes to stay selected", "Multiple Shapes have been selected (Selecting No will highlight all the shapes)", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
                     if(msg == DialogResult.Yes)
                     {
@@ -295,10 +295,14 @@ namespace GraphProg
                     }
                     else
                     {
-
+                        canvas1.Redraw(selectedShapes);
                     }
                 }
-                canvas1.Redraw(selectedShapes);
+                else
+                {
+                    canvas1.Redraw(selectedShapes);
+                }
+                
             }
         }
 
@@ -317,7 +321,17 @@ namespace GraphProg
 
             if(e.KeyCode == Keys.Delete)
             {
-                canvas1.DeletShapes(selectedShapes);
+                canvas1.DeleteShapes(selectedShapes);
+            }
+
+            if(e.KeyCode == Keys.Left)
+            {
+                canvas1.MoveShapes(selectedShapes, 0, 2);
+            }
+
+            if (e.KeyCode == Keys.Left)
+            {
+                canvas1.MoveShapes(selectedShapes, 0, 2);
             }
         }
     }

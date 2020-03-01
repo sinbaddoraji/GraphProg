@@ -53,12 +53,69 @@ namespace GraphProg
             return shapes;
         }
 
-        public void DeletShapes(List<Shape> shapes)
+        public void DeleteShapes(List<Shape> shapes)
         {
             foreach (Shape shape in shapes)
             {
                 shapeList.Remove(shape);
             }
+
+            Redraw();
+            Invalidate();
+        }
+
+        public void MoveShapes(List<Shape> shapes, int direction, int amount)
+        {
+            //0 -> left
+            //1 -> Up
+            //2 -> Right
+            //3 -> Down
+
+            if(direction == 0)
+            {
+                foreach (Shape shape in shapes)
+                {
+                    if(shape.Rect.X > 0)
+                    {
+                        shape.MoveLeft(amount);
+                    }
+                }
+            }
+
+            if (direction == 2)
+            {
+                foreach (Shape shape in shapes)
+                {
+                    if (shape.Rect.Width < Width)
+                    {
+                        shape.MoveRight(amount);
+                    }
+                }
+            }
+
+            if (direction == 1)
+            {
+                foreach (Shape shape in shapes)
+                {
+                    if (shape.Rect.Y > 0)
+                    {
+                        shape.MoveUp(displacement);
+                    }
+                }
+            }
+
+            if (direction == 3)
+            {
+                foreach (Shape shape in shapes)
+                {
+                    if (shape.Rect.Y < Height)
+                    {
+                        shape.MoveDown(displacement);
+                    }
+                }
+            }
+
+            Redraw();
             Invalidate();
         }
 
