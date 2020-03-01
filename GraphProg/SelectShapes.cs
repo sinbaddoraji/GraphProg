@@ -12,9 +12,41 @@ namespace GraphProg
 {
     public partial class SelectShapes : Form
     {
-        public SelectShapes(List<Shape> shapes)
+        List<Shape> shapes;
+        List<Shape> internalShapes = new List<Shape>();
+
+        Canvas.methodPointer redraw;
+
+        public SelectShapes(List<Shape> shapes, Canvas.methodPointer redraw)
         {
             InitializeComponent();
+            this.redraw = redraw;
+
+            this.shapes = shapes;
+            for (int i = 0; i < shapes.Count; i++)
+            {
+                listView1.Items.Add((i + 1).ToString());
+            }
+        }
+
+        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+           
+        }
+
+        private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            internalShapes.Clear();
+
+            if (listView1.CheckedItems.Count == 0) return;
+
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                var item = listView1.Items[i];
+                if (item.Checked) internalShapes.Add(shapes[i]);
+            }
+
+            redraw(internalShapes);
         }
     }
 }

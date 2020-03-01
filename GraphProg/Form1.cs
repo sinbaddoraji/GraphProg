@@ -289,6 +289,14 @@ namespace GraphProg
                     var msg = MessageBox.Show("Multiple Shapes have been selected", "Do you want to choose the shapes to stay selected",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
                     if(msg == DialogResult.Yes)
+                    {
+                        var sShapes = new SelectShapes(selectedShapes,canvas1.Redraw);
+                        sShapes.ShowDialog();
+                    }
+                    else
+                    {
+
+                    }
                 }
                 canvas1.Redraw(selectedShapes);
             }

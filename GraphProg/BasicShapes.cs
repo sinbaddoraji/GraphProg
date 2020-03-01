@@ -24,6 +24,7 @@ namespace GraphProg
 
             DrawLinesThrough(new[] { a, b, c, d });
         }
+
     }
 
     public class Circle : Shape

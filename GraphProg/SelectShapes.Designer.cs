@@ -28,23 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
-            // checkedListBox1
+            // listView1
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(21, 24);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(142, 184);
-            this.checkedListBox1.TabIndex = 0;
+            this.listView1.CheckBoxes = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(63, 24);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(121, 170);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listView1_ItemChecked);
             // 
             // SelectShapes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 255);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.listView1);
             this.Name = "SelectShapes";
             this.Text = "SelectShapes";
             this.ResumeLayout(false);
@@ -53,6 +57,6 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.ListView listView1;
     }
 }

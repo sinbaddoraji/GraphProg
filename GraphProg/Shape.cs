@@ -82,5 +82,11 @@ namespace GraphProg
         {
             return drawInformation;
         }
+
+        public string GetString()
+        {
+            var str = this.ToString().Split();
+            return str[str.Length - 1];
+        }
     }
 }

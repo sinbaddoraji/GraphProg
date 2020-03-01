@@ -9,7 +9,7 @@ using System.Drawing.Drawing2D;
 
 namespace GraphProg
 {
-    class Canvas : PictureBox
+    public class Canvas : PictureBox
     {
         public enum ShapeType { None, Square, Circle, Triangle, RightAngTriangle, Trapezoid, Diamond, Pentagon, Hexagon, Heptagon, Octagon, ThreePointedStar, FourPointedStar ,FivePointedStar, SixPointedStar, VariableStar, VariablePolygon };
         private ShapeType selectedShape;
@@ -36,6 +36,8 @@ namespace GraphProg
         public Shape variablePolygon;
         public Shape variableStar;
 
+        public delegate void methodPointer(List<Shape> shapes);
+        public methodPointer redrawMethodPointer;
 
         public List<Shape> GetShapesSurrounding(Point p)
         {
@@ -109,7 +111,7 @@ namespace GraphProg
             outerGraphics = this.CreateGraphics();
 
             //SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
-
+            redrawMethodPointer = Redraw;
         }
 
         private void Canvas_Paint(object sender, PaintEventArgs e)
