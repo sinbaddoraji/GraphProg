@@ -78,6 +78,8 @@ namespace GraphProg
                     if(shape.Rect.X > 0)
                     {
                         shape.MoveLeft(amount);
+                        Cursor.Clip = new Rectangle(this.Location, this.Size);
+                        Cursor.Position = new Point(Cursor.Position.X - amount, Cursor.Position.Y);
                     }
                 }
             }
@@ -89,6 +91,9 @@ namespace GraphProg
                     if (shape.Rect.Width < Width)
                     {
                         shape.MoveRight(amount);
+
+                        Cursor.Clip = new Rectangle(this.Location, this.Size);
+                        Cursor.Position = new Point(Cursor.Position.X + amount, Cursor.Position.Y);
                     }
                 }
             }
@@ -100,6 +105,9 @@ namespace GraphProg
                     if (shape.Rect.Y > 0)
                     {
                         shape.MoveUp(amount);
+
+                        Cursor.Clip = new Rectangle(this.Location, this.Size);
+                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - amount);
                     }
                 }
             }
@@ -111,11 +119,16 @@ namespace GraphProg
                     if (shape.Rect.Y < Height)
                     {
                         shape.MoveDown(amount);
+
+                        Cursor.Clip = new Rectangle(this.Location, this.Size);
+                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + amount);
                     }
                 }
             }
 
-            Redraw();
+           
+            
+            Redraw(shapes);
             Invalidate();
         }
 
@@ -139,6 +152,8 @@ namespace GraphProg
             }
             Invalidate();
         }
+
+        TextBox internalPanel = new TextBox(); //Textbox used to intercept keydown events for canvas
 
         public Canvas()
         {
@@ -167,8 +182,28 @@ namespace GraphProg
 
             outerGraphics = this.CreateGraphics();
 
-            //SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+            //Set control to be double buffered
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+
             redrawMethodPointer = Redraw;
+
+            this.MouseHover += Canvas_MouseHover;
+
+            internalPanel.ReadOnly = true;
+            internalPanel.Location = new Point(Width, Height);
+
+            this.Controls.Add(internalPanel);
+        }
+
+
+        public void SetKeyDownEvent(KeyEventHandler keyEventHandler)
+        {
+            internalPanel.KeyDown += keyEventHandler;
+        }
+
+        private void Canvas_MouseHover(object sender, EventArgs e)
+        {
+            internalPanel.Focus();
         }
 
         private void Canvas_Paint(object sender, PaintEventArgs e)
@@ -188,6 +223,8 @@ namespace GraphProg
         {
             Image img = new Bitmap(Width, Height);
             imageGraphics = Graphics.FromImage(img);
+
+            internalPanel.Location = new Point(Width, Height);
 
             if (Image == null)
             {

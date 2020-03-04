@@ -103,8 +103,8 @@ namespace GraphProg
 
         public void MoveDown(int amount)
         {
-            drawInformation.drawStart.Y -= amount;
-            drawInformation.drawEnd.Y -= amount;
+            drawInformation.drawStart.Y += amount;
+            drawInformation.drawEnd.Y += amount;
         }
     }
 }

@@ -38,8 +38,12 @@ namespace GraphProg
             VariablePolygon = new VariableShape(VariableShape.Type.Polygon);
             VariableStar = new VariableShape(VariableShape.Type.Star);
 
-            this.KeyPreview = true;
+            canvas1.PreviewKeyDown += Canvas1_PreviewKeyDown;
+
+            canvas1.SetKeyDownEvent(new KeyEventHandler(Form1_KeyDown));
         }
+
+        
 
         private void UncheckToolstrips()
         {
@@ -317,22 +321,40 @@ namespace GraphProg
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+
             var selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
 
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 canvas1.DeleteShapes(selectedShapes);
             }
 
-            if(e.KeyCode == Keys.Left)
+            int displacement = 2;
+
+            if (e.KeyCode == Keys.Left)
             {
-                canvas1.MoveShapes(selectedShapes, 0, 2);
+                canvas1.MoveShapes(selectedShapes, 0, displacement);
             }
 
             if (e.KeyCode == Keys.Right)
             {
-                canvas1.MoveShapes(selectedShapes, 2, 2);
+                canvas1.MoveShapes(selectedShapes, 2, displacement);
             }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                canvas1.MoveShapes(selectedShapes, 1, displacement);
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+                canvas1.MoveShapes(selectedShapes, 3, displacement);
+            }
+        }
+
+        private void Canvas1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+           
         }
     }
 }
