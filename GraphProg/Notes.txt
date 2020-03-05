@@ -46,3 +46,5 @@ Extra features:
 	Multiple select now messes everything up
 
 	shapes below the width and height of 10 will not be drawn as they are too small to select
+
+	Shapes within shapes will have to be moved out using the key board because dragging thre shapes will not be allowed

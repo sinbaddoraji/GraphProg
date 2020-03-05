@@ -285,13 +285,12 @@ namespace GraphProg
 
         private void canvas1_MouseDown(object sender, MouseEventArgs e)
         {
-            
-            
 
             if (selectRadioButton.Checked)
             {
-                
+
                 selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
+
                 if(selectedShapes.Count > 1)
                 {
                     var msg = MessageBox.Show("Do you want to choose the shapes to stay selected", "Multiple Shapes have been selected (Selecting No will highlight all the shapes)", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
@@ -300,18 +299,22 @@ namespace GraphProg
                     {
                         var sShapes = new SelectShapes(selectedShapes,canvas1.Redraw);
                         sShapes.ShowDialog();
+
+                        selectedShapes = sShapes.internalShapes;
                     }
                     else
                     {
                         canvas1.Redraw(selectedShapes);
                     }
+                    isMouseClick = false;
                 }
-                else
+                else 
                 {
                     canvas1.Redraw(selectedShapes);
+                    isMouseClick = true;
                 }
                 dragStart = canvas1.mousePosition;
-                isMouseClick = true;
+                
             }
         }
 
@@ -331,7 +334,6 @@ namespace GraphProg
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             
-
             if (e.KeyCode == Keys.Delete)
             {
                 canvas1.DeleteShapes(selectedShapes);
