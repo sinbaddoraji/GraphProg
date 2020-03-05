@@ -64,7 +64,7 @@ namespace GraphProg
             Invalidate();
         }
 
-        public void MoveShapes(List<Shape> shapes, int direction, int amount)
+        public void MoveShapes(List<Shape> shapes, int direction, float amount)
         {
             //0 -> left
             //1 -> Up
@@ -78,8 +78,6 @@ namespace GraphProg
                     if(shape.Rect.X > 0)
                     {
                         shape.MoveLeft(amount);
-                        Cursor.Clip = new Rectangle(this.Location, this.Size);
-                        Cursor.Position = new Point(Cursor.Position.X - amount, Cursor.Position.Y);
                     }
                 }
             }
@@ -91,9 +89,6 @@ namespace GraphProg
                     if (shape.Rect.Width < Width)
                     {
                         shape.MoveRight(amount);
-
-                        Cursor.Clip = new Rectangle(this.Location, this.Size);
-                        Cursor.Position = new Point(Cursor.Position.X + amount, Cursor.Position.Y);
                     }
                 }
             }
@@ -105,9 +100,6 @@ namespace GraphProg
                     if (shape.Rect.Y > 0)
                     {
                         shape.MoveUp(amount);
-
-                        Cursor.Clip = new Rectangle(this.Location, this.Size);
-                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - amount);
                     }
                 }
             }
@@ -119,9 +111,6 @@ namespace GraphProg
                     if (shape.Rect.Y < Height)
                     {
                         shape.MoveDown(amount);
-
-                        Cursor.Clip = new Rectangle(this.Location, this.Size);
-                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + amount);
                     }
                 }
             }
@@ -200,6 +189,13 @@ namespace GraphProg
         {
             internalPanel.KeyDown += keyEventHandler;
         }
+
+        public void SetKeyupEvent(KeyEventHandler keyEventHandler)
+        {
+            internalPanel.KeyUp += keyEventHandler;
+        }
+
+
 
         private void Canvas_MouseHover(object sender, EventArgs e)
         {

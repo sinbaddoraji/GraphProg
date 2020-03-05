@@ -62,7 +62,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.canvas1 = new GraphProg.Canvas();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -91,12 +90,13 @@
             this.SixRadioButton = new System.Windows.Forms.RadioButton();
             this.VarStarRadioButton = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.canvas1 = new GraphProg.Canvas();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -381,22 +381,6 @@
             this.panel2.Size = new System.Drawing.Size(874, 663);
             this.panel2.TabIndex = 2;
             // 
-            // canvas1
-            // 
-            this.canvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.canvas1.Image = ((System.Drawing.Image)(resources.GetObject("canvas1.Image")));
-            this.canvas1.IsDrawing = false;
-            this.canvas1.Location = new System.Drawing.Point(107, -1);
-            this.canvas1.Name = "canvas1";
-            this.canvas1.Size = new System.Drawing.Size(876, 704);
-            this.canvas1.TabIndex = 0;
-            this.canvas1.TabStop = false;
-            this.canvas1.Click += new System.EventHandler(this.canvas1_Click);
-            this.canvas1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseDown);
-            this.canvas1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseUp);
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Silver;
@@ -496,7 +480,6 @@
             this.selectRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.selectRadioButton.AutoSize = true;
             this.selectRadioButton.BackColor = System.Drawing.Color.White;
-            this.selectRadioButton.Checked = true;
             this.selectRadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
             this.selectRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.selectRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -505,7 +488,6 @@
             this.selectRadioButton.Name = "selectRadioButton";
             this.selectRadioButton.Size = new System.Drawing.Size(40, 40);
             this.selectRadioButton.TabIndex = 21;
-            this.selectRadioButton.TabStop = true;
             this.selectRadioButton.Tag = "Select";
             this.selectRadioButton.UseVisualStyleBackColor = false;
             this.selectRadioButton.Click += new System.EventHandler(this.selectToolStripMenuItem_Click);
@@ -573,7 +555,6 @@
             this.diamondRadioButton.Name = "diamondRadioButton";
             this.diamondRadioButton.Size = new System.Drawing.Size(43, 43);
             this.diamondRadioButton.TabIndex = 2;
-            this.diamondRadioButton.TabStop = true;
             this.diamondRadioButton.Tag = "Diamond";
             this.diamondRadioButton.Text = "    ";
             this.diamondRadioButton.UseVisualStyleBackColor = false;
@@ -591,7 +572,6 @@
             this.rTriangleRadioButton.Name = "rTriangleRadioButton";
             this.rTriangleRadioButton.Size = new System.Drawing.Size(43, 43);
             this.rTriangleRadioButton.TabIndex = 1;
-            this.rTriangleRadioButton.TabStop = true;
             this.rTriangleRadioButton.Tag = "Right angled triangle";
             this.rTriangleRadioButton.Text = "    ";
             this.rTriangleRadioButton.UseVisualStyleBackColor = false;
@@ -630,7 +610,6 @@
             this.TrapezoidRadioButton.Name = "TrapezoidRadioButton";
             this.TrapezoidRadioButton.Size = new System.Drawing.Size(43, 43);
             this.TrapezoidRadioButton.TabIndex = 3;
-            this.TrapezoidRadioButton.TabStop = true;
             this.TrapezoidRadioButton.Tag = "Trapezoid";
             this.TrapezoidRadioButton.Text = "    ";
             this.TrapezoidRadioButton.UseVisualStyleBackColor = false;
@@ -648,7 +627,6 @@
             this.pentagonRadioButton.Name = "pentagonRadioButton";
             this.pentagonRadioButton.Size = new System.Drawing.Size(43, 43);
             this.pentagonRadioButton.TabIndex = 5;
-            this.pentagonRadioButton.TabStop = true;
             this.pentagonRadioButton.Tag = "Pentagon";
             this.pentagonRadioButton.Text = "    ";
             this.pentagonRadioButton.UseVisualStyleBackColor = false;
@@ -666,7 +644,6 @@
             this.hexagonRadioButton.Name = "hexagonRadioButton";
             this.hexagonRadioButton.Size = new System.Drawing.Size(43, 43);
             this.hexagonRadioButton.TabIndex = 6;
-            this.hexagonRadioButton.TabStop = true;
             this.hexagonRadioButton.Tag = "Hexagon";
             this.hexagonRadioButton.Text = "    ";
             this.hexagonRadioButton.UseVisualStyleBackColor = false;
@@ -684,7 +661,6 @@
             this.heptagonRadioButton.Name = "heptagonRadioButton";
             this.heptagonRadioButton.Size = new System.Drawing.Size(43, 43);
             this.heptagonRadioButton.TabIndex = 13;
-            this.heptagonRadioButton.TabStop = true;
             this.heptagonRadioButton.Tag = "Heptagon";
             this.heptagonRadioButton.Text = "    ";
             this.heptagonRadioButton.UseVisualStyleBackColor = false;
@@ -702,7 +678,6 @@
             this.octagonRadioButton.Name = "octagonRadioButton";
             this.octagonRadioButton.Size = new System.Drawing.Size(43, 43);
             this.octagonRadioButton.TabIndex = 7;
-            this.octagonRadioButton.TabStop = true;
             this.octagonRadioButton.Tag = "Octagon";
             this.octagonRadioButton.Text = "    ";
             this.octagonRadioButton.UseVisualStyleBackColor = false;
@@ -720,7 +695,6 @@
             this.varPolygonRadioButton.Name = "varPolygonRadioButton";
             this.varPolygonRadioButton.Size = new System.Drawing.Size(43, 43);
             this.varPolygonRadioButton.TabIndex = 18;
-            this.varPolygonRadioButton.TabStop = true;
             this.varPolygonRadioButton.Tag = "Variable sized polygon";
             this.varPolygonRadioButton.Text = "    ";
             this.varPolygonRadioButton.UseVisualStyleBackColor = false;
@@ -759,7 +733,6 @@
             this.threeRadioButton.Name = "threeRadioButton";
             this.threeRadioButton.Size = new System.Drawing.Size(43, 43);
             this.threeRadioButton.TabIndex = 17;
-            this.threeRadioButton.TabStop = true;
             this.threeRadioButton.Tag = "3-pointed star";
             this.threeRadioButton.Text = "    ";
             this.threeRadioButton.UseVisualStyleBackColor = false;
@@ -777,7 +750,6 @@
             this.fourRadioButton.Name = "fourRadioButton";
             this.fourRadioButton.Size = new System.Drawing.Size(43, 43);
             this.fourRadioButton.TabIndex = 15;
-            this.fourRadioButton.TabStop = true;
             this.fourRadioButton.Tag = "4-pointed star";
             this.fourRadioButton.Text = "    ";
             this.fourRadioButton.UseVisualStyleBackColor = false;
@@ -795,7 +767,6 @@
             this.fiveStarRadioButton.Name = "fiveStarRadioButton";
             this.fiveStarRadioButton.Size = new System.Drawing.Size(43, 43);
             this.fiveStarRadioButton.TabIndex = 14;
-            this.fiveStarRadioButton.TabStop = true;
             this.fiveStarRadioButton.Tag = "5-pointed star";
             this.fiveStarRadioButton.Text = "    ";
             this.fiveStarRadioButton.UseVisualStyleBackColor = false;
@@ -813,7 +784,6 @@
             this.SixRadioButton.Name = "SixRadioButton";
             this.SixRadioButton.Size = new System.Drawing.Size(43, 43);
             this.SixRadioButton.TabIndex = 4;
-            this.SixRadioButton.TabStop = true;
             this.SixRadioButton.Tag = "6-pointed star";
             this.SixRadioButton.Text = "    ";
             this.SixRadioButton.UseVisualStyleBackColor = false;
@@ -831,7 +801,6 @@
             this.VarStarRadioButton.Name = "VarStarRadioButton";
             this.VarStarRadioButton.Size = new System.Drawing.Size(43, 43);
             this.VarStarRadioButton.TabIndex = 19;
-            this.VarStarRadioButton.TabStop = true;
             this.VarStarRadioButton.Tag = "Variable pointed star ";
             this.VarStarRadioButton.Text = "    ";
             this.VarStarRadioButton.UseVisualStyleBackColor = false;
@@ -847,6 +816,23 @@
             this.panel1.Size = new System.Drawing.Size(108, 663);
             this.panel1.TabIndex = 4;
             // 
+            // canvas1
+            // 
+            this.canvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.canvas1.Image = ((System.Drawing.Image)(resources.GetObject("canvas1.Image")));
+            this.canvas1.IsDrawing = false;
+            this.canvas1.Location = new System.Drawing.Point(107, -1);
+            this.canvas1.Name = "canvas1";
+            this.canvas1.Size = new System.Drawing.Size(876, 704);
+            this.canvas1.TabIndex = 0;
+            this.canvas1.TabStop = false;
+            this.canvas1.Click += new System.EventHandler(this.canvas1_Click);
+            this.canvas1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseDown);
+            this.canvas1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseMove);
+            this.canvas1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseUp);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -861,11 +847,11 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

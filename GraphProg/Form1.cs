@@ -38,9 +38,9 @@ namespace GraphProg
             VariablePolygon = new VariableShape(VariableShape.Type.Polygon);
             VariableStar = new VariableShape(VariableShape.Type.Star);
 
-            canvas1.PreviewKeyDown += Canvas1_PreviewKeyDown;
 
             canvas1.SetKeyDownEvent(new KeyEventHandler(Form1_KeyDown));
+            canvas1.SetKeyupEvent(new KeyEventHandler(Form1_KeyUp));
         }
 
         
@@ -285,9 +285,13 @@ namespace GraphProg
 
         private void canvas1_MouseDown(object sender, MouseEventArgs e)
         {
+            dragStart = canvas1.mousePosition;
+            
+
             if (selectRadioButton.Checked)
             {
-                var selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
+                isMouseClick = true;
+                selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
                 if(selectedShapes.Count > 1)
                 {
                     var msg = MessageBox.Show("Do you want to choose the shapes to stay selected", "Multiple Shapes have been selected (Selecting No will highlight all the shapes)", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
@@ -312,6 +316,7 @@ namespace GraphProg
 
         private void canvas1_MouseUp(object sender, MouseEventArgs e)
         {
+            isMouseClick = false;
         }
 
         private void canvas1_Click(object sender, EventArgs e)
@@ -319,10 +324,12 @@ namespace GraphProg
             
         }
 
+        List<Shape> selectedShapes;
+        bool isMouseClick = false;
+        Point dragStart;
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-
-            var selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
+            
 
             if (e.KeyCode == Keys.Delete)
             {
@@ -346,15 +353,51 @@ namespace GraphProg
                 canvas1.MoveShapes(selectedShapes, 1, displacement);
             }
 
-            if (e.KeyCode == Keys.Right)
+            if (e.KeyCode == Keys.Down)
             {
                 canvas1.MoveShapes(selectedShapes, 3, displacement);
             }
         }
 
-        private void Canvas1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-           
+
+        }
+
+        private void canvas1_MouseMove(object sender, MouseEventArgs e)
+        {
+            //0 -> left
+            //1 -> Up
+            //2 -> Right
+            //3 -> Down
+
+            if (selectedShapes != null && isMouseClick)
+            {
+                float xDifference = e.X - dragStart.X;
+                float yDifference = e.Y - dragStart.Y;
+
+                dragStart = e.Location;
+
+                Text = $"{xDifference}, {yDifference}";
+
+                if(xDifference < 0)
+                {
+                    canvas1.MoveShapes(selectedShapes, 0, Math.Abs(xDifference));
+                }
+                else
+                {
+                    canvas1.MoveShapes(selectedShapes, 2, xDifference);
+                }
+
+                if(yDifference < 0)
+                {
+                    canvas1.MoveShapes(selectedShapes, 1, Math.Abs(yDifference));
+                }
+                else
+                {
+                    canvas1.MoveShapes(selectedShapes, 3, Math.Abs(yDifference));
+                }
+            }
         }
     }
 }

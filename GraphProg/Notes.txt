@@ -30,3 +30,10 @@ Extra features:
 	Ability to select multiple shapes
 
 	Drag over multiple shapes even
+
+
+	Picture boxes do not enable key press event handlers so a custom 
+	picture box that allows it had to be created
+
+	Click on empty space to deselect 
+	shapes can be moved by keyboard or (mouse drag (Pending)) in select mode

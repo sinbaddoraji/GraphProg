@@ -83,25 +83,25 @@ namespace GraphProg
             return drawInformation;
         }
 
-        public void MoveLeft(int amount)
+        public void MoveLeft(float amount)
         {
             drawInformation.drawStart.X -= amount;
             drawInformation.drawEnd.X -= amount;
         }
 
-        public void MoveRight(int amount)
+        public void MoveRight(float amount)
         {
             drawInformation.drawStart.X += amount;
             drawInformation.drawEnd.X += amount;
         }
 
-        public void MoveUp(int amount)
+        public void MoveUp(float amount)
         {
             drawInformation.drawStart.Y -= amount;
             drawInformation.drawEnd.Y -= amount;
         }
 
-        public void MoveDown(int amount)
+        public void MoveDown(float amount)
         {
             drawInformation.drawStart.Y += amount;
             drawInformation.drawEnd.Y += amount;
