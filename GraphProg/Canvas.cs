@@ -238,59 +238,65 @@ namespace GraphProg
 
         }
 
+        private Shape GetCurrentShape(Graphics g, Pen pen)
+        {
+            switch(selectedShape)
+            {
+                default:
+                case ShapeType.None: return null;
+
+                case ShapeType.Circle: return new Circle(g, pen);
+
+                case ShapeType.Triangle: return new Triangle(g, pen);
+
+                case ShapeType.RightAngTriangle: return new RightAngledTriangle(g, pen);
+
+                case ShapeType.Trapezoid: return new Trapezoid(g, pen);
+
+                case ShapeType.Square: return new Square(g, pen);
+
+                case ShapeType.Diamond: return new Diamond(g, pen);
+
+                case ShapeType.Pentagon: return new Pentagon(g, pen);
+
+                case ShapeType.Hexagon: return new VariableSidedPolygon(g, pen, 6);
+
+                case ShapeType.Heptagon: return new VariableSidedPolygon(g, pen, 7);
+
+                case ShapeType.Octagon: return new VariableSidedPolygon(g, pen, 8);
+
+                case ShapeType.ThreePointedStar: return new VariablePointedStar(g, pen, 3);
+
+                case ShapeType.FourPointedStar: return new VariablePointedStar(g, pen, 4);
+
+                case ShapeType.FivePointedStar: return new VariablePointedStar(g, pen, 5);
+
+                case ShapeType.SixPointedStar: return new VariablePointedStar(g, pen, 6);
+
+                //Create new object to avoid all variable shapes merging when everythign is redrawn
+                case ShapeType.VariablePolygon:
+                    return new VariableSidedPolygon(g, pen, ((VariableSidedPolygon)variablePolygon).Sides);
+
+                //Create new object to avoid all variable shapes merging when everythign is redrawn
+                case ShapeType.VariableStar:
+                    return new VariablePointedStar(g, pen, ((VariablePointedStar)variableStar).PointNumber);
+
+            }
+        }
+
         private void DrawShape(Graphics g, Pen pen, DrawInformation drwInfo)
         {
-            Shape currentShape = null;
-
-            if (selectedShape == ShapeType.None) return;
-
-            if (selectedShape == ShapeType.Circle) currentShape = new Circle(g, pen);
-
-            if (selectedShape == ShapeType.Triangle) currentShape = new Triangle(g, pen);
-
-            if (selectedShape == ShapeType.RightAngTriangle) currentShape = new RightAngledTriangle(g, pen);
-
-            if (selectedShape == ShapeType.Trapezoid) currentShape = new Trapizoid(g, pen);
-
-            if (selectedShape == ShapeType.Square) currentShape = new Square(g, pen);
-
-            if (selectedShape == ShapeType.Diamond) currentShape = new Diamond(g, pen);
-
-            if (selectedShape == ShapeType.Pentagon) currentShape = new Pentagon(g, pen);
-
-            if (selectedShape == ShapeType.Hexagon) currentShape = new VariableSidedPolygon(g, pen, 6);
-
-            if (selectedShape == ShapeType.Heptagon) currentShape = new VariableSidedPolygon(g, pen, 7);
-
-            if (selectedShape == ShapeType.Octagon) currentShape = new VariableSidedPolygon(g, pen, 8);
-
-            if (selectedShape == ShapeType.SixPointedStar) currentShape = new VariablePointedStar(g, pen, 6);
-
-            if (selectedShape == ShapeType.FivePointedStar) currentShape = new VariablePointedStar(g, pen, 5);
-
-            if (selectedShape == ShapeType.FourPointedStar) currentShape = new VariablePointedStar(g, pen, 4);
-
-            if (selectedShape == ShapeType.ThreePointedStar) currentShape = new VariablePointedStar(g, pen, 3);
-
-            if (selectedShape == ShapeType.VariablePolygon)
+            Shape currentShape = GetCurrentShape(g, pen);
+            if(currentShape != null)
             {
-                ((VariableSidedPolygon)variablePolygon).InitalizeDrawSettings(g, pen);
-                currentShape = variablePolygon;
-            }
+                currentShape.SetDrawLocationInformation(drwInfo);
+                currentShape.Draw();
 
-            if (selectedShape == ShapeType.VariableStar)
-            {
-                ((VariablePointedStar)variableStar).InitalizeDrawSettings(g, pen);
-                currentShape = variableStar;
-            }
-
-            currentShape.SetDrawLocationInformation(drwInfo);
-            currentShape.Draw();
-
-            if (g == imageGraphics)
-            {
-                //If drawing to image
-                shapeList.Add(currentShape);
+                if (g == imageGraphics)
+                {
+                    //If drawing to image
+                    shapeList.Add(currentShape);
+                }
             }
         }
         
@@ -300,15 +306,15 @@ namespace GraphProg
 
             if (IsDrawing)
             {
-                drawEnd = mousePosition;
-                Invalidate();
+                drawEnd = mousePosition; //shape boundary ends at current mouse position
+                Invalidate(); //Refresh canvas
             }
         }
 
         private void Canvas_MouseDown(object sender, MouseEventArgs e)
         {
-            IsDrawing = true;
-            drawStart = mousePosition;
+            IsDrawing = true; //Shape has not finished being drawn
+            drawStart = mousePosition; //shape boundary starts at current mouse position
         }
 
         private void Canvas_MouseUp(object sender, MouseEventArgs e)
@@ -318,7 +324,6 @@ namespace GraphProg
                 IsDrawing = false;
                 drawEnd = mousePosition;
 
-                imageGraphics = Graphics.FromImage(Image);
                 DrawShape(imageGraphics, blackPen, new DrawInformation(drawStart,drawEnd));
             }
 

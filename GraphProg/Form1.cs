@@ -246,7 +246,7 @@ namespace GraphProg
         {
             if(VariablePolygon.ShowDialog() == DialogResult.OK)
             {
-                canvas1.variablePolygon = VariablePolygon.customShape;
+                canvas1.variablePolygon = VariablePolygon.Shape;
 
                 UncheckToolstrips();
 
@@ -262,7 +262,7 @@ namespace GraphProg
         {
             if (VariableStar.ShowDialog() == DialogResult.OK)
             {
-                canvas1.variableStar = VariableStar.customShape;
+                canvas1.variableStar = VariableStar.Shape;
 
                 UncheckToolstrips();
 

@@ -37,3 +37,10 @@ Extra features:
 
 	Click on empty space to deselect 
 	shapes can be moved by keyboard or (mouse drag (Pending)) in select mode
+
+
+	Bugs:
+
+	Draw a custom polygon (variable) and try to move it...
+
+	Multiple select now messes everything up

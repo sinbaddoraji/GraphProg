@@ -106,6 +106,8 @@ namespace GraphProg
         //Number of points on the star
         int pointNumber;
 
+        public int PointNumber => pointNumber;
+
         public VariablePointedStar(Graphics g, Pen p, int numberOfPoints) : base(g, p) 
         {
             SetStarPoints(numberOfPoints);

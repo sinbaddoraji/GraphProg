@@ -82,7 +82,8 @@ namespace GraphProg
 
     public class VariableSidedPolygon : Polygon
     {
-        int sides;
+        private int sides;
+        public int Sides => sides;
 
         public VariableSidedPolygon(Graphics g, Pen p, int sides) : base(g, p)
         {
@@ -97,7 +98,7 @@ namespace GraphProg
             SetPen(p);
         }
 
-        public void SetSideNum(int num)
+        public void SetSides(int num)
         {
             sides = num;
         }
@@ -109,9 +110,9 @@ namespace GraphProg
     }
 
 
-    public class Trapizoid : Polygon
+    public class Trapezoid : Polygon
     {
-        public Trapizoid(Graphics g, Pen p) : base(g, p) { }
+        public Trapezoid(Graphics g, Pen p) : base(g, p) { }
 
         public override void Draw()
         {
