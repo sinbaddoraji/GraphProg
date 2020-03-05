@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace GraphProg
 {
@@ -13,16 +8,18 @@ namespace GraphProg
 
         public override void Draw()
         {
-            //Upper left corner of square
-            PointF a = new PointF(Xstart, Ystart);
-            //Lower left corner of square
-            PointF b = new PointF(Xend, Ystart);
-            //Lower right corner of square
-            PointF c = new PointF(Xend, Yend);
-            //Upper right corner of square
-            PointF d = new PointF(Xstart, Yend);
+            PointF[] points = new PointF[4];
 
-            DrawLinesThrough(new[] { a, b, c, d });
+            //Upper left corner of square
+            points[0] = new PointF(Xstart, Ystart);
+            //Lower left corner of square
+            points[1] = new PointF(Xend, Ystart);
+            //Lower right corner of square
+            points[2] = new PointF(Xend, Yend);
+            //Upper right corner of square
+            points[3] = new PointF(Xstart, Yend);
+
+            DrawLinesThrough(points);
         }
 
     }
@@ -34,7 +31,7 @@ namespace GraphProg
         public override void Draw()
         {
             // c# lib used because bresenham circle and alternatives create unstable curcles
-            g.DrawEllipse(pen, Rect); 
+            g.DrawEllipse(pen, Rect);
         }
     }
 
@@ -44,7 +41,12 @@ namespace GraphProg
 
         public override void Draw()
         {
-            PointF[] points = new PointF[3] { new PointF(DrawStart.X, DrawEnd.Y), DrawStart, DrawEnd };
+            PointF[] points = new PointF[3]
+            {
+                new PointF(DrawStart.X, DrawEnd.Y),  //Lower left corner of the  right-angled triangle
+                DrawStart, //Top left corner of the right-angled triangle
+                DrawEnd //Lower Right corner of the right-angled triangle
+            };
 
             DrawLinesThrough(points);
         }

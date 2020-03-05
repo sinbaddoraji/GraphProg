@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace GraphProg
 {
-    //Implementation based on code from http://csharphelper.com/blog/2014/08/draw-a-star-with-a-given-number-of-points-in-c/
+    //Implementation inspired by code from http://csharphelper.com/blog/2014/08/draw-a-star-with-a-given-number-of-points-in-c/
+    //The code below is not entirely based on it as only a part was needed
 
     public abstract class Star : Shape
     {
@@ -21,7 +22,7 @@ namespace GraphProg
 
         private PointF[] MakeStarPoints(int num_points)
         {
-            PointF[] result = new PointF[2 * num_points];
+            PointF[] output = new PointF[2 * num_points];
 
             float rx = Rect.Width / 2f;
             float ry = Rect.Height / 2f;
@@ -37,19 +38,20 @@ namespace GraphProg
 
             for (int i = 0; i < num_points; i++)
             {
-                result[2 * i] = new PointF(
+                output[2 * i] = new PointF(
                     (float)(cx + rx * Math.Cos(theta)), 
                     (float)(cy + ry * Math.Sin(theta)));
 
                 theta += dtheta;
 
-                result[2 * i + 1] = new PointF(
+                output[2 * i + 1] = new PointF(
                     (float)(cx + rx * Math.Cos(theta) * concave_radius),
                     (float)(cy + ry * Math.Sin(theta) * concave_radius));
+
                 theta += dtheta;
             }
 
-            return result;
+            return output;
         }
 
         private double CalculateConcaveRadius(int num_points)
@@ -101,13 +103,14 @@ namespace GraphProg
 
     public class VariablePointedStar : Star
     {
+        //Number of points on the star
         int pointNumber;
 
         public VariablePointedStar(Graphics g, Pen p, int numberOfPoints) : base(g, p) 
         {
-            pointNumber = numberOfPoints;
+            SetStarPoints(numberOfPoints);
         }
-
+        
         public VariablePointedStar(int numberOfPoints) : this(null, null, numberOfPoints) { }
 
         public void InitalizeDrawSettings(Graphics g, Pen p)
@@ -116,8 +119,9 @@ namespace GraphProg
             SetPen(p);
         }
 
-        public void SetShapePoints(int num)
+        public void SetStarPoints(int num)
         {
+            //Set number of points on the star
             pointNumber = num;
         }
 

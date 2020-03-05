@@ -6,52 +6,55 @@ namespace GraphProg
     public abstract class Shape
     {
         //Change to private later
-        private DrawInformation drawInformation; // made public to allow redrawing
+        private DrawInformation drawInformation; 
 
+        //Object that holds the bounds (drawing location and size) that the shape will be drawn in
         public RectangleF Rect => drawInformation.Rect;
 
+        //First mouse location in drag operation used to draw shape
         protected PointF DrawStart => drawInformation.drawStart;
 
+        //Last mouse location in drag operation used to draw shape
         protected PointF DrawEnd => drawInformation.drawEnd;
 
-        protected float Xstart => drawInformation.Rect.X; //starting X cordinate of rectangle stored in the drawinformation object
+        //starting X cordinate of rectangle stored in the drawinformation object
+        protected float Xstart => drawInformation.Rect.X; 
 
-        protected float Ystart => drawInformation.Rect.Y; //starting Y cordinate of rectangle stored in the drawinformation object
+        //starting Y cordinate of rectangle stored in the drawinformation object
+        protected float Ystart => drawInformation.Rect.Y; 
 
-        protected float Xend => drawInformation.Rect.X + drawInformation.Rect.Width; //Ending X cordinate of rectangle stored in the drawinformation object
+        //Ending X cordinate of rectangle stored in the drawinformation object
+        protected float Xend => drawInformation.Rect.X + drawInformation.Rect.Width; 
 
-        protected float Yend => drawInformation.Rect.Y + drawInformation.Rect.Height; //Ending Y cordinate of rectangle stored in the drawinformation object
+        //Ending Y cordinate of rectangle stored in the drawinformation object
+        protected float Yend => drawInformation.Rect.Y + drawInformation.Rect.Height; 
 
-        protected Graphics g;
+        //Base for all graphics
+        protected Graphics g; 
 
-        protected Pen pen;
-
-        protected static int index = 0;
-        public int shapeIndex;
+        //(Object that holds the colour and thickness of shapes)
+        protected Pen pen; 
 
         protected Shape(Graphics g, Pen pen)
         {
-            this.g = g;
-            this.pen = pen;
-
-            if(g != null)
-            {
-                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            }
-            shapeIndex = index++;
+            SetGraphics(g);
+            SetPen(pen);
         }
 
         public void SetPen(Pen pen)
         {
+            //Set pen object (Object that holds the colour and thickness of shapes)
             this.pen = pen;
         }
 
         public void SetGraphics(Graphics g)
         {
+            //Set graphic base that the current shape will be drawn on
             this.g = g;
+
             if (g != null)
             {
+                //Make sure graphics are not unstable or unrefined
                 g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             }
@@ -59,50 +62,69 @@ namespace GraphProg
 
         protected void DrawLinesThrough(PointF[] points)
         {
+            //Draw lines through array of points
             for (int i = 0; i < points.Length; i++)
             {
+                //Point line being drawn will start from
                 PointF currentPoint = points[i];
+
+                //Point line will be drawn to
                 PointF nextPoint = i == points.Length - 1 ? points[0] : points[i + 1];
 
+                //X values of current point and next point
                 float x1 = currentPoint.X, x2 = nextPoint.X;
+
+                //Y values of current point and next point
                 float y1 = currentPoint.Y, y2 = nextPoint.Y;
 
+                /*
+                    Draw line from current point to the next point
+
+                    g.DrawLine used because other custom/alternative algorithms will call 
+                    on g.FillEllipse ir g.FillRectangle and produce unstable lines
+                 */
                 g.DrawLine(pen, x1, y1, x2, y2);
             }
         }
 
-        public abstract void Draw();
+        public abstract void Draw(); // Draw shape onto drawing canvas
 
         public void SetDrawLocationInformation(DrawInformation drwInfo)
         {
+            //Set draw location
             drawInformation = drwInfo;
         }
 
         public DrawInformation GetDrawLocationInformation()
         {
+            //Return drawInformation (Object that holds information about shape size and shape location)
             return drawInformation;
         }
 
         public void MoveLeft(float amount)
         {
+            //Move shape to the left
             drawInformation.drawStart.X -= amount;
             drawInformation.drawEnd.X -= amount;
         }
 
         public void MoveRight(float amount)
         {
+            //Move shape to the Right
             drawInformation.drawStart.X += amount;
             drawInformation.drawEnd.X += amount;
         }
 
         public void MoveUp(float amount)
         {
+            //Move shape upwards
             drawInformation.drawStart.Y -= amount;
             drawInformation.drawEnd.Y -= amount;
         }
 
         public void MoveDown(float amount)
         {
+            //Move shape downwards
             drawInformation.drawStart.Y += amount;
             drawInformation.drawEnd.Y += amount;
         }

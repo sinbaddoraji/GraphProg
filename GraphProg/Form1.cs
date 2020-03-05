@@ -285,12 +285,12 @@ namespace GraphProg
 
         private void canvas1_MouseDown(object sender, MouseEventArgs e)
         {
-            dragStart = canvas1.mousePosition;
+            
             
 
             if (selectRadioButton.Checked)
             {
-                isMouseClick = true;
+                
                 selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
                 if(selectedShapes.Count > 1)
                 {
@@ -310,7 +310,8 @@ namespace GraphProg
                 {
                     canvas1.Redraw(selectedShapes);
                 }
-                
+                dragStart = canvas1.mousePosition;
+                isMouseClick = true;
             }
         }
 
@@ -378,8 +379,6 @@ namespace GraphProg
 
                 dragStart = e.Location;
 
-                Text = $"{xDifference}, {yDifference}";
-
                 if(xDifference < 0)
                 {
                     canvas1.MoveShapes(selectedShapes, 0, Math.Abs(xDifference));
@@ -395,7 +394,7 @@ namespace GraphProg
                 }
                 else
                 {
-                    canvas1.MoveShapes(selectedShapes, 3, Math.Abs(yDifference));
+                    canvas1.MoveShapes(selectedShapes, 3, yDifference);
                 }
             }
         }
