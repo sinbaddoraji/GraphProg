@@ -11,8 +11,16 @@ namespace GraphProg
 {
     public class Canvas : PictureBox
     {
-        public enum ShapeType { None, Square, Circle, Triangle, RightAngTriangle, Trapezoid, Diamond, Pentagon, Hexagon, Heptagon, Octagon, ThreePointedStar, FourPointedStar ,FivePointedStar, SixPointedStar, VariableStar, VariablePolygon };
-        private ShapeType selectedShape;
+        public enum ShapeType 
+        { 
+            None, Square, Circle, Triangle, 
+            RightAngTriangle, Trapezoid, Diamond, 
+            Pentagon, Hexagon, Heptagon, Octagon, 
+            ThreePointedStar, FourPointedStar, FivePointedStar, 
+            SixPointedStar, VariableStar, VariablePolygon 
+        };
+
+        private ShapeType selectedShapeType;
 
         public bool IsDrawing { get; set; } = false;
 
@@ -64,59 +72,18 @@ namespace GraphProg
             Invalidate();
         }
 
-        public void MoveShapes(List<Shape> shapes, int direction, float amount)
+        public enum MoveDirection { Left, Up, Right, Down}
+
+        public void MoveShapes(List<Shape> shapes, MoveDirection direction, float amount)
         {
-            //0 -> left
-            //1 -> Up
-            //2 -> Right
-            //3 -> Down
-
-            if(direction == 0)
+            foreach (Shape shape in shapes)
             {
-                foreach (Shape shape in shapes)
+                if (shape.Rect.Y < Height)
                 {
-                    if(shape.Rect.X > 0)
-                    {
-                        shape.MoveLeft(amount);
-                    }
+                    shape.Move(direction, amount);
                 }
             }
 
-            if (direction == 2)
-            {
-                foreach (Shape shape in shapes)
-                {
-                    if (shape.Rect.Width < Width)
-                    {
-                        shape.MoveRight(amount);
-                    }
-                }
-            }
-
-            if (direction == 1)
-            {
-                foreach (Shape shape in shapes)
-                {
-                    if (shape.Rect.Y > 0)
-                    {
-                        shape.MoveUp(amount);
-                    }
-                }
-            }
-
-            if (direction == 3)
-            {
-                foreach (Shape shape in shapes)
-                {
-                    if (shape.Rect.Y < Height)
-                    {
-                        shape.MoveDown(amount);
-                    }
-                }
-            }
-
-           
-            
             Redraw(shapes);
             Invalidate();
         }
@@ -142,7 +109,7 @@ namespace GraphProg
             Invalidate();
         }
 
-        TextBox internalPanel = new TextBox(); //Textbox used to intercept keydown events for canvas
+        TextBox keyInterceptor = new TextBox(); //Textbox used to intercept keydown events for canvas
 
         public Canvas()
         {
@@ -150,7 +117,7 @@ namespace GraphProg
             //Set size of canvas
             Size = oldSize = new Size(100, 100);
 
-            selectedShape = ShapeType.None;
+            selectedShapeType = ShapeType.None;
 
             //Initalize event handlers
             MouseMove += Canvas_MouseMove;
@@ -178,40 +145,46 @@ namespace GraphProg
 
             this.MouseHover += Canvas_MouseHover;
 
-            internalPanel.ReadOnly = true;
-            internalPanel.Location = new Point(Width, Height);
+            keyInterceptor.ReadOnly = true;
+            keyInterceptor.Location = new Point(Width, Height);
 
-            this.Controls.Add(internalPanel);
+            this.Controls.Add(keyInterceptor);
         }
 
 
         public void SetKeyDownEvent(KeyEventHandler keyEventHandler)
         {
-            internalPanel.KeyDown += keyEventHandler;
+            //Set key down event handler for keyInterceptor
+            keyInterceptor.KeyDown += keyEventHandler;
         }
 
         public void SetKeyupEvent(KeyEventHandler keyEventHandler)
         {
-            internalPanel.KeyUp += keyEventHandler;
+            //Set key down event handler for keyInterceptor
+            keyInterceptor.KeyUp += keyEventHandler;
         }
 
 
 
         private void Canvas_MouseHover(object sender, EventArgs e)
         {
-            internalPanel.Focus();
+            //Force focus to be shifted to the keyInterceptor which is within canvas
+            //This will allow the canvas to intercept key press event handlers using the textbox
+            keyInterceptor.Focus();
         }
 
         private void Canvas_Paint(object sender, PaintEventArgs e)
         {
             if (!IsDrawing) return;
 
+            //Draw preview of shape being drawn before final shape is drawn to image
             DrawShape(e.Graphics, blackPen, new DrawInformation(drawStart, drawEnd));
         }
 
         public void SelectShape(ShapeType shape)
         {
-            selectedShape = shape;
+            //SelectShapeType
+            selectedShapeType = shape;
         }
 
 
@@ -220,7 +193,7 @@ namespace GraphProg
             Image img = new Bitmap(Width, Height);
             imageGraphics = Graphics.FromImage(img);
 
-            internalPanel.Location = new Point(Width, Height);
+            keyInterceptor.Location = new Point(Width, Height);
 
             if (Image == null)
             {
@@ -240,7 +213,7 @@ namespace GraphProg
 
         private Shape GetCurrentShape(Graphics g, Pen pen)
         {
-            switch(selectedShape)
+            switch(selectedShapeType)
             {
                 default:
                 case ShapeType.None: return null;
@@ -290,13 +263,21 @@ namespace GraphProg
             if(currentShape != null)
             {
                 currentShape.SetDrawLocationInformation(drwInfo);
-                currentShape.Draw();
 
-                if (g == imageGraphics)
+                if (g == imageGraphics && currentShape.Rect.Width >= 8 && currentShape.Rect.Height >= 8)
                 {
-                    //If drawing to image
+                    currentShape.Draw();
+
+                    //If drawing to image and shape then save shape in list
                     shapeList.Add(currentShape);
                 }
+                else if (g != imageGraphics)
+                {
+                    currentShape.Draw(); // Draw shape preview
+                    Invalidate();
+                }
+
+                
             }
         }
         
@@ -322,12 +303,12 @@ namespace GraphProg
             if(IsDrawing)
             {
                 IsDrawing = false;
-                drawEnd = mousePosition;
+                drawEnd = mousePosition;//shape boundary ends at current mouse position
 
+                //Draw shape to image (Draw real version of the shape)
                 DrawShape(imageGraphics, blackPen, new DrawInformation(drawStart,drawEnd));
             }
 
-            //Keep track of all shapes
         }
 
         

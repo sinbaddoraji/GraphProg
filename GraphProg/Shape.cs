@@ -128,5 +128,28 @@ namespace GraphProg
             drawInformation.drawStart.Y += amount;
             drawInformation.drawEnd.Y += amount;
         }
+
+        public void Move(Canvas.MoveDirection direction,float amount)
+        {
+            if(direction == Canvas.MoveDirection.Up)
+            {
+                MoveUp(amount);
+            }
+            else if (direction == Canvas.MoveDirection.Down)
+            {
+                MoveDown(amount);
+            }
+            else if (direction == Canvas.MoveDirection.Left)
+            {
+                MoveLeft(amount);
+            }
+            else if (direction == Canvas.MoveDirection.Right)
+            {
+                MoveRight(amount);
+            }
+        }
+
+
+
     }
 }

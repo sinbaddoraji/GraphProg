@@ -44,3 +44,5 @@ Extra features:
 	Draw a custom polygon (variable) and try to move it...
 
 	Multiple select now messes everything up
+
+	shapes below the width and height of 10 will not be drawn as they are too small to select

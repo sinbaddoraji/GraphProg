@@ -341,22 +341,22 @@ namespace GraphProg
 
             if (e.KeyCode == Keys.Left)
             {
-                canvas1.MoveShapes(selectedShapes, 0, displacement);
+                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Left, displacement);
             }
 
             if (e.KeyCode == Keys.Right)
             {
-                canvas1.MoveShapes(selectedShapes, 2, displacement);
+                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Right, displacement);
             }
 
             if (e.KeyCode == Keys.Up)
             {
-                canvas1.MoveShapes(selectedShapes, 1, displacement);
+                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Up, displacement);
             }
 
             if (e.KeyCode == Keys.Down)
             {
-                canvas1.MoveShapes(selectedShapes, 3, displacement);
+                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Down, displacement);
             }
         }
 
@@ -367,10 +367,6 @@ namespace GraphProg
 
         private void canvas1_MouseMove(object sender, MouseEventArgs e)
         {
-            //0 -> left
-            //1 -> Up
-            //2 -> Right
-            //3 -> Down
 
             if (selectedShapes != null && isMouseClick)
             {
@@ -381,20 +377,20 @@ namespace GraphProg
 
                 if(xDifference < 0)
                 {
-                    canvas1.MoveShapes(selectedShapes, 0, Math.Abs(xDifference));
+                    canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Left, Math.Abs(xDifference));
                 }
                 else
                 {
-                    canvas1.MoveShapes(selectedShapes, 2, xDifference);
+                    canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Right, xDifference);
                 }
 
                 if(yDifference < 0)
                 {
-                    canvas1.MoveShapes(selectedShapes, 1, Math.Abs(yDifference));
+                    canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Up, Math.Abs(yDifference));
                 }
                 else
                 {
-                    canvas1.MoveShapes(selectedShapes, 3, yDifference);
+                    canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Down, yDifference);
                 }
             }
         }
