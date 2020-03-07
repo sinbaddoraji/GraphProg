@@ -74,6 +74,7 @@
     <Compile Include="VariableShape.Designer.cs">
       <DependentUpon>VariableShape.cs</DependentUpon>
     </Compile>
+    <Compile Include="VersionControl.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

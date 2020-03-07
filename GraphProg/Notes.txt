@@ -39,7 +39,7 @@ Extra features:
 	shapes can be moved by keyboard or (mouse drag (Pending)) in select mode
 
 
-	Bugs:
+	Notes:
 
 	Draw a custom polygon (variable) and try to move it...
 
@@ -48,3 +48,9 @@ Extra features:
 	shapes below the width and height of 10 will not be drawn as they are too small to select
 
 	Shapes within shapes will have to be moved out using the key board because dragging thre shapes will not be allowed
+
+
+	To select a shape click within the boundaries of the shape and not a corner 
+
+	
+	Can duplicate shape from context menu

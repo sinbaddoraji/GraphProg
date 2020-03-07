@@ -36,7 +36,9 @@ namespace GraphProg
         private Pen blackPen;
         private Pen redPen; //Pen used to highlight shapes when selected
 
-        private List<Shape> shapeList = new List<Shape>();
+        private VersionControl shapeVersionControl = new VersionControl();
+        private List<Shape> shapeList => shapeVersionControl.GetShapeList();
+
         public float lineSize = 3f;
 
         private Color imageBackground = Color.White;
@@ -46,6 +48,18 @@ namespace GraphProg
 
         public delegate void methodPointer(List<Shape> shapes);
         public methodPointer redrawMethodPointer;
+
+        public void Undo()
+        {
+            shapeVersionControl.Undo();
+            Redraw();
+        }
+
+        public void Redo()
+        {
+            shapeVersionControl.Redo();
+            Redraw();
+        }
 
         public List<Shape> GetShapesSurrounding(Point p)
         {
@@ -269,7 +283,7 @@ namespace GraphProg
                     currentShape.Draw();
 
                     //If drawing to image and shape then save shape in list
-                    shapeList.Add(currentShape);
+                    shapeVersionControl.AddShape(currentShape);
                 }
                 else if (g != imageGraphics)
                 {
