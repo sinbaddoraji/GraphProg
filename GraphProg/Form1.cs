@@ -8,6 +8,7 @@ namespace GraphProg
     public partial class Form1 : Form
     {
         private readonly SaveFileDialog saveFileDialog;
+        private readonly ColorDialog colorDialog;
         private readonly VariableShape VariablePolygon;
         private readonly VariableShape VariableStar;
 
@@ -32,6 +33,9 @@ namespace GraphProg
              "|Adobe Photoshop Files (*.psd)|*.psd" +
              "|TIFF Files (*.tif, *.tiff)|*.tif;*.tiff"
             };
+
+            colorDialog = new ColorDialog();
+            colorDialog.Color = Color.Red;
 
             VariablePolygon = new VariableShape(VariableShape.Type.Polygon);
             VariableStar = new VariableShape(VariableShape.Type.Star);
@@ -396,6 +400,31 @@ namespace GraphProg
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             canvas1.Redo();
+        }
+
+        private void changeHighlightColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                foreach (Shape shape in canvas1.shapeVersionControl.GetShapeList())
+                {
+                    shape.SetHighlightColour(colorDialog.Color);
+                }
+            }
+            
+            
+        }
+
+        private void fillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(selectedShapes.Count > 0)
+            {
+                foreach (Shape shape in selectedShapes)
+                {
+                    shape.Fill();
+                }
+                canvas1.Redraw();
+            }
         }
     }
 }

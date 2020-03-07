@@ -76,7 +76,9 @@ namespace GraphProg
             points[4] = new PointF(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
 
             Pen pen = highlight ? highLightPen : this.pen;
+
             DrawLinesThrough(pen, points);
+            g.FillPolygon(pen.Brush, points);
         }
 
     }
@@ -104,7 +106,7 @@ namespace GraphProg
             sides = num;
         }
 
-        public override void Draw(bool highlight)
+        public override void Draw(bool highlight )
         {
             DrawPolygon(sides, highlight);
         }
@@ -144,8 +146,10 @@ namespace GraphProg
                 points[1].X -= tint;
             }
 
+
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
+            if (fill) g.FillPolygon(pen.Brush, points);
         }
     }
 

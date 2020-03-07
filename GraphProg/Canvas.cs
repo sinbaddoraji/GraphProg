@@ -205,9 +205,10 @@ namespace GraphProg
 
             keyInterceptor.Location = new Point(Width, Height);
 
+            outerGraphics.Clear(BackColor);
             if (Image == null)
             {
-                imageGraphics.Clear(imageBackground);
+                imageGraphics.Clear(BackColor);
                 Image = img;
             }
             else

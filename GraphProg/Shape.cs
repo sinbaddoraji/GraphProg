@@ -36,19 +36,37 @@ namespace GraphProg
         protected Pen pen;
         protected Pen highLightPen;
 
+        protected bool fill;
+
         protected Shape(Graphics g, Pen pen)
         {
             SetGraphics(g);
             SetPen(pen);
 
-            highLightPen = Pens.Red;
-            SetPenThickness(ref highLightPen, pen.Width);
+            highLightPen = new Pen(Brushes.Red, pen.Width)
+            {
+                StartCap = pen.StartCap,
+                EndCap = pen.EndCap
+            };
+        }
+
+        public void Fill()
+        {
+            if (this.fill) 
+                this.fill = false; 
+            else 
+                this.fill = true;
         }
 
         public void SetPen(Pen pen)
         {
             //Set pen object (Object that holds the colour and thickness of shapes)
             this.pen = pen;
+        }
+        public void SetHighlightColour(Color color)
+        {
+            //Set Pen Color
+            this.highLightPen.Color = color;
         }
 
         public void SetPenColour(Color color)

@@ -14,12 +14,14 @@ namespace GraphProg
     {
         protected Star(Graphics g, Pen pen) : base(g, pen) { }
 
-        protected void DrawStar(int num_points, bool highlight = false)
+        protected void DrawStar(int num_points, bool fill = false, bool highlight = false)
         {
             PointF[] points = MakeStarPoints(num_points);
 
+            this.fill = fill;
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
+            if (fill) g.FillPolygon(pen.Brush, points);
         }
 
         private PointF[] MakeStarPoints(int num_points)
@@ -129,7 +131,10 @@ namespace GraphProg
             pointNumber = num;
         }
 
-        public override void Draw(bool highlight) => DrawStar(pointNumber, highlight);
+        public override void Draw(bool highlight)
+        {
+            DrawStar(pointNumber, fill, highlight);
+        }
     }
 
 }

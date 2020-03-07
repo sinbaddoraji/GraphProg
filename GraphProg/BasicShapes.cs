@@ -18,9 +18,11 @@ namespace GraphProg
             points[2] = new PointF(Xend, Yend);
             //Upper right corner of square
             points[3] = new PointF(Xstart, Yend);
-
+            
             Pen pen = highlight ? highLightPen : this.pen;
+
             DrawLinesThrough(pen, points);
+            if (fill) g.FillPolygon(pen.Brush, points);
         }
 
     }
@@ -34,6 +36,7 @@ namespace GraphProg
             Pen pen = highlight ? highLightPen : this.pen;
             // c# lib used because bresenham circle and alternatives create unstable curcles
             g.DrawEllipse(pen, Rect);
+            if (fill) g.FillEllipse(pen.Brush, Rect);
         }
     }
 
@@ -52,6 +55,7 @@ namespace GraphProg
 
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
+            if (fill) g.FillPolygon(pen.Brush, points);
         }
     }
 
@@ -69,6 +73,7 @@ namespace GraphProg
 
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
+            if (fill) g.FillPolygon(pen.Brush, points);
         }
 
     }
@@ -90,7 +95,9 @@ namespace GraphProg
             points[3] = new PointF(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
 
             Pen pen = highlight ? highLightPen : this.pen;
+
             DrawLinesThrough(pen, points);
+            if(fill)g.FillPolygon(pen.Brush, points);
         }
 
     }
