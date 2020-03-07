@@ -37,7 +37,7 @@ namespace GraphProg
             VariableStar = new VariableShape(VariableShape.Type.Star);
 
             canvas1.SetKeyDownEvent(new KeyEventHandler(Canvas_KeyDown));
-            //canvas1.SetKeyupEvent(new KeyEventHandler(keu));
+            canvas1.SetKeyupEvent(new KeyEventHandler(Canvas_KeyUp));
         }
 
 
@@ -317,13 +317,14 @@ namespace GraphProg
 
         private void Canvas_MouseUp(object sender, MouseEventArgs e)
         {
+            
             //Mouse click has been released
             isMouseClick = false;
         }
 
-
         private void Canvas_KeyDown(object sender, KeyEventArgs e)
         {
+              
 
             if (e.KeyCode == Keys.Left)
             {
@@ -344,6 +345,10 @@ namespace GraphProg
             {
                 canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Down, shapeDisplacement);
             }
+        }
+
+        private void Canvas_KeyUp(object sender, KeyEventArgs e)
+        {
         }
 
 

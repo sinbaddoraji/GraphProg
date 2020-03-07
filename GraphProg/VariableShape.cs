@@ -77,7 +77,7 @@ namespace GraphProg
             //Clear canvas of any previous drawings
             canvas1.imageGraphics.Clear(canvas1.BackColor);
             //Draw shape to canvase
-            Shape.Draw();
+            Shape.Draw(false);
             //Refresh canvas
             canvas1.Invalidate();
         }

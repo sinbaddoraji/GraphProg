@@ -36,7 +36,7 @@ namespace GraphProg
         private Pen blackPen;
         private Pen redPen; //Pen used to highlight shapes when selected
 
-        private VersionControl shapeVersionControl = new VersionControl();
+        public ShapeVersionControl shapeVersionControl = new ShapeVersionControl();
         private List<Shape> shapeList => shapeVersionControl.GetShapeList();
 
         public float lineSize = 3f;
@@ -83,13 +83,15 @@ namespace GraphProg
             }
 
             Redraw();
-            Invalidate();
+            
         }
 
         public enum MoveDirection { Left, Up, Right, Down}
 
         public void MoveShapes(List<Shape> shapes, MoveDirection direction, float amount)
         {
+            if (shapes == null || shapes.Count == 0 || amount == 0) return;
+
             foreach (Shape shape in shapes)
             {
                 if (shape.Rect.Y < Height)
@@ -98,8 +100,8 @@ namespace GraphProg
                 }
             }
 
+            
             Redraw(shapes);
-            Invalidate();
         }
 
         public void Redraw(List<Shape> selectedShapes = null)
@@ -109,16 +111,10 @@ namespace GraphProg
 
             foreach (Shape shape in shapeList)
             {
-                if(selectedShapes != null && selectedShapes.Contains(shape))
-                {
-                    shape.SetPen(redPen);
-                }
-                else
-                {
-                    shape.SetPen(blackPen);
-                }
+                bool highlight = selectedShapes != null && selectedShapes.Contains(shape);
 
-                shape.Draw();
+                shape.SetGraphics(imageGraphics);
+                shape.Draw(highlight);
             }
             Invalidate();
         }
@@ -280,14 +276,14 @@ namespace GraphProg
 
                 if (g == imageGraphics && currentShape.Rect.Width >= 8 && currentShape.Rect.Height >= 8)
                 {
-                    currentShape.Draw();
+                    currentShape.Draw(false);
 
                     //If drawing to image and shape then save shape in list
                     shapeVersionControl.AddShape(currentShape);
                 }
                 else if (g != imageGraphics)
                 {
-                    currentShape.Draw(); // Draw shape preview
+                    currentShape.Draw(false); // Draw shape preview
                     Invalidate();
                 }
 

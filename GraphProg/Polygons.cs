@@ -11,7 +11,7 @@ namespace GraphProg
     {
         protected Polygon(Graphics g, Pen pen) : base(g, pen) { }
 
-        protected void DrawPolygon(int numberOfSides, float angle = -1)
+        protected void DrawPolygon(int numberOfSides,bool highlight = false, float angle = -1)
         {
             float shapeAngle; //180 * (N - 2)
             if (angle == -1) shapeAngle = (180f * (numberOfSides - 2)) / numberOfSides;
@@ -39,8 +39,8 @@ namespace GraphProg
                     y_0 + radius * (float)Math.Sin(a * shapeAngle));
             }
 
-
-            g.DrawPolygon(pen, points);
+            Pen pen = highlight ? highLightPen : this.pen;
+            DrawLinesThrough(pen, points);
         }
     }
 
@@ -50,7 +50,7 @@ namespace GraphProg
         //Constructed manually because the trying to draw it with drawpolygon produces a poor shape
         public Pentagon(Graphics g, Pen p) : base(g, p) { }
 
-        public override void Draw()
+        public override void Draw(bool highlight)
         {
             float diameter = Math.Abs(DrawEnd.X - DrawStart.X);
 
@@ -75,7 +75,8 @@ namespace GraphProg
             //Middle of the right vertical line in the rectangle
             points[4] = new PointF(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
 
-            DrawLinesThrough(points);
+            Pen pen = highlight ? highLightPen : this.pen;
+            DrawLinesThrough(pen, points);
         }
 
     }
@@ -103,9 +104,9 @@ namespace GraphProg
             sides = num;
         }
 
-        public override void Draw()
+        public override void Draw(bool highlight)
         {
-            DrawPolygon(sides);
+            DrawPolygon(sides, highlight);
         }
     }
 
@@ -114,35 +115,37 @@ namespace GraphProg
     {
         public Trapezoid(Graphics g, Pen p) : base(g, p) { }
 
-        public override void Draw()
+        public override void Draw(bool highlight)
         {
             float diameter = Math.Abs(DrawEnd.X - DrawStart.X);
 
             // Gap between X boundaries of rectangle being drawn in and the start/end of the lower line of a pentagon
             float tint = Convert.ToInt32(0.256 * diameter);
 
+            PointF[] points = new PointF[4];
+
             //Upper left corner of square
-            PointF a = new PointF(Xstart, Ystart);
+            points[0] = new PointF(Xstart, Ystart);
             //Lower left corner of square
-            PointF b = new PointF(Xend, Ystart);
+            points[1] = new PointF(Xend, Ystart);
             //Lower right corner of square
-            PointF c = new PointF(Xend, Yend);
+            points[2] = new PointF(Xend, Yend);
             //Upper right corner of square
-            PointF d = new PointF(Xstart, Yend);
+            points[3] = new PointF(Xstart, Yend);
 
             if(DrawEnd.X < DrawStart.X)
             {
-                c.X -= tint;
-                d.X += tint;
+                points[2].X -= tint;
+                points[3].X += tint;
             }
             else
             {
-                a.X += tint;
-                b.X -= tint;
+                points[0].X += tint;
+                points[1].X -= tint;
             }
-            DrawLinesThrough(new[] { a, b, c, d });
 
-            //DrawPolygon(4, 60);
+            Pen pen = highlight ? highLightPen : this.pen;
+            DrawLinesThrough(pen, points);
         }
     }
 

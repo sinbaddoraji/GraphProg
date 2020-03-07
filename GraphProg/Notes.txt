@@ -54,3 +54,8 @@ Extra features:
 
 	
 	Can duplicate shape from context menu
+
+
+	limits:
+
+	Changing the attributes of a shape, the size or even moving the shape are not registered as actions

@@ -14,10 +14,12 @@ namespace GraphProg
     {
         protected Star(Graphics g, Pen pen) : base(g, pen) { }
 
-        protected void DrawStar(int num_points)
+        protected void DrawStar(int num_points, bool highlight = false)
         {
-            PointF[] star_points = MakeStarPoints(num_points);
-            DrawLinesThrough(star_points);
+            PointF[] points = MakeStarPoints(num_points);
+
+            Pen pen = highlight ? highLightPen : this.pen;
+            DrawLinesThrough(pen, points);
         }
 
         private PointF[] MakeStarPoints(int num_points)
@@ -127,7 +129,7 @@ namespace GraphProg
             pointNumber = num;
         }
 
-        public override void Draw() => DrawStar(pointNumber);
+        public override void Draw(bool highlight) => DrawStar(pointNumber, highlight);
     }
 
 }

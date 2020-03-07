@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphProg
 {
-    class VersionControl
+    public class ShapeVersionControl
     {
         private readonly List<List<Shape>> Drawings = new List<List<Shape>>();
 
@@ -14,7 +14,7 @@ namespace GraphProg
 
         int Index => Drawings.Count - backSteps - 1;
 
-        public VersionControl()
+        public ShapeVersionControl()
         {
             Drawings.Add(new List<Shape>());
         }
@@ -51,6 +51,25 @@ namespace GraphProg
             List<Shape> singleDrawing = new List<Shape>();
             singleDrawing.AddRange(Drawings[Index]);
             singleDrawing.Add(shape);
+
+            if (backSteps > 0)
+            {
+                Drawings.RemoveRange(Drawings.Count - backSteps, backSteps);
+                backSteps = 0;
+            }
+
+            Drawings.Add(singleDrawing);
+        }
+
+        public void RemoveShape(List<Shape> shapes)
+        {
+            List<Shape> singleDrawing = new List<Shape>();
+            singleDrawing.AddRange(Drawings[Index]);
+
+            foreach (Shape shape in shapes)
+            {
+                singleDrawing.Remove(shape);
+            }
 
             if (backSteps > 0)
             {

@@ -33,18 +33,34 @@ namespace GraphProg
         protected Graphics g; 
 
         //(Object that holds the colour and thickness of shapes)
-        protected Pen pen; 
+        protected Pen pen;
+        protected Pen highLightPen;
 
         protected Shape(Graphics g, Pen pen)
         {
             SetGraphics(g);
             SetPen(pen);
+
+            highLightPen = Pens.Red;
+            SetPenThickness(ref highLightPen, pen.Width);
         }
 
         public void SetPen(Pen pen)
         {
             //Set pen object (Object that holds the colour and thickness of shapes)
             this.pen = pen;
+        }
+
+        public void SetPenColour(Color color)
+        {
+            //Set Pen Color
+            this.pen.Color = color;
+        }
+
+        private void SetPenThickness(ref Pen pen,float width)
+        {
+            //Set Pen thickness
+            pen = new Pen(pen.Brush, width);
         }
 
         public void SetGraphics(Graphics g)
@@ -60,7 +76,7 @@ namespace GraphProg
             }
         }
 
-        protected void DrawLinesThrough(PointF[] points)
+        protected void DrawLinesThrough(Pen pen, PointF[] points)
         {
             //Draw lines through array of points
             for (int i = 0; i < points.Length; i++)
@@ -87,7 +103,7 @@ namespace GraphProg
             }
         }
 
-        public abstract void Draw(); // Draw shape onto drawing canvas
+        public abstract void Draw(bool highlight); // Draw shape onto drawing canvas
 
         public void SetDrawLocationInformation(DrawInformation drwInfo)
         {

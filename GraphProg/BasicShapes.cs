@@ -6,7 +6,7 @@ namespace GraphProg
     {
         public Square(Graphics g, Pen p) : base(g, p) { }
 
-        public override void Draw()
+        public override void Draw(bool highlight)
         {
             PointF[] points = new PointF[4];
 
@@ -19,7 +19,8 @@ namespace GraphProg
             //Upper right corner of square
             points[3] = new PointF(Xstart, Yend);
 
-            DrawLinesThrough(points);
+            Pen pen = highlight ? highLightPen : this.pen;
+            DrawLinesThrough(pen, points);
         }
 
     }
@@ -28,8 +29,9 @@ namespace GraphProg
     {
         public Circle(Graphics g, Pen p) : base(g, p) { }
 
-        public override void Draw()
+        public override void Draw(bool highlight)
         {
+            Pen pen = highlight ? highLightPen : this.pen;
             // c# lib used because bresenham circle and alternatives create unstable curcles
             g.DrawEllipse(pen, Rect);
         }
@@ -39,7 +41,7 @@ namespace GraphProg
     {
         public RightAngledTriangle(Graphics g, Pen p) : base(g, p) { }
 
-        public override void Draw()
+        public override void Draw(bool highlight)
         {
             PointF[] points = new PointF[3]
             {
@@ -48,7 +50,8 @@ namespace GraphProg
                 DrawEnd //Lower Right corner of the right-angled triangle
             };
 
-            DrawLinesThrough(points);
+            Pen pen = highlight ? highLightPen : this.pen;
+            DrawLinesThrough(pen, points);
         }
     }
 
@@ -57,13 +60,15 @@ namespace GraphProg
         public Triangle(Graphics g, Pen p) : base(g, p) { }
 
 
-        public override void Draw()
+        public override void Draw(bool highlight)
         {
             PointF[] points = new PointF[3];
             points[1] = DrawEnd; // lower right end of triangle
             points[2] = new PointF(DrawStart.X, DrawEnd.Y);// lower left end of triangle
             points[0] = new PointF((points[1].X + points[2].X) / 2, DrawStart.Y); //Mid point of triangle
-            DrawLinesThrough(points);
+
+            Pen pen = highlight ? highLightPen : this.pen;
+            DrawLinesThrough(pen, points);
         }
 
     }
@@ -72,7 +77,7 @@ namespace GraphProg
     {
         public Diamond(Graphics g, Pen p) : base(g, p) { }
 
-        public override void Draw()
+        public override void Draw(bool highlight)
         {
             PointF[] points = new PointF[4];
             //Upper point of diamond
@@ -84,7 +89,8 @@ namespace GraphProg
             //Right point of diamond
             points[3] = new PointF(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
 
-            DrawLinesThrough(points);
+            Pen pen = highlight ? highLightPen : this.pen;
+            DrawLinesThrough(pen, points);
         }
 
     }
