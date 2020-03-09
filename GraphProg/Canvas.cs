@@ -30,8 +30,12 @@ namespace GraphProg
         public Graphics outerGraphics;
 
         public Point mousePosition;
+
         private Point drawStart;
+        public Point DrawStart => drawStart;
+
         private Point drawEnd;
+        public Point DrawEnd => drawEnd;
 
         private Pen blackPen;
         private Pen redPen; //Pen used to highlight shapes when selected
@@ -106,8 +110,7 @@ namespace GraphProg
 
         public void Redraw(List<Shape> selectedShapes = null)
         {
-            imageGraphics.Clear(BackColor);
-            outerGraphics.Clear(BackColor);
+            ClearCanvas();
 
             foreach (Shape shape in shapeList)
             {
@@ -119,6 +122,12 @@ namespace GraphProg
             Invalidate();
         }
 
+        public void ClearCanvas()
+        {
+            imageGraphics.Clear(BackColor);
+            outerGraphics.Clear(BackColor);
+        }
+
         TextBox keyInterceptor = new TextBox(); //Textbox used to intercept keydown events for canvas
 
         public Canvas()
@@ -126,6 +135,7 @@ namespace GraphProg
 
             //Set size of canvas
             Size = oldSize = new Size(100, 100);
+            BackColor = Color.White;
 
             selectedShapeType = ShapeType.None;
 

@@ -36,8 +36,25 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noShapeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.squareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.circleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.triangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rightangledTriangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.diamondToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.pentagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hexagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.heptagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trapezoidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.octagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.variableSidedPolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.threePointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fourPointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fivePointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sixPointedStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.variablePointedStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,16 +64,17 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.fillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.transformToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeHighlightColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeFillColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.noShapeRadioButton = new System.Windows.Forms.RadioButton();
             this.selectRadioButton = new System.Windows.Forms.RadioButton();
             this.squareRadioButton = new System.Windows.Forms.RadioButton();
@@ -64,48 +82,33 @@
             this.triangleRadioButton = new System.Windows.Forms.RadioButton();
             this.diamondRadioButton = new System.Windows.Forms.RadioButton();
             this.rTriangleRadioButton = new System.Windows.Forms.RadioButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.TrapezoidRadioButton = new System.Windows.Forms.RadioButton();
             this.pentagonRadioButton = new System.Windows.Forms.RadioButton();
             this.hexagonRadioButton = new System.Windows.Forms.RadioButton();
             this.heptagonRadioButton = new System.Windows.Forms.RadioButton();
             this.octagonRadioButton = new System.Windows.Forms.RadioButton();
             this.varPolygonRadioButton = new System.Windows.Forms.RadioButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.threeRadioButton = new System.Windows.Forms.RadioButton();
             this.fourRadioButton = new System.Windows.Forms.RadioButton();
             this.fiveStarRadioButton = new System.Windows.Forms.RadioButton();
             this.SixRadioButton = new System.Windows.Forms.RadioButton();
             this.VarStarRadioButton = new System.Windows.Forms.RadioButton();
-            this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.squareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.circleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.triangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rightangledTriangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.diamondToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pentagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hexagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.heptagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trapezoidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.octagonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.variableSidedPolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.threePointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fourPointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fivePointStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sixPointedStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.variablePointedStarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.transformToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeHighlightColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.canvas1 = new GraphProg.Canvas();
-            this.changeFillColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -118,7 +121,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(874, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(826, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -183,15 +186,151 @@
             this.noShapeToolStripMenuItem.Text = "No Shape";
             this.noShapeToolStripMenuItem.Click += new System.EventHandler(this.NoShapeToolStripMenuItem_Click);
             // 
+            // selectToolStripMenuItem
+            // 
+            this.selectToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Hand_Touch_2_icon;
+            this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.selectToolStripMenuItem.Text = "Select";
+            this.selectToolStripMenuItem.Click += new System.EventHandler(this.SelectToolStripMenuItem_Click);
+            // 
+            // squareToolStripMenuItem
+            // 
+            this.squareToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Square;
+            this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
+            this.squareToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.squareToolStripMenuItem.Text = "Square";
+            this.squareToolStripMenuItem.Click += new System.EventHandler(this.SquareToolStripMenuItem_Click);
+            // 
+            // circleToolStripMenuItem
+            // 
+            this.circleToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Circle;
+            this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
+            this.circleToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.circleToolStripMenuItem.Text = "Circle";
+            this.circleToolStripMenuItem.Click += new System.EventHandler(this.CircleToolStripMenuItem_Click);
+            // 
+            // triangleToolStripMenuItem
+            // 
+            this.triangleToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Triangle;
+            this.triangleToolStripMenuItem.Name = "triangleToolStripMenuItem";
+            this.triangleToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.triangleToolStripMenuItem.Text = "Triangle";
+            this.triangleToolStripMenuItem.Click += new System.EventHandler(this.TriangleToolStripMenuItem_Click);
+            // 
+            // rightangledTriangleToolStripMenuItem
+            // 
+            this.rightangledTriangleToolStripMenuItem.Image = global::GraphProg.Properties.Resources.rTriangle;
+            this.rightangledTriangleToolStripMenuItem.Name = "rightangledTriangleToolStripMenuItem";
+            this.rightangledTriangleToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.rightangledTriangleToolStripMenuItem.Text = "Right-angled Triangle";
+            this.rightangledTriangleToolStripMenuItem.Click += new System.EventHandler(this.RightangledTriangleToolStripMenuItem_Click);
+            // 
+            // diamondToolStripMenuItem
+            // 
+            this.diamondToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Diamond;
+            this.diamondToolStripMenuItem.Name = "diamondToolStripMenuItem";
+            this.diamondToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.diamondToolStripMenuItem.Text = "Diamond";
+            this.diamondToolStripMenuItem.Click += new System.EventHandler(this.DiamondToolStripMenuItem_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(182, 6);
             // 
+            // pentagonToolStripMenuItem
+            // 
+            this.pentagonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Pentagon;
+            this.pentagonToolStripMenuItem.Name = "pentagonToolStripMenuItem";
+            this.pentagonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.pentagonToolStripMenuItem.Text = "Pentagon";
+            this.pentagonToolStripMenuItem.Click += new System.EventHandler(this.PentagonToolStripMenuItem_Click);
+            // 
+            // hexagonToolStripMenuItem
+            // 
+            this.hexagonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Hexagon;
+            this.hexagonToolStripMenuItem.Name = "hexagonToolStripMenuItem";
+            this.hexagonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.hexagonToolStripMenuItem.Text = "Hexagon";
+            this.hexagonToolStripMenuItem.Click += new System.EventHandler(this.HeptagonToolStripMenuItem_Click);
+            // 
+            // heptagonToolStripMenuItem
+            // 
+            this.heptagonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Heptagon;
+            this.heptagonToolStripMenuItem.Name = "heptagonToolStripMenuItem";
+            this.heptagonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.heptagonToolStripMenuItem.Text = "Heptagon";
+            this.heptagonToolStripMenuItem.Click += new System.EventHandler(this.HeptagonToolStripMenuItem_Click_1);
+            // 
+            // trapezoidToolStripMenuItem
+            // 
+            this.trapezoidToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Trapezoid;
+            this.trapezoidToolStripMenuItem.Name = "trapezoidToolStripMenuItem";
+            this.trapezoidToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.trapezoidToolStripMenuItem.Text = "Trapezoid";
+            this.trapezoidToolStripMenuItem.Click += new System.EventHandler(this.TrapezoidToolStripMenuItem_Click);
+            // 
+            // octagonToolStripMenuItem
+            // 
+            this.octagonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Octagon;
+            this.octagonToolStripMenuItem.Name = "octagonToolStripMenuItem";
+            this.octagonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.octagonToolStripMenuItem.Text = "Octagon";
+            this.octagonToolStripMenuItem.Click += new System.EventHandler(this.OctagonToolStripMenuItem_Click);
+            // 
+            // variableSidedPolygonToolStripMenuItem
+            // 
+            this.variableSidedPolygonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.CustomPolygon;
+            this.variableSidedPolygonToolStripMenuItem.Name = "variableSidedPolygonToolStripMenuItem";
+            this.variableSidedPolygonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.variableSidedPolygonToolStripMenuItem.Text = "Variable-Sided Polygon";
+            this.variableSidedPolygonToolStripMenuItem.Click += new System.EventHandler(this.VarPolygonRadioButton_CheckedChanged);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(182, 6);
+            // 
+            // threePointStarToolStripMenuItem
+            // 
+            this.threePointStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources._3Star;
+            this.threePointStarToolStripMenuItem.Name = "threePointStarToolStripMenuItem";
+            this.threePointStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.threePointStarToolStripMenuItem.Text = "Three-Point Star";
+            this.threePointStarToolStripMenuItem.Click += new System.EventHandler(this.ThreePointStarToolStripMenuItem_Click);
+            // 
+            // fourPointStarToolStripMenuItem
+            // 
+            this.fourPointStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources._4Star;
+            this.fourPointStarToolStripMenuItem.Name = "fourPointStarToolStripMenuItem";
+            this.fourPointStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.fourPointStarToolStripMenuItem.Text = "Four-Point Star";
+            this.fourPointStarToolStripMenuItem.Click += new System.EventHandler(this.FourPointStarToolStripMenuItem_Click);
+            // 
+            // fivePointStarToolStripMenuItem
+            // 
+            this.fivePointStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Star;
+            this.fivePointStarToolStripMenuItem.Name = "fivePointStarToolStripMenuItem";
+            this.fivePointStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.fivePointStarToolStripMenuItem.Text = "Five-Point Star";
+            this.fivePointStarToolStripMenuItem.Click += new System.EventHandler(this.FivePointStarToolStripMenuItem_Click);
+            // 
+            // sixPointedStarToolStripMenuItem
+            // 
+            this.sixPointedStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources._6Star;
+            this.sixPointedStarToolStripMenuItem.Name = "sixPointedStarToolStripMenuItem";
+            this.sixPointedStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.sixPointedStarToolStripMenuItem.Text = "Six-Pointed Star";
+            this.sixPointedStarToolStripMenuItem.Click += new System.EventHandler(this.SixPointedStarToolStripMenuItem_Click);
+            // 
+            // variablePointedStarToolStripMenuItem
+            // 
+            this.variablePointedStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources.CustomStar;
+            this.variablePointedStarToolStripMenuItem.Name = "variablePointedStarToolStripMenuItem";
+            this.variablePointedStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.variablePointedStarToolStripMenuItem.Text = "Variable-Pointed Star";
+            this.variablePointedStarToolStripMenuItem.Click += new System.EventHandler(this.VarStarRadioButton_CheckedChanged);
             // 
             // imageToolStripMenuItem
             // 
@@ -256,16 +395,62 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = true;
             this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.canvas1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 24);
+            this.panel2.Location = new System.Drawing.Point(107, 24);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(874, 663);
+            this.panel2.Size = new System.Drawing.Size(719, 655);
             this.panel2.TabIndex = 2;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fillToolStripMenuItem,
+            this.deleteToolStripMenuItem1,
+            this.transformToolStripMenuItem1,
+            this.changeHighlightColorToolStripMenuItem,
+            this.changeFillColourToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(208, 114);
+            // 
+            // fillToolStripMenuItem
+            // 
+            this.fillToolStripMenuItem.Name = "fillToolStripMenuItem";
+            this.fillToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.fillToolStripMenuItem.Text = "Fill";
+            this.fillToolStripMenuItem.Click += new System.EventHandler(this.fillToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
+            // 
+            // transformToolStripMenuItem1
+            // 
+            this.transformToolStripMenuItem1.Name = "transformToolStripMenuItem1";
+            this.transformToolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
+            this.transformToolStripMenuItem1.Text = "Transform";
+            // 
+            // changeHighlightColorToolStripMenuItem
+            // 
+            this.changeHighlightColorToolStripMenuItem.Name = "changeHighlightColorToolStripMenuItem";
+            this.changeHighlightColorToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.changeHighlightColorToolStripMenuItem.Text = "Change Highlight Colour";
+            this.changeHighlightColorToolStripMenuItem.Click += new System.EventHandler(this.changeHighlightColorToolStripMenuItem_Click);
+            // 
+            // changeFillColourToolStripMenuItem
+            // 
+            this.changeFillColourToolStripMenuItem.Name = "changeFillColourToolStripMenuItem";
+            this.changeFillColourToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.changeFillColourToolStripMenuItem.Text = "Change Fill Colour";
             // 
             // flowLayoutPanel1
             // 
@@ -340,58 +525,6 @@
             this.label3.Size = new System.Drawing.Size(94, 15);
             this.label3.TabIndex = 8;
             this.label3.Text = "    Basic Shapes     ";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Gray;
-            this.panel4.Location = new System.Drawing.Point(3, 278);
-            this.panel4.MaximumSize = new System.Drawing.Size(95, 13);
-            this.panel4.MinimumSize = new System.Drawing.Size(95, 13);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(95, 13);
-            this.panel4.TabIndex = 11;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(3, 294);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "       Polygons";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Location = new System.Drawing.Point(3, 459);
-            this.panel3.MaximumSize = new System.Drawing.Size(95, 13);
-            this.panel3.MinimumSize = new System.Drawing.Size(95, 13);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(95, 13);
-            this.panel3.TabIndex = 10;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(3, 475);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "          Stars";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Gray;
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(108, 663);
-            this.panel1.TabIndex = 4;
             // 
             // noShapeRadioButton
             // 
@@ -515,6 +648,27 @@
             this.rTriangleRadioButton.UseVisualStyleBackColor = false;
             this.rTriangleRadioButton.Click += new System.EventHandler(this.RightangledTriangleToolStripMenuItem_Click);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Location = new System.Drawing.Point(3, 278);
+            this.panel4.MaximumSize = new System.Drawing.Size(95, 13);
+            this.panel4.MinimumSize = new System.Drawing.Size(95, 13);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(95, 13);
+            this.panel4.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(3, 294);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "       Polygons";
+            // 
             // TrapezoidRadioButton
             // 
             this.TrapezoidRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
@@ -617,6 +771,27 @@
             this.varPolygonRadioButton.UseVisualStyleBackColor = false;
             this.varPolygonRadioButton.Click += new System.EventHandler(this.VarPolygonRadioButton_CheckedChanged);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Gray;
+            this.panel3.Location = new System.Drawing.Point(3, 459);
+            this.panel3.MaximumSize = new System.Drawing.Size(95, 13);
+            this.panel3.MinimumSize = new System.Drawing.Size(95, 13);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(95, 13);
+            this.panel3.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(3, 475);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "          Stars";
+            // 
             // threeRadioButton
             // 
             this.threeRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
@@ -702,211 +877,60 @@
             this.VarStarRadioButton.UseVisualStyleBackColor = false;
             this.VarStarRadioButton.Click += new System.EventHandler(this.VarStarRadioButton_CheckedChanged);
             // 
-            // selectToolStripMenuItem
+            // panel1
             // 
-            this.selectToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Hand_Touch_2_icon;
-            this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
-            this.selectToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.selectToolStripMenuItem.Text = "Select";
-            this.selectToolStripMenuItem.Click += new System.EventHandler(this.SelectToolStripMenuItem_Click);
-            // 
-            // squareToolStripMenuItem
-            // 
-            this.squareToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Square;
-            this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
-            this.squareToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.squareToolStripMenuItem.Text = "Square";
-            this.squareToolStripMenuItem.Click += new System.EventHandler(this.SquareToolStripMenuItem_Click);
-            // 
-            // circleToolStripMenuItem
-            // 
-            this.circleToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Circle;
-            this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
-            this.circleToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.circleToolStripMenuItem.Text = "Circle";
-            this.circleToolStripMenuItem.Click += new System.EventHandler(this.CircleToolStripMenuItem_Click);
-            // 
-            // triangleToolStripMenuItem
-            // 
-            this.triangleToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Triangle;
-            this.triangleToolStripMenuItem.Name = "triangleToolStripMenuItem";
-            this.triangleToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.triangleToolStripMenuItem.Text = "Triangle";
-            this.triangleToolStripMenuItem.Click += new System.EventHandler(this.TriangleToolStripMenuItem_Click);
-            // 
-            // rightangledTriangleToolStripMenuItem
-            // 
-            this.rightangledTriangleToolStripMenuItem.Image = global::GraphProg.Properties.Resources.rTriangle;
-            this.rightangledTriangleToolStripMenuItem.Name = "rightangledTriangleToolStripMenuItem";
-            this.rightangledTriangleToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.rightangledTriangleToolStripMenuItem.Text = "Right-angled Triangle";
-            this.rightangledTriangleToolStripMenuItem.Click += new System.EventHandler(this.RightangledTriangleToolStripMenuItem_Click);
-            // 
-            // diamondToolStripMenuItem
-            // 
-            this.diamondToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Diamond;
-            this.diamondToolStripMenuItem.Name = "diamondToolStripMenuItem";
-            this.diamondToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.diamondToolStripMenuItem.Text = "Diamond";
-            this.diamondToolStripMenuItem.Click += new System.EventHandler(this.DiamondToolStripMenuItem_Click);
-            // 
-            // pentagonToolStripMenuItem
-            // 
-            this.pentagonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Pentagon;
-            this.pentagonToolStripMenuItem.Name = "pentagonToolStripMenuItem";
-            this.pentagonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.pentagonToolStripMenuItem.Text = "Pentagon";
-            this.pentagonToolStripMenuItem.Click += new System.EventHandler(this.PentagonToolStripMenuItem_Click);
-            // 
-            // hexagonToolStripMenuItem
-            // 
-            this.hexagonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Hexagon;
-            this.hexagonToolStripMenuItem.Name = "hexagonToolStripMenuItem";
-            this.hexagonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.hexagonToolStripMenuItem.Text = "Hexagon";
-            this.hexagonToolStripMenuItem.Click += new System.EventHandler(this.HeptagonToolStripMenuItem_Click);
-            // 
-            // heptagonToolStripMenuItem
-            // 
-            this.heptagonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Heptagon;
-            this.heptagonToolStripMenuItem.Name = "heptagonToolStripMenuItem";
-            this.heptagonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.heptagonToolStripMenuItem.Text = "Heptagon";
-            this.heptagonToolStripMenuItem.Click += new System.EventHandler(this.HeptagonToolStripMenuItem_Click_1);
-            // 
-            // trapezoidToolStripMenuItem
-            // 
-            this.trapezoidToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Trapezoid;
-            this.trapezoidToolStripMenuItem.Name = "trapezoidToolStripMenuItem";
-            this.trapezoidToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.trapezoidToolStripMenuItem.Text = "Trapezoid";
-            this.trapezoidToolStripMenuItem.Click += new System.EventHandler(this.TrapezoidToolStripMenuItem_Click);
-            // 
-            // octagonToolStripMenuItem
-            // 
-            this.octagonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Octagon;
-            this.octagonToolStripMenuItem.Name = "octagonToolStripMenuItem";
-            this.octagonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.octagonToolStripMenuItem.Text = "Octagon";
-            this.octagonToolStripMenuItem.Click += new System.EventHandler(this.OctagonToolStripMenuItem_Click);
-            // 
-            // variableSidedPolygonToolStripMenuItem
-            // 
-            this.variableSidedPolygonToolStripMenuItem.Image = global::GraphProg.Properties.Resources.CustomPolygon;
-            this.variableSidedPolygonToolStripMenuItem.Name = "variableSidedPolygonToolStripMenuItem";
-            this.variableSidedPolygonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.variableSidedPolygonToolStripMenuItem.Text = "Variable-Sided Polygon";
-            this.variableSidedPolygonToolStripMenuItem.Click += new System.EventHandler(this.VarPolygonRadioButton_CheckedChanged);
-            // 
-            // threePointStarToolStripMenuItem
-            // 
-            this.threePointStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources._3Star;
-            this.threePointStarToolStripMenuItem.Name = "threePointStarToolStripMenuItem";
-            this.threePointStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.threePointStarToolStripMenuItem.Text = "Three-Point Star";
-            this.threePointStarToolStripMenuItem.Click += new System.EventHandler(this.ThreePointStarToolStripMenuItem_Click);
-            // 
-            // fourPointStarToolStripMenuItem
-            // 
-            this.fourPointStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources._4Star;
-            this.fourPointStarToolStripMenuItem.Name = "fourPointStarToolStripMenuItem";
-            this.fourPointStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.fourPointStarToolStripMenuItem.Text = "Four-Point Star";
-            this.fourPointStarToolStripMenuItem.Click += new System.EventHandler(this.FourPointStarToolStripMenuItem_Click);
-            // 
-            // fivePointStarToolStripMenuItem
-            // 
-            this.fivePointStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources.Star;
-            this.fivePointStarToolStripMenuItem.Name = "fivePointStarToolStripMenuItem";
-            this.fivePointStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.fivePointStarToolStripMenuItem.Text = "Five-Point Star";
-            this.fivePointStarToolStripMenuItem.Click += new System.EventHandler(this.FivePointStarToolStripMenuItem_Click);
-            // 
-            // sixPointedStarToolStripMenuItem
-            // 
-            this.sixPointedStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources._6Star;
-            this.sixPointedStarToolStripMenuItem.Name = "sixPointedStarToolStripMenuItem";
-            this.sixPointedStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.sixPointedStarToolStripMenuItem.Text = "Six-Pointed Star";
-            this.sixPointedStarToolStripMenuItem.Click += new System.EventHandler(this.SixPointedStarToolStripMenuItem_Click);
-            // 
-            // variablePointedStarToolStripMenuItem
-            // 
-            this.variablePointedStarToolStripMenuItem.Image = global::GraphProg.Properties.Resources.CustomStar;
-            this.variablePointedStarToolStripMenuItem.Name = "variablePointedStarToolStripMenuItem";
-            this.variablePointedStarToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.variablePointedStarToolStripMenuItem.Text = "Variable-Pointed Star";
-            this.variablePointedStarToolStripMenuItem.Click += new System.EventHandler(this.VarStarRadioButton_CheckedChanged);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fillToolStripMenuItem,
-            this.deleteToolStripMenuItem1,
-            this.transformToolStripMenuItem1,
-            this.changeHighlightColorToolStripMenuItem,
-            this.changeFillColourToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(208, 114);
-            // 
-            // deleteToolStripMenuItem1
-            // 
-            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
-            this.deleteToolStripMenuItem1.Text = "Delete";
-            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
-            // 
-            // transformToolStripMenuItem1
-            // 
-            this.transformToolStripMenuItem1.Name = "transformToolStripMenuItem1";
-            this.transformToolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
-            this.transformToolStripMenuItem1.Text = "Transform";
-            // 
-            // changeHighlightColorToolStripMenuItem
-            // 
-            this.changeHighlightColorToolStripMenuItem.Name = "changeHighlightColorToolStripMenuItem";
-            this.changeHighlightColorToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.changeHighlightColorToolStripMenuItem.Text = "Change Highlight Colour";
-            this.changeHighlightColorToolStripMenuItem.Click += new System.EventHandler(this.changeHighlightColorToolStripMenuItem_Click);
-            // 
-            // fillToolStripMenuItem
-            // 
-            this.fillToolStripMenuItem.Name = "fillToolStripMenuItem";
-            this.fillToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.fillToolStripMenuItem.Text = "Fill";
-            this.fillToolStripMenuItem.Click += new System.EventHandler(this.fillToolStripMenuItem_Click);
+            this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(108, 680);
+            this.panel1.TabIndex = 4;
             // 
             // canvas1
             // 
             this.canvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.canvas1.BackColor = System.Drawing.Color.White;
             this.canvas1.ContextMenuStrip = this.contextMenuStrip1;
             this.canvas1.Image = ((System.Drawing.Image)(resources.GetObject("canvas1.Image")));
             this.canvas1.IsDrawing = false;
-            this.canvas1.Location = new System.Drawing.Point(107, -1);
+            this.canvas1.Location = new System.Drawing.Point(-1, -2);
             this.canvas1.Name = "canvas1";
-            this.canvas1.Size = new System.Drawing.Size(876, 704);
+            this.canvas1.Size = new System.Drawing.Size(738, 673);
             this.canvas1.TabIndex = 0;
             this.canvas1.TabStop = false;
             this.canvas1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseDown);
             this.canvas1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Canvas1_MouseMove);
             this.canvas1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseUp);
             // 
-            // changeFillColourToolStripMenuItem
+            // statusStrip1
             // 
-            this.changeFillColourToolStripMenuItem.Name = "changeFillColourToolStripMenuItem";
-            this.changeFillColourToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.changeFillColourToolStripMenuItem.Text = "Change Fill Colour";
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(108, 682);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip1.Size = new System.Drawing.Size(718, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(121, 17);
+            this.toolStripStatusLabel1.Text = "Mouse Position: (0, 0)";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(874, 687);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(826, 704);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -914,12 +938,14 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -996,6 +1022,8 @@
         private System.Windows.Forms.ToolStripMenuItem transformToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem changeHighlightColorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeFillColourToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

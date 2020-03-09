@@ -74,6 +74,12 @@
     </Compile>
     <Compile Include="Shape.cs" />
     <Compile Include="Star.cs" />
+    <Compile Include="Transform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transform.Designer.cs">
+      <DependentUpon>Transform.cs</DependentUpon>
+    </Compile>
     <Compile Include="VariableShape.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transform.resx">
+      <DependentUpon>Transform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VariableShape.resx">
       <DependentUpon>VariableShape.cs</DependentUpon>

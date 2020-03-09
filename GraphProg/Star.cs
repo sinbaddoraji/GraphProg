@@ -21,7 +21,7 @@ namespace GraphProg
             this.fill = fill;
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
-            if (fill) g.FillPolygon(pen.Brush, points);
+            if (fill) g.FillPolygon(fillBrush, points);
         }
 
         private PointF[] MakeStarPoints(int num_points)

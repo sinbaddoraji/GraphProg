@@ -37,6 +37,7 @@ namespace GraphProg
         protected Pen highLightPen;
 
         protected bool fill;
+        protected Brush fillBrush;
 
         protected Shape(Graphics g, Pen pen)
         {
@@ -48,6 +49,8 @@ namespace GraphProg
                 StartCap = pen.StartCap,
                 EndCap = pen.EndCap
             };
+
+            fillBrush = pen.Brush;
         }
 
         public void Fill()
@@ -56,6 +59,12 @@ namespace GraphProg
                 this.fill = false; 
             else 
                 this.fill = true;
+        }
+
+        public void SetFillBrush(Brush brush)
+        {
+            //Set brush that will be used for filling
+            fillBrush = brush;
         }
 
         public void SetPen(Pen pen)

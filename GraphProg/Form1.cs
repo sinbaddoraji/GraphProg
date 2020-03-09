@@ -42,6 +42,9 @@ namespace GraphProg
 
             canvas1.SetKeyDownEvent(new KeyEventHandler(Canvas_KeyDown));
             canvas1.SetKeyupEvent(new KeyEventHandler(Canvas_KeyUp));
+
+            //Clear canvas (Paint it white)
+            canvas1.ClearCanvas();
         }
 
 
@@ -287,77 +290,60 @@ namespace GraphProg
 
         private void Canvas_MouseDown(object sender, MouseEventArgs e)
         {
-            if (selectRadioButton.Checked)
+            if (e.Button == MouseButtons.Left && selectRadioButton.Checked)
             {
+                SelectShapes();
 
-                selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
+            }
+        }
 
-                if (selectedShapes.Count > 1)
+        private void SelectShapes()
+        {
+            selectedShapes = canvas1.GetShapesSurrounding(canvas1.mousePosition);
+
+            if (selectedShapes.Count > 1)
+            {
+                var msg = MessageBox.Show("Do you want to choose the shapes to stay selected", "Multiple Shapes have been selected (Selecting No will highlight all the shapes)", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (msg == DialogResult.Yes)
                 {
-                    var msg = MessageBox.Show("Do you want to choose the shapes to stay selected", "Multiple Shapes have been selected (Selecting No will highlight all the shapes)", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var sShapes = new SelectShapes(selectedShapes, canvas1.Redraw);
+                    sShapes.ShowDialog();
 
-                    if (msg == DialogResult.Yes)
-                    {
-                        var sShapes = new SelectShapes(selectedShapes, canvas1.Redraw);
-                        sShapes.ShowDialog();
-
-                        selectedShapes = sShapes.internalShapes;
-                    }
-                    else
-                    {
-                        canvas1.Redraw(selectedShapes);
-                    }
-                    isMouseClick = false;
+                    selectedShapes = sShapes.internalShapes;
                 }
                 else
                 {
                     canvas1.Redraw(selectedShapes);
-                    isMouseClick = true;
                 }
-                dragStart = canvas1.mousePosition;
-
+                isMouseClick = false;
             }
+            else
+            {
+                canvas1.Redraw(selectedShapes);
+                isMouseClick = true;
+            }
+            dragStart = canvas1.mousePosition;
         }
 
         private void Canvas_MouseUp(object sender, MouseEventArgs e)
         {
-            
             //Mouse click has been released
             isMouseClick = false;
         }
 
-        private void Canvas_KeyDown(object sender, KeyEventArgs e)
-        {
-              
-
-            if (e.KeyCode == Keys.Left)
-            {
-                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Left, shapeDisplacement);
-            }
-
-            if (e.KeyCode == Keys.Right)
-            {
-                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Right, shapeDisplacement);
-            }
-
-            if (e.KeyCode == Keys.Up)
-            {
-                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Up, shapeDisplacement);
-            }
-
-            if (e.KeyCode == Keys.Down)
-            {
-                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Down, shapeDisplacement);
-            }
-        }
-
-        private void Canvas_KeyUp(object sender, KeyEventArgs e)
-        {
-        }
-
-
         private void Canvas1_MouseMove(object sender, MouseEventArgs e)
         {
+            
+            if(canvas1.IsDrawing)
+            {
+                var rect = new DrawInformation(canvas1.DrawStart, canvas1.DrawEnd).Rect;
+                toolStripStatusLabel1.Text = $"Width: {rect.Width}, Height: {rect.Height}";
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = $"Mouse Position ({e.X}, {e.Y})";
+            }
 
             if (selectedShapes != null && isMouseClick)
             {
@@ -386,6 +372,38 @@ namespace GraphProg
             }
         }
 
+
+        private void Canvas_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+
+            if (e.KeyCode == Keys.Left)
+            {
+                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Left, shapeDisplacement);
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Right, shapeDisplacement);
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Up, shapeDisplacement);
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Down, shapeDisplacement);
+            }
+        }
+
+        private void Canvas_KeyUp(object sender, KeyEventArgs e)
+        {
+        }
+
+
+       
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Delete selected shapes
@@ -417,13 +435,17 @@ namespace GraphProg
 
         private void fillToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(selectedShapes.Count > 0)
+            if(selectedShapes != null && selectedShapes.Count > 0)
             {
                 foreach (Shape shape in selectedShapes)
                 {
                     shape.Fill();
                 }
                 canvas1.Redraw();
+            }
+            else
+            {
+                MessageBox.Show("No shapes are selected","Please select a shape");
             }
         }
     }

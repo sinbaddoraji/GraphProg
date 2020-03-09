@@ -22,7 +22,7 @@ namespace GraphProg
             Pen pen = highlight ? highLightPen : this.pen;
 
             DrawLinesThrough(pen, points);
-            if (fill) g.FillPolygon(pen.Brush, points);
+            if (fill) g.FillPolygon(fillBrush, points);
         }
 
     }
@@ -36,7 +36,7 @@ namespace GraphProg
             Pen pen = highlight ? highLightPen : this.pen;
             // c# lib used because bresenham circle and alternatives create unstable curcles
             g.DrawEllipse(pen, Rect);
-            if (fill) g.FillEllipse(pen.Brush, Rect);
+            if (fill) g.FillEllipse(fillBrush, Rect);
         }
     }
 
@@ -55,7 +55,7 @@ namespace GraphProg
 
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
-            if (fill) g.FillPolygon(pen.Brush, points);
+            if (fill) g.FillPolygon(fillBrush, points);
         }
     }
 
@@ -73,7 +73,7 @@ namespace GraphProg
 
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
-            if (fill) g.FillPolygon(pen.Brush, points);
+            if (fill) g.FillPolygon(fillBrush, points);
         }
 
     }
@@ -97,7 +97,7 @@ namespace GraphProg
             Pen pen = highlight ? highLightPen : this.pen;
 
             DrawLinesThrough(pen, points);
-            if(fill)g.FillPolygon(pen.Brush, points);
+            if(fill)g.FillPolygon(fillBrush, points);
         }
 
     }
