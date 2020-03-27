@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace GraphProg
 {
@@ -7,7 +8,7 @@ namespace GraphProg
         public Square(Graphics g, Pen p) : base(g, p) { }
 
         public override void Draw(bool highlight)
-        {
+        { 
             PointF[] points = new PointF[4];
 
             //Upper left corner of square
@@ -20,6 +21,10 @@ namespace GraphProg
             points[3] = new PointF(Xstart, Yend);
             
             Pen pen = highlight ? highLightPen : this.pen;
+
+            Matrix matrix = new Matrix();
+            matrix.RotateAt(60, new PointF(Xend / 2, Yend / 2));
+            matrix.TransformPoints(points);
 
             DrawLinesThrough(pen, points);
             if (fill) g.FillPolygon(fillBrush, points);

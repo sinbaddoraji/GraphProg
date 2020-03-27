@@ -34,9 +34,13 @@ namespace GraphProg
 
         //(Object that holds the colour and thickness of shapes)
         protected Pen pen;
-        protected Pen highLightPen;
+
+        //All shapes have the same highlighting pen to avoid unnessary complexity
+        protected static Pen highLightPen; 
 
         protected bool fill;
+        public bool DoFill => fill;
+
         protected Brush fillBrush;
 
         protected Shape(Graphics g, Pen pen)
@@ -44,11 +48,15 @@ namespace GraphProg
             SetGraphics(g);
             SetPen(pen);
 
-            highLightPen = new Pen(Brushes.Red, pen.Width)
+            if(highLightPen == null)
             {
-                StartCap = pen.StartCap,
-                EndCap = pen.EndCap
-            };
+                highLightPen = new Pen(Brushes.Red, pen.Width)
+                {
+                    StartCap = pen.StartCap,
+                    EndCap = pen.EndCap
+                };
+            }
+            
 
             fillBrush = pen.Brush;
         }
@@ -75,7 +83,7 @@ namespace GraphProg
         public void SetHighlightColour(Color color)
         {
             //Set Pen Color
-            this.highLightPen.Color = color;
+            highLightPen.Color = color;
         }
 
         public void SetPenColour(Color color)

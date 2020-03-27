@@ -29,26 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transform));
-            this.canvas1 = new GraphProg.Canvas();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.canvas1 = new GraphProg.Canvas();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // canvas1
-            // 
-            this.canvas1.BackColor = System.Drawing.Color.White;
-            this.canvas1.Image = ((System.Drawing.Image)(resources.GetObject("canvas1.Image")));
-            this.canvas1.IsDrawing = false;
-            this.canvas1.Location = new System.Drawing.Point(12, 12);
-            this.canvas1.Name = "canvas1";
-            this.canvas1.Size = new System.Drawing.Size(147, 141);
-            this.canvas1.TabIndex = 0;
-            this.canvas1.TabStop = false;
             // 
             // label1
             // 
@@ -72,7 +63,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(276, 40);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 23);
+            this.button1.Size = new System.Drawing.Size(146, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Change shape type";
             this.button1.UseVisualStyleBackColor = true;
@@ -90,7 +81,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(276, 79);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(129, 23);
+            this.button2.Size = new System.Drawing.Size(146, 23);
             this.button2.TabIndex = 5;
             this.button2.Text = "Rotate";
             this.button2.UseVisualStyleBackColor = true;
@@ -99,16 +90,47 @@
             // 
             this.button3.Location = new System.Drawing.Point(276, 123);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(129, 23);
+            this.button3.Size = new System.Drawing.Size(146, 23);
             this.button3.TabIndex = 6;
             this.button3.Text = "Change Size";
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // canvas1
+            // 
+            this.canvas1.BackColor = System.Drawing.Color.White;
+            this.canvas1.Image = ((System.Drawing.Image)(resources.GetObject("canvas1.Image")));
+            this.canvas1.IsDrawing = false;
+            this.canvas1.Location = new System.Drawing.Point(12, 12);
+            this.canvas1.Name = "canvas1";
+            this.canvas1.Size = new System.Drawing.Size(147, 141);
+            this.canvas1.TabIndex = 0;
+            this.canvas1.TabStop = false;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(276, 167);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(146, 23);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Change Line thickness";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(276, 212);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(146, 23);
+            this.button5.TabIndex = 8;
+            this.button5.Text = "Change Fill Color\r\n";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // Transform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
@@ -133,5 +155,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

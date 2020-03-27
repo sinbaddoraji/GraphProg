@@ -21,6 +21,7 @@ namespace GraphProg
         {
             InitializeComponent();
 
+            //Make canvas the size of screen to make sure graphics remain on image after canvas resize
             canvas1.Size = canvas1.MinimumSize = Screen.FromControl(this).Bounds.Size;
 
             //Initalize saveFileDialog that will be used to export graphics to image
@@ -422,20 +423,24 @@ namespace GraphProg
 
         private void changeHighlightColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(colorDialog.ShowDialog() == DialogResult.OK)
+            if (selectedShapes != null && selectedShapes.Count > 0)
             {
-                foreach (Shape shape in canvas1.shapeVersionControl.GetShapeList())
+                if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
+                    Shape shape = canvas1.shapeVersionControl.GetShapeList()[0];
                     shape.SetHighlightColour(colorDialog.Color);
                 }
             }
-            
-            
         }
 
         private void fillToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(selectedShapes != null && selectedShapes.Count > 0)
+            FillSelectedShapes();
+        }
+
+        private void FillSelectedShapes()
+        {
+            if (selectedShapes != null && selectedShapes.Count > 0)
             {
                 foreach (Shape shape in selectedShapes)
                 {
@@ -445,8 +450,67 @@ namespace GraphProg
             }
             else
             {
-                MessageBox.Show("No shapes are selected","Please select a shape");
+                MessageBox.Show("No shapes are selected", "Please select a shape");
             }
+        }
+
+        private void changeFillColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            ChangeFillColour();
+
+            if (selectedShapes == null || selectedShapes.Count == 0) return;
+            //Check if there are shapes that are'nt filled
+
+            foreach (Shape shape in selectedShapes)
+            {
+                if (!shape.DoFill)
+                {
+                    var msg = MessageBox.Show("Do you want to fill selected shapes?", "One or more of the selected shapes are not filled", MessageBoxButtons.YesNo);
+                    if (msg == DialogResult.Yes)
+                    {
+                        FillSelectedShapes();
+                        break;//Run once
+                    }
+                }
+            }
+
+        }
+
+        private void ChangeFillColour()
+        {
+            //Change selected shape fill colour
+            if (selectedShapes != null && selectedShapes.Count > 0)
+            {
+                ColorDialog cd = new ColorDialog();
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (Shape shape in selectedShapes)
+                    {
+                        shape.SetFillBrush(new SolidBrush(cd.Color));
+                    }
+                    canvas1.Redraw();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("No shapes are selected", "Please select a shape");
+            }
+        }
+
+        private void changeBackgroundColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                canvas1.BackColor = cd.Color;
+            }
+        }
+
+        private void transformToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

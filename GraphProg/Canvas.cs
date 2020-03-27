@@ -81,13 +81,8 @@ namespace GraphProg
 
         public void DeleteShapes(List<Shape> shapes)
         {
-            foreach (Shape shape in shapes)
-            {
-                shapeList.Remove(shape);
-            }
-
+            shapeVersionControl.RemoveShape(shapes);
             Redraw();
-            
         }
 
         public enum MoveDirection { Left, Up, Right, Down}
@@ -134,7 +129,7 @@ namespace GraphProg
         {
 
             //Set size of canvas
-            Size = oldSize = new Size(100, 100);
+            Size = oldSize = new Size(1, 1);
             BackColor = Color.White;
 
             selectedShapeType = ShapeType.None;
