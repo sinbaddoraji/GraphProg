@@ -22,10 +22,6 @@ namespace GraphProg
             
             Pen pen = highlight ? highLightPen : this.pen;
 
-            Matrix matrix = new Matrix();
-            matrix.RotateAt(60, new PointF(Xend / 2, Yend / 2));
-            matrix.TransformPoints(points);
-
             DrawLinesThrough(pen, points);
             if (fill) g.FillPolygon(fillBrush, points);
         }

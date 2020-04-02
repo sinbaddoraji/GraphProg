@@ -78,7 +78,7 @@ namespace GraphProg
             Pen pen = highlight ? highLightPen : this.pen;
 
             DrawLinesThrough(pen, points);
-            g.FillPolygon(fillBrush, points);
+            if (fill) g.FillPolygon(fillBrush, points);
         }
 
     }
