@@ -5,7 +5,8 @@ namespace GraphProg
 {
     public class Square : Shape
     {
-        public Square(Graphics g, Pen p) : base(g, p) { }
+        public Square(Graphics g, Pen p) : base(g, p) { shapeType = "Square"; }
+
 
         public override void Draw(bool highlight)
         { 
@@ -19,8 +20,14 @@ namespace GraphProg
             points[2] = new PointF(Xend, Yend);
             //Upper right corner of square
             points[3] = new PointF(Xstart, Yend);
+
+
+            Matrix m = new Matrix();
+            m.RotateAt(RotateAmount, DrawInformation.Center, MatrixOrder.Prepend);
+            m.TransformPoints(points);
             
             Pen pen = highlight ? highLightPen : this.pen;
+
 
             DrawLinesThrough(pen, points);
             if (fill) g.FillPolygon(fillBrush, points);
@@ -30,7 +37,7 @@ namespace GraphProg
 
     public class Circle : Shape
     {
-        public Circle(Graphics g, Pen p) : base(g, p) { }
+        public Circle(Graphics g, Pen p) : base(g, p) { shapeType = "Circle"; }
 
         public override void Draw(bool highlight)
         {
@@ -43,7 +50,7 @@ namespace GraphProg
 
     public class RightAngledTriangle : Shape
     {
-        public RightAngledTriangle(Graphics g, Pen p) : base(g, p) { }
+        public RightAngledTriangle(Graphics g, Pen p) : base(g, p) { shapeType = "RightAngledTriangle"; }
 
         public override void Draw(bool highlight)
         {
@@ -54,6 +61,10 @@ namespace GraphProg
                 DrawEnd //Lower Right corner of the right-angled triangle
             };
 
+            Matrix m = new Matrix();
+            m.RotateAt(RotateAmount, DrawInformation.Center, MatrixOrder.Prepend);
+            m.TransformPoints(points);
+
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
             if (fill) g.FillPolygon(fillBrush, points);
@@ -62,7 +73,7 @@ namespace GraphProg
 
     public class Triangle : Shape
     {
-        public Triangle(Graphics g, Pen p) : base(g, p) { }
+        public Triangle(Graphics g, Pen p) : base(g, p) { shapeType = "Triangle"; }
 
 
         public override void Draw(bool highlight)
@@ -71,6 +82,11 @@ namespace GraphProg
             points[1] = DrawEnd; // lower right end of triangle
             points[2] = new PointF(DrawStart.X, DrawEnd.Y);// lower left end of triangle
             points[0] = new PointF((points[1].X + points[2].X) / 2, DrawStart.Y); //Mid point of triangle
+
+
+            Matrix m = new Matrix();
+            m.RotateAt(RotateAmount, DrawInformation.Center, MatrixOrder.Prepend);
+            m.TransformPoints(points);
 
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
@@ -81,7 +97,7 @@ namespace GraphProg
 
     public class Diamond : Shape
     {
-        public Diamond(Graphics g, Pen p) : base(g, p) { }
+        public Diamond(Graphics g, Pen p) : base(g, p) { shapeType = "Diamond"; }
 
         public override void Draw(bool highlight)
         {
@@ -94,6 +110,10 @@ namespace GraphProg
             points[2] = new PointF((DrawStart.X + DrawEnd.X) / 2, DrawEnd.Y);
             //Right point of diamond
             points[3] = new PointF(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
+
+            Matrix m = new Matrix();
+            m.RotateAt(RotateAmount, DrawInformation.Center, MatrixOrder.Prepend);
+            m.TransformPoints(points);
 
             Pen pen = highlight ? highLightPen : this.pen;
 

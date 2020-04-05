@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,15 @@ namespace GraphProg
 
     public abstract class Star : Shape
     {
-        protected Star(Graphics g, Pen pen) : base(g, pen) { }
+        protected Star(Graphics g, Pen pen) : base(g, pen) { shapeType = "Star"; }
 
         protected void DrawStar(int num_points, bool fill = false, bool highlight = false)
         {
             PointF[] points = MakeStarPoints(num_points);
+
+            Matrix m = new Matrix();
+            m.RotateAt(RotateAmount, DrawInformation.Center, MatrixOrder.Prepend);
+            m.TransformPoints(points);
 
             this.fill = fill;
             Pen pen = highlight ? highLightPen : this.pen;

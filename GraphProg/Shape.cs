@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace GraphProg
 {
     public abstract class Shape
     {
         //Change to private later
-        private DrawInformation drawInformation; 
+        private DrawInformation drawInformation;
+
+        public DrawInformation DrawInformation => drawInformation;
 
         //Object that holds the bounds (drawing location and size) that the shape will be drawn in
         public RectangleF Rect => drawInformation.Rect;
@@ -30,10 +33,14 @@ namespace GraphProg
         protected float Yend => drawInformation.Rect.Y + drawInformation.Rect.Height; 
 
         //Base for all graphics
-        protected Graphics g; 
+        protected Graphics g;
+
+        public Graphics Graphics => g;
 
         //(Object that holds the colour and thickness of shapes)
         protected Pen pen;
+
+        public Pen Pen => pen;
 
         //All shapes have the same highlighting pen to avoid unnessary complexity
         protected static Pen highLightPen; 
@@ -42,6 +49,40 @@ namespace GraphProg
         public bool DoFill => fill;
 
         protected Brush fillBrush;
+
+        public string shapeType;
+
+        public float penThickness => pen.Width;
+        public Color penColour => pen.Color;
+
+        public Color fillColour => ((SolidBrush)fillBrush).Color;
+
+        public int RotateAmount { get; set; }
+
+        public static dynamic GetShapeObject(Shape s)
+        {
+            //Get exact Shape
+            switch (s.shapeType)
+            {
+                case "Square": return (Square)s;
+
+                case "Circle": return (Circle)s;
+
+                case "RightAngledTriangle": return (RightAngledTriangle)s;
+
+                case "Triangle": return (Triangle)s;
+
+                case "Pentagon": return (Pentagon)s;
+
+                case "Diamond": return (Diamond)s;
+
+                case "Polygon": return (Polygon)s;
+
+                case "Star": return (Star)s;
+
+                default: return null;
+            }
+        }
 
         protected Shape(Graphics g, Pen pen)
         {
@@ -59,6 +100,31 @@ namespace GraphProg
             
 
             fillBrush = pen.Brush;
+        }
+
+
+        public void SetWidth(int width)
+        {
+            if(DrawEnd.X > DrawStart.X)
+            {
+                drawInformation.drawEnd.X = DrawStart.X + width;
+            }
+            if(DrawEnd.X < DrawStart.X)
+            {
+                drawInformation.drawStart.X = DrawEnd.X + width;
+            }
+        }
+
+        public void SetHeight(int height)
+        {
+            if (DrawEnd.Y > DrawStart.Y)
+            {
+                drawInformation.drawEnd.Y = DrawStart.Y + height;
+            }
+            if (DrawEnd.Y < DrawStart.Y)
+            {
+                drawInformation.drawStart.Y = DrawEnd.Y + height;
+            }
         }
 
         public void Fill()
@@ -92,10 +158,15 @@ namespace GraphProg
             this.pen.Color = color;
         }
 
-        private void SetPenThickness(ref Pen pen,float width)
+        public void SetPenThickness(float width)
         {
             //Set Pen thickness
-            pen = new Pen(pen.Brush, width);
+            this.pen = new Pen(this.pen.Brush, width)
+            {
+                StartCap = this.pen.StartCap,
+                EndCap = this.pen.EndCap
+            };
+
         }
 
         public void SetGraphics(Graphics g)
@@ -199,8 +270,6 @@ namespace GraphProg
                 MoveRight(amount);
             }
         }
-
-
 
     }
 }

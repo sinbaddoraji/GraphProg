@@ -166,6 +166,11 @@ namespace GraphProg
             this.Controls.Add(keyInterceptor);
         }
 
+        public void ChangeShapeType(Shape shape, string to, int num)
+        {
+            shapeVersionControl.ChangeShape(ref shape, to, num);
+        }
+
 
         public void SetKeyDownEvent(KeyEventHandler keyEventHandler)
         {

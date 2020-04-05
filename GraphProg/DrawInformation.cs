@@ -11,6 +11,9 @@ namespace GraphProg
             Math.Abs(drawStart.X - drawEnd.X),
             Math.Abs(drawStart.Y - drawEnd.Y));
 
+        public PointF Center => new PointF(Rect.Left + Rect.Width / 2,
+                    Rect.Top + Rect.Height / 2);
+
         public PointF drawStart; // First point clicked when drawing a shape
         public PointF drawEnd; // Last  mouse point when mouse is relased after drawing a shape
 

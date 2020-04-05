@@ -47,6 +47,72 @@ namespace GraphProg
             return Drawings.Count == 0 ? new List<Shape>() : Drawings[Index];
         }
 
+        public void ChangeShape(ref Shape shape, string to, int num)
+        {
+            int index = GetShapeList().IndexOf(shape);
+
+            List<Shape> singleDrawing = new List<Shape>();
+            singleDrawing.AddRange(Drawings[Index]);
+
+            DrawInformation dI = shape.DrawInformation;
+            int rA = shape.RotateAmount;
+
+            if (to == "Square")
+            {
+                singleDrawing[index] = new Square(shape.Graphics, shape.Pen);
+            }
+
+            if (to == "Circle")
+            {
+                singleDrawing[index] = new Circle(shape.Graphics, shape.Pen);
+            }
+
+            if (to == "RightAngledTriangle")
+            {
+                singleDrawing[index] = new RightAngledTriangle(shape.Graphics, shape.Pen);
+            }
+
+            if (to == "Triangle")
+            {
+                singleDrawing[index] = new Triangle(shape.Graphics, shape.Pen);
+            }
+
+            if (to == "Pentagon")
+            {
+                singleDrawing[index] = new Pentagon(shape.Graphics, shape.Pen);
+            }
+
+            if (to == "Diamond")
+            {
+                singleDrawing[index] = new Diamond(shape.Graphics, shape.Pen);
+            }
+
+            if (to == "Polygon")
+            {
+                singleDrawing[index] = new VariableSidedPolygon(shape.Graphics, shape.Pen, num);
+            }
+
+            if (to == "Star")
+            {
+                singleDrawing[index] = new VariablePointedStar(shape.Graphics, shape.Pen, num);
+            }
+
+            shape = singleDrawing[index];
+
+            singleDrawing[index].SetDrawLocationInformation(dI);
+            singleDrawing[index].RotateAmount = rA;
+            Drawings.Add(singleDrawing);
+        }
+
+        public void RotateShape(ref Shape shape, int rotateAmount)
+        {
+            List<Shape> singleDrawing = new List<Shape>();
+            singleDrawing.AddRange(Drawings[Index]);
+            Drawings.Add(singleDrawing);
+
+            int index = GetShapeList().IndexOf(shape);
+            singleDrawing[index].RotateAmount = rotateAmount;
+        }
 
         public void AddShape(Shape shape)
         {

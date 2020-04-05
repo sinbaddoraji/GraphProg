@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace GraphProg
 {
     public abstract class Polygon : Shape
     {
-        protected Polygon(Graphics g, Pen pen) : base(g, pen) { }
+        protected Polygon(Graphics g, Pen pen) : base(g, pen) { shapeType = "Polygon"; }
 
         protected void DrawPolygon(int numberOfSides,bool highlight = false, float angle = -1)
         {
@@ -39,6 +40,10 @@ namespace GraphProg
                     y_0 + radius * (float)Math.Sin(a * shapeAngle));
             }
 
+            Matrix m = new Matrix();
+            m.RotateAt(RotateAmount, DrawInformation.Center, MatrixOrder.Prepend);
+            m.TransformPoints(points);
+
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
         }
@@ -48,7 +53,7 @@ namespace GraphProg
     public class Pentagon : Shape
     {
         //Constructed manually because the trying to draw it with drawpolygon produces a poor shape
-        public Pentagon(Graphics g, Pen p) : base(g, p) { }
+        public Pentagon(Graphics g, Pen p) : base(g, p) { shapeType = "Pentagon"; }
 
         public override void Draw(bool highlight)
         {
@@ -74,6 +79,10 @@ namespace GraphProg
             points[3] = new PointF(DrawEnd.X - tint, DrawEnd.Y);
             //Middle of the right vertical line in the rectangle
             points[4] = new PointF(DrawEnd.X, (DrawStart.Y + DrawEnd.Y) / 2);
+
+            Matrix m = new Matrix();
+            m.RotateAt(RotateAmount, DrawInformation.Center, MatrixOrder.Prepend);
+            m.TransformPoints(points);
 
             Pen pen = highlight ? highLightPen : this.pen;
 
@@ -135,7 +144,11 @@ namespace GraphProg
             //Upper right corner of square
             points[3] = new PointF(Xstart, Yend);
 
-            if(DrawEnd.X < DrawStart.X)
+            Matrix m = new Matrix();
+            m.RotateAt(RotateAmount, DrawInformation.Center, MatrixOrder.Prepend);
+            m.TransformPoints(points);
+
+            if (DrawEnd.X < DrawStart.X)
             {
                 points[2].X -= tint;
                 points[3].X += tint;

@@ -17,6 +17,7 @@ namespace GraphProg
         private Point dragStart;
         private readonly float shapeDisplacement = 2;
 
+        Transform tDialog;
         public Form1()
         {
             InitializeComponent();
@@ -46,6 +47,8 @@ namespace GraphProg
 
             //Clear canvas (Paint it white)
             canvas1.ClearCanvas();
+
+            tDialog = new Transform(canvas1.Redraw, canvas1.shapeVersionControl);
         }
 
 
@@ -511,6 +514,12 @@ namespace GraphProg
         private void transformToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void transformToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            tDialog.SelectShape(selectedShapes[0]);
+            tDialog.ShowDialog();
         }
     }
 }
