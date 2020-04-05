@@ -167,6 +167,11 @@ namespace GraphProg
                 EndCap = this.pen.EndCap
             };
 
+            highLightPen = new Pen(highLightPen.Brush, width)
+            {
+                StartCap = this.pen.StartCap,
+                EndCap = this.pen.EndCap
+            };
         }
 
         public void SetGraphics(Graphics g)
