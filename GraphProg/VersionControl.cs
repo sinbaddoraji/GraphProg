@@ -47,7 +47,7 @@ namespace GraphProg
             return Drawings.Count == 0 ? new List<Shape>() : Drawings[Index];
         }
 
-        public void ChangeShape(ref Shape shape, string to, int num)
+        public void ChangeShape(ref Shape shape, string to, int numberOfSides)
         {
             int index = GetShapeList().IndexOf(shape);
 
@@ -89,12 +89,12 @@ namespace GraphProg
 
             if (to == "Polygon")
             {
-                singleDrawing[index] = new VariableSidedPolygon(shape.Graphics, shape.Pen, num);
+                singleDrawing[index] = new VariableSidedPolygon(shape.Graphics, shape.Pen, numberOfSides);
             }
 
             if (to == "Star")
             {
-                singleDrawing[index] = new VariablePointedStar(shape.Graphics, shape.Pen, num);
+                singleDrawing[index] = new VariablePointedStar(shape.Graphics, shape.Pen, numberOfSides);
             }
 
             shape = singleDrawing[index];

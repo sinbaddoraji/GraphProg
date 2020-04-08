@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphProg
 {
@@ -12,7 +8,7 @@ namespace GraphProg
     {
         protected Polygon(Graphics g, Pen pen) : base(g, pen) { shapeType = "Polygon"; }
 
-        protected void DrawPolygon(int numberOfSides,bool highlight = false, float angle = -1)
+        protected void DrawPolygon(int numberOfSides, bool highlight = false, float angle = -1)
         {
             float shapeAngle; //180 * (N - 2)
             if (angle == -1) shapeAngle = (180f * (numberOfSides - 2)) / numberOfSides;
@@ -99,7 +95,7 @@ namespace GraphProg
 
         public VariableSidedPolygon(Graphics g, Pen p, int sides) : base(g, p)
         {
-            this.sides = sides;
+            SetSides(sides);
         }
 
         public VariableSidedPolygon(int sides) : this(null, null, sides) { }
@@ -112,12 +108,12 @@ namespace GraphProg
 
         public void SetSides(int num)
         {
-            sides = num;
+            sides = num; //Set number of sides
         }
 
-        public override void Draw(bool highlight )
+        public override void Draw(bool highlight)
         {
-            DrawPolygon(sides, highlight);
+            DrawPolygon(sides, highlight); //Draw poligon with x number of sides
         }
     }
 
@@ -161,8 +157,10 @@ namespace GraphProg
 
 
             Pen pen = highlight ? highLightPen : this.pen;
-            DrawLinesThrough(pen, points);
-            if (fill) g.FillPolygon(fillBrush, points);
+
+            DrawLinesThrough(pen, points); // Draw lines through point list
+
+            if (fill) g.FillPolygon(fillBrush, points); //If fill then fill polygon
         }
     }
 

@@ -5,10 +5,9 @@ using System.Windows.Forms;
 
 namespace GraphProg
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private readonly SaveFileDialog saveFileDialog;
-        private readonly ColorDialog colorDialog;
         private readonly VariableShape VariablePolygon;
         private readonly VariableShape VariableStar;
 
@@ -16,9 +15,10 @@ namespace GraphProg
         private bool isMouseClick = false;
         private Point dragStart;
         private readonly float shapeDisplacement = 2;
+        private readonly Transform tDialog;
+        private readonly Settings settings;
 
-        Transform tDialog;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
@@ -36,19 +36,16 @@ namespace GraphProg
              "|TIFF Files (*.tif, *.tiff)|*.tif;*.tiff"
             };
 
-            colorDialog = new ColorDialog();
-            colorDialog.Color = Color.Red;
-
             VariablePolygon = new VariableShape(VariableShape.Type.Polygon);
             VariableStar = new VariableShape(VariableShape.Type.Star);
 
             canvas1.SetKeyDownEvent(new KeyEventHandler(Canvas_KeyDown));
-            canvas1.SetKeyupEvent(new KeyEventHandler(Canvas_KeyUp));
 
             //Clear canvas (Paint it white)
             canvas1.ClearCanvas();
 
             tDialog = new Transform(canvas1.Redraw, canvas1.shapeVersionControl);
+            settings = new Settings(canvas1);
         }
 
 
@@ -72,6 +69,7 @@ namespace GraphProg
         }
         private void DeselectAllShapes()
         {
+            //Deselect all shapes
             UncheckToolstrips();
 
             noShapeToolStripMenuItem.Checked = true;
@@ -82,6 +80,7 @@ namespace GraphProg
 
         private void NoShapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select no shape
             DeselectAllShapes();
         }
 
@@ -101,11 +100,9 @@ namespace GraphProg
         }
 
 
-
-
-
         private void SquareToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select square
             UncheckToolstrips();
 
             squareToolStripMenuItem.Checked = true;
@@ -116,6 +113,7 @@ namespace GraphProg
 
         private void CircleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //select circle
             UncheckToolstrips();
 
             circleToolStripMenuItem.Checked = true;
@@ -126,6 +124,7 @@ namespace GraphProg
 
         private void TriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //select triangle
             UncheckToolstrips();
 
             triangleToolStripMenuItem.Checked = true;
@@ -136,6 +135,7 @@ namespace GraphProg
 
         private void RightangledTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select right angled trianfle
             UncheckToolstrips();
 
             rightangledTriangleToolStripMenuItem.Checked = true;
@@ -146,6 +146,7 @@ namespace GraphProg
 
         private void DiamondToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select diamond
             UncheckToolstrips();
 
             diamondToolStripMenuItem.Checked = true;
@@ -156,6 +157,7 @@ namespace GraphProg
 
         private void PentagonToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select pentagon
             UncheckToolstrips();
 
             pentagonToolStripMenuItem.Checked = true;
@@ -164,8 +166,9 @@ namespace GraphProg
             canvas1.SelectShape(Canvas.ShapeType.Pentagon);
         }
 
-        private void HeptagonToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HexagonToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select Hexagon
             UncheckToolstrips();
 
             hexagonToolStripMenuItem.Checked = true;
@@ -174,8 +177,9 @@ namespace GraphProg
             canvas1.SelectShape(Canvas.ShapeType.Hexagon);
         }
 
-        private void HeptagonToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void HeptagonToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select Heptagon
             UncheckToolstrips();
 
             heptagonToolStripMenuItem.Checked = true;
@@ -186,6 +190,7 @@ namespace GraphProg
 
         private void TrapezoidToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select Trapezoid
             UncheckToolstrips();
 
             trapezoidToolStripMenuItem.Checked = true;
@@ -196,6 +201,7 @@ namespace GraphProg
 
         private void OctagonToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select Octagon
             UncheckToolstrips();
 
             octagonToolStripMenuItem.Checked = true;
@@ -206,6 +212,7 @@ namespace GraphProg
 
         private void FivePointStarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select 5 pointed star
             UncheckToolstrips();
 
             fivePointStarToolStripMenuItem.Checked = true;
@@ -216,6 +223,7 @@ namespace GraphProg
 
         private void SixPointedStarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select 6 pointed star
             UncheckToolstrips();
 
             sixPointedStarToolStripMenuItem.Checked = true;
@@ -226,6 +234,7 @@ namespace GraphProg
 
         private void FourPointStarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select 4 pointed star
             UncheckToolstrips();
 
             fourPointStarToolStripMenuItem.Checked = true;
@@ -236,6 +245,7 @@ namespace GraphProg
 
         private void ThreePointStarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Select 3 pointed star
             UncheckToolstrips();
 
             threePointStarToolStripMenuItem.Checked = true;
@@ -244,15 +254,9 @@ namespace GraphProg
             canvas1.SelectShape(Canvas.ShapeType.ThreePointedStar);
         }
 
-        private void ShapeSettingsButton_Click(object sender, EventArgs e)
-        {
-            //Fill shape
-            //outline colour
-            //inside colour
-        }
-
         private void VarPolygonRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            //Select variable sided polygon
             if (VariablePolygon.ShowDialog() == DialogResult.OK)
             {
                 canvas1.variablePolygon = VariablePolygon.Shape;
@@ -269,6 +273,7 @@ namespace GraphProg
 
         private void VarStarRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            //Select variable pointed star
             if (VariableStar.ShowDialog() == DialogResult.OK)
             {
                 canvas1.variableStar = VariableStar.Shape;
@@ -294,10 +299,10 @@ namespace GraphProg
 
         private void Canvas_MouseDown(object sender, MouseEventArgs e)
         {
+            //Select shapes by mouse
             if (e.Button == MouseButtons.Left && selectRadioButton.Checked)
             {
                 SelectShapes();
-
             }
         }
 
@@ -311,21 +316,23 @@ namespace GraphProg
 
                 if (msg == DialogResult.Yes)
                 {
-                    var sShapes = new SelectShapes(selectedShapes, canvas1.Redraw);
+                    var sShapes = new SelectShapes(selectedShapes, canvas1);
                     sShapes.ShowDialog();
 
-                    selectedShapes = sShapes.internalShapes;
+                    selectedShapes = sShapes.internalShapes; //Declear selected shapes
                 }
                 else
                 {
-                    canvas1.Redraw(selectedShapes);
+                    //Select all shapes
+                    canvas1.Redraw(selectedShapes); // Redraw while highlighting selected shapes
                 }
-                isMouseClick = false;
+                isMouseClick = false; //Mouse key is not being pressed
             }
             else
             {
-                canvas1.Redraw(selectedShapes);
-                isMouseClick = true;
+                //Else redraw shapes
+                canvas1.Redraw(selectedShapes); //Redraw canvas
+                isMouseClick = true; //mouse key is beign pressed
             }
             dragStart = canvas1.mousePosition;
         }
@@ -338,8 +345,7 @@ namespace GraphProg
 
         private void Canvas1_MouseMove(object sender, MouseEventArgs e)
         {
-            
-            if(canvas1.IsDrawing)
+            if(canvas1.IsDrawing && (selectedShapes == null || selectedShapes.Count == 0))
             {
                 var rect = new DrawInformation(canvas1.DrawStart, canvas1.DrawEnd).Rect;
                 toolStripStatusLabel1.Text = $"Width: {rect.Width}, Height: {rect.Height}";
@@ -353,9 +359,9 @@ namespace GraphProg
             {
                 float xDifference = e.X - dragStart.X;
                 float yDifference = e.Y - dragStart.Y;
-
                 dragStart = e.Location;
 
+                //Move shape on x axis by difference between original position and new mouse position
                 if (xDifference < 0)
                 {
                     canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Left, Math.Abs(xDifference));
@@ -365,6 +371,7 @@ namespace GraphProg
                     canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Right, xDifference);
                 }
 
+                //Move shape on y axis by difference between original position and new mouse position
                 if (yDifference < 0)
                 {
                     canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Up, Math.Abs(yDifference));
@@ -379,147 +386,155 @@ namespace GraphProg
 
         private void Canvas_KeyDown(object sender, KeyEventArgs e)
         {
-            
-
             if (e.KeyCode == Keys.Left)
             {
+                //Move shape left
                 canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Left, shapeDisplacement);
             }
-
-            if (e.KeyCode == Keys.Right)
+            else if (e.KeyCode == Keys.Right)
             {
+                //Move shape right
                 canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Right, shapeDisplacement);
             }
-
-            if (e.KeyCode == Keys.Up)
+            else if (e.KeyCode == Keys.Up)
             {
+                //Move shape up
                 canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Up, shapeDisplacement);
             }
-
-            if (e.KeyCode == Keys.Down)
+            else if (e.KeyCode == Keys.Down)
             {
+                //Move shape down
                 canvas1.MoveShapes(selectedShapes, Canvas.MoveDirection.Down, shapeDisplacement);
             }
         }
 
-        private void Canvas_KeyUp(object sender, KeyEventArgs e)
-        {
-        }
-
-
-       
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Delete selected shapes
-            canvas1.DeleteShapes(selectedShapes);
+            canvas1.DeleteShapes(selectedShapes); //Delete selected shapes
         }
 
-        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UndoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            canvas1.Undo();
+            canvas1.Undo();// Undo last action
         }
 
-        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RedoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            canvas1.Redo();
+            canvas1.Redo(); // Redo last action
         }
 
-        private void changeHighlightColorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ChangeHighlightColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (selectedShapes != null && selectedShapes.Count > 0)
+            if (selectedShapes == null || selectedShapes.Count == 0) return;
+
+            using (ColorDialog cd = new ColorDialog())
             {
-                if (colorDialog.ShowDialog() == DialogResult.OK)
-                {
-                    Shape shape = canvas1.shapeVersionControl.GetShapeList()[0];
-                    shape.SetHighlightColour(colorDialog.Color);
-                }
+                if (cd.ShowDialog() != DialogResult.OK) return;
+                Shape shape = canvas1.shapeVersionControl.GetShapeList()[0];
+                shape.SetHighlightColour(cd.Color);
             }
         }
 
-        private void fillToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FillToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FillSelectedShapes();
         }
 
         private void FillSelectedShapes()
         {
-            if (selectedShapes != null && selectedShapes.Count > 0)
-            {
-                foreach (Shape shape in selectedShapes)
-                {
-                    shape.Fill();
-                }
-                canvas1.Redraw();
-            }
-            else
+            if(selectedShapes == null || selectedShapes.Count == 0)
             {
                 MessageBox.Show("No shapes are selected", "Please select a shape");
+                return;
             }
+
+            for (int i = 0; i < selectedShapes.Count; i++)
+            {
+                selectedShapes[i].Fill(); //Fill shape or remove fill
+            }
+            canvas1.Redraw();
+            //Redraw shapes on the canvas
         }
 
-        private void changeFillColourToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ChangeFillColourToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            ChangeFillColour();
+            ChangeFillColour(); //Change fill colour of selected shapes
 
             if (selectedShapes == null || selectedShapes.Count == 0) return;
             //Check if there are shapes that are'nt filled
 
-            foreach (Shape shape in selectedShapes)
+            for (int i = 0; i < selectedShapes.Count; i++)
             {
-                if (!shape.DoFill)
+                if (selectedShapes[i].DoFill) continue;
+
+                var msg = MessageBox.Show("Do you want to fill selected shapes?", "One or more of the selected shapes are not filled", MessageBoxButtons.YesNo);
+                if (msg == DialogResult.Yes)
                 {
-                    var msg = MessageBox.Show("Do you want to fill selected shapes?", "One or more of the selected shapes are not filled", MessageBoxButtons.YesNo);
-                    if (msg == DialogResult.Yes)
-                    {
-                        FillSelectedShapes();
-                        break;//Run once
-                    }
+                    FillSelectedShapes();
+                    break;//Run once
                 }
             }
-
         }
 
         private void ChangeFillColour()
         {
             //Change selected shape fill colour
-            if (selectedShapes != null && selectedShapes.Count > 0)
-            {
-                ColorDialog cd = new ColorDialog();
-                if (cd.ShowDialog() == DialogResult.OK)
-                {
-                    foreach (Shape shape in selectedShapes)
-                    {
-                        shape.SetFillBrush(new SolidBrush(cd.Color));
-                    }
-                    canvas1.Redraw();
-                }
-
-            }
-            else
+            if (selectedShapes == null || selectedShapes.Count == 0)
             {
                 MessageBox.Show("No shapes are selected", "Please select a shape");
+                return;
             }
-        }
 
-        private void changeBackgroundColourToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK)
+            //Change fill colour of selected shapes to the selected colour of the colorDialog
+            using (ColorDialog cd = new ColorDialog())
             {
-                canvas1.BackColor = cd.Color;
+                if (cd.ShowDialog() != DialogResult.OK) return;
+                for (int i = 0; i < selectedShapes.Count; i++)
+                {
+                    selectedShapes[i].SetFillBrush(new SolidBrush(cd.Color));
+                }
+                canvas1.Redraw();
             }
         }
 
-        private void transformToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ChangeBackgroundColourToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            using(ColorDialog cd = new ColorDialog())
+            {
+                cd.Color = BackColor;
 
+                if (cd.ShowDialog() == DialogResult.OK)
+                    canvas1.BackColor = cd.Color; //Set background colour to colour dialog
+            }
         }
 
-        private void transformToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void TransformToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if(selectedShapes == null)
+            {
+                MessageBox.Show("No shape was selected", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (selectedShapes.Count > 1)
+            {
+                MessageBox.Show("Only the first shape will be selected for transformation", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            //Select shape and shpw transformation dialog
             tDialog.SelectShape(selectedShapes[0]);
             tDialog.ShowDialog();
+        }
+
+        private void Form_SizeChanged(object sender, EventArgs e)
+        {
+            //Redraw all shapes when form is resized
+            canvas1.Redraw(selectedShapes);
+        }
+
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            //Show settings dialog
+            settings.ShowDialog();
         }
     }
 }

@@ -43,7 +43,9 @@ namespace GraphProg
         public Pen Pen => pen;
 
         //All shapes have the same highlighting pen to avoid unnessary complexity
-        protected static Pen highLightPen; 
+        protected Pen highLightPen;
+
+        public Color HighlightColor => highLightPen.Color;
 
         protected bool fill;
         public bool DoFill => fill;
@@ -52,37 +54,12 @@ namespace GraphProg
 
         public string shapeType;
 
-        public float penThickness => pen.Width;
-        public Color penColour => pen.Color;
+        public float PenThickness => pen.Width;
+        public Color PenColour => pen.Color;
 
-        public Color fillColour => ((SolidBrush)fillBrush).Color;
+        public Color FillColour => ((SolidBrush)fillBrush).Color;
 
         public int RotateAmount { get; set; }
-
-        public static dynamic GetShapeObject(Shape s)
-        {
-            //Get exact Shape
-            switch (s.shapeType)
-            {
-                case "Square": return (Square)s;
-
-                case "Circle": return (Circle)s;
-
-                case "RightAngledTriangle": return (RightAngledTriangle)s;
-
-                case "Triangle": return (Triangle)s;
-
-                case "Pentagon": return (Pentagon)s;
-
-                case "Diamond": return (Diamond)s;
-
-                case "Polygon": return (Polygon)s;
-
-                case "Star": return (Star)s;
-
-                default: return null;
-            }
-        }
 
         protected Shape(Graphics g, Pen pen)
         {
