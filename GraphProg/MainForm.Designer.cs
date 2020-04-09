@@ -71,6 +71,8 @@
             this.changeFillColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeBackgroundColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.noShapeRadioButton = new System.Windows.Forms.RadioButton();
@@ -98,16 +100,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.selectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.transfromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -116,6 +118,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.createToolStripMenuItem,
+            this.selectToolStripMenuItem1,
+            this.transfromToolStripMenuItem,
             this.imageToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -346,7 +350,7 @@
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
             // 
@@ -354,26 +358,26 @@
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.RedoToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(139, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // transformToolStripMenuItem
             // 
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.transformToolStripMenuItem.Text = "Transform";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
@@ -498,6 +502,24 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(102, 646);
             this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.button1);
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(94, 31);
+            this.panel7.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 28);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Shape Settings";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Settings_Click);
             // 
             // panel5
             // 
@@ -899,23 +921,19 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(121, 17);
             this.toolStripStatusLabel1.Text = "Mouse Position: (0, 0)";
             // 
-            // panel7
+            // selectToolStripMenuItem1
             // 
-            this.panel7.Controls.Add(this.button1);
-            this.panel7.Location = new System.Drawing.Point(3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(94, 31);
-            this.panel7.TabIndex = 1;
+            this.selectToolStripMenuItem1.Name = "selectToolStripMenuItem1";
+            this.selectToolStripMenuItem1.Size = new System.Drawing.Size(47, 20);
+            this.selectToolStripMenuItem1.Text = "Select";
+            this.selectToolStripMenuItem1.Click += new System.EventHandler(this.SelectToolStripMenuItem_Click);
             // 
-            // button1
+            // transfromToolStripMenuItem
             // 
-            this.button1.Location = new System.Drawing.Point(1, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 28);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Shape Settings";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Settings_Click);
+            this.transfromToolStripMenuItem.Name = "transfromToolStripMenuItem";
+            this.transfromToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.transfromToolStripMenuItem.Text = "Transfrom";
+            this.transfromToolStripMenuItem.Click += new System.EventHandler(this.TransformToolStripMenuItem1_Click);
             // 
             // MainForm
             // 
@@ -937,10 +955,10 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.panel7.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1018,6 +1036,8 @@
         private System.Windows.Forms.ToolStripMenuItem changeBackgroundColourToolStripMenuItem;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem selectToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem transfromToolStripMenuItem;
     }
 }
 

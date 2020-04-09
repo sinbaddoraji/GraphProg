@@ -252,7 +252,7 @@ namespace GraphProg
             else
             {
                 Rectangle destinationRect = new Rectangle(0, 0, img.Width, img.Height);
-                imageGraphics.DrawImage(Image, destinationRect, 0, 0, img.Width, img.Height, GraphicsUnit.Document);
+                imageGraphics.DrawImage(Image, destinationRect, 0, 0, img.Width, img.Height, GraphicsUnit.Point);
 
                 Image.Dispose();
                 Image = img;

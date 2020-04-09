@@ -32,7 +32,6 @@ namespace GraphProg
              "|PCX Files (*.pcx)|*.pcx|PNG Files (*.png)|*.png" +
              "|GIF Files (*.gif)|*.gif" +
              "|Wireless Bitmap Files (*.wbm, *.wbmp)|*.wbm;*.wbmp" +
-             "|Adobe Photoshop Files (*.psd)|*.psd" +
              "|TIFF Files (*.tif, *.tiff)|*.tif;*.tiff"
             };
 
@@ -109,6 +108,7 @@ namespace GraphProg
             squareRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Square);
+            Text = "Square";
         }
 
         private void CircleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,6 +120,7 @@ namespace GraphProg
             circleRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Circle);
+            Text = "Circle";
         }
 
         private void TriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,6 +132,7 @@ namespace GraphProg
             triangleRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Triangle);
+            Text = "Triangle";
         }
 
         private void RightangledTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -142,6 +144,7 @@ namespace GraphProg
             rTriangleRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.RightAngTriangle);
+            Text = "Right-angled Triangle";
         }
 
         private void DiamondToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,6 +156,7 @@ namespace GraphProg
             diamondRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Diamond);
+            Text = "Diamond";
         }
 
         private void PentagonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -164,6 +168,7 @@ namespace GraphProg
             pentagonRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Pentagon);
+            Text = "Pentagon";
         }
 
         private void HexagonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -175,6 +180,7 @@ namespace GraphProg
             hexagonRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Hexagon);
+            Text = "Hexagon";
         }
 
         private void HeptagonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,6 +192,7 @@ namespace GraphProg
             heptagonRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Heptagon);
+            Text = "Heptagon";
         }
 
         private void TrapezoidToolStripMenuItem_Click(object sender, EventArgs e)
@@ -197,6 +204,7 @@ namespace GraphProg
             TrapezoidRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Trapezoid);
+            Text = "Trapezoid";
         }
 
         private void OctagonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -208,6 +216,7 @@ namespace GraphProg
             octagonRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.Octagon);
+            Text = "Octagon";
         }
 
         private void FivePointStarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,6 +228,7 @@ namespace GraphProg
             fiveStarRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.FivePointedStar);
+            Text = "Five pointed star";
         }
 
         private void SixPointedStarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -230,6 +240,7 @@ namespace GraphProg
             SixRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.SixPointedStar);
+            Text = "Six pointed star";
         }
 
         private void FourPointStarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -241,6 +252,7 @@ namespace GraphProg
             fourRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.FourPointedStar);
+            Text = "Four pointed star";
         }
 
         private void ThreePointStarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -252,6 +264,7 @@ namespace GraphProg
             threeRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.ThreePointedStar);
+            Text = "Three pointed star";
         }
 
         private void VarPolygonRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -267,6 +280,7 @@ namespace GraphProg
                 varPolygonRadioButton.Checked = true;
 
                 canvas1.SelectShape(Canvas.ShapeType.VariablePolygon);
+                Text = "Variable sided polygon";
             }
 
         }
@@ -284,6 +298,7 @@ namespace GraphProg
                 VarStarRadioButton.Checked = true;
 
                 canvas1.SelectShape(Canvas.ShapeType.VariableStar);
+                Text =  "Variable pointed star";
             }
         }
 
@@ -295,6 +310,7 @@ namespace GraphProg
             selectRadioButton.Checked = true;
 
             canvas1.SelectShape(Canvas.ShapeType.None);
+            Text = "Select";
         }
 
         private void Canvas_MouseDown(object sender, MouseEventArgs e)
@@ -511,7 +527,7 @@ namespace GraphProg
 
         private void TransformToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if(selectedShapes == null)
+            if(selectedShapes == null || selectedShapes.Count < 1)
             {
                 MessageBox.Show("No shape was selected", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
