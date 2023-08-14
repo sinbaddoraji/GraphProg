@@ -1,8 +1,6 @@
-﻿using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
+﻿using System.Drawing;
 
-namespace GraphProg
+namespace GraphProg.Data.Implementation.Shape
 {
     public abstract class Shape
     {
@@ -106,10 +104,14 @@ namespace GraphProg
 
         public void Fill()
         {
-            if (this.fill) 
-                this.fill = false; 
-            else 
+            if (this.fill)
+            {
+                this.fill = false;
+            }
+            else
+            {
                 this.fill = true;
+            }
         }
 
         public void SetFillBrush(Brush brush)

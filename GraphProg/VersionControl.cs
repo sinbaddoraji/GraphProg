@@ -4,6 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GraphProg.Data.Implementation.Shape;
+using GraphProg.Data.Implementation.Shape.Basic_Shape;
+using GraphProg.Data.Implementation.Shape.Polygon;
+using GraphProg.Data.Implementation.Shape.Star;
 
 namespace GraphProg
 {
@@ -24,14 +28,18 @@ namespace GraphProg
         {
             //Go to previous list of shapes
             if(Drawings.Count - backSteps > 1)
-            backSteps++;
+            {
+                backSteps++;
+            }
         }
 
         public void Redo()
         {
             //Goto next list of shapes
             if(backSteps > 0)
-            backSteps--; 
+            {
+                backSteps--;
+            }
         }
 
         public List<Shape> GetShapeList()
@@ -92,7 +100,10 @@ namespace GraphProg
                 //Convert shape to VariablePointedStar
                 singleDrawing[index] = new VariablePointedStar(shape.Graphics, shape.Pen, numberOfSides);
             }
-            else return;
+            else
+            {
+                return;
+            }
 
             //Give new shape old shape properties
             shape = singleDrawing[index];

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using GraphProg.Data.Implementation.Shape;
+using GraphProg.Data.Implementation.Shape.Basic_Shape;
+using GraphProg.Data.Implementation.Shape.Polygon;
+using GraphProg.Data.Implementation.Shape.Star;
 
 namespace GraphProg
 {
@@ -85,7 +89,10 @@ namespace GraphProg
             for (int i = 0; i < ShapeList.Count; i++)
             {
                 var shapeRectangle = ShapeList[i].GetDrawLocationInformation().Rect; //Shape rectangle
-                if(shapeRectangle.Contains(p)) shapes.Add(ShapeList[i]); // if shape intersects add to output list
+                if(shapeRectangle.Contains(p))
+                {
+                    shapes.Add(ShapeList[i]); // if shape intersects add to output list
+                }
             }
 
             return shapes; //Return shapes
@@ -101,7 +108,10 @@ namespace GraphProg
 
         public void MoveShapes(List<Shape> shapes, MoveDirection direction, float amount)
         {
-            if (shapes == null || shapes.Count == 0 || amount == 0) return;
+            if (shapes == null || shapes.Count == 0 || amount == 0)
+            {
+                return;
+            }
 
             for (int i = 0; i < shapes.Count; i++)
             {
@@ -221,7 +231,10 @@ namespace GraphProg
 
         private void Canvas_Paint(object sender, PaintEventArgs e)
         {
-            if (!IsDrawing) return;
+            if (!IsDrawing)
+            {
+                return;
+            }
 
             //Draw preview of shape being drawn before final shape is drawn to image
             DrawShape(e.Graphics, pen, new DrawInformation(drawStart, drawEnd));
@@ -309,7 +322,10 @@ namespace GraphProg
         private void DrawShape(Graphics g, Pen pen, DrawInformation drwInfo)
         {
             Shape currentShape = GetCurrentShape(g, pen); //Shape to be drawn
-            if (currentShape == null) return;
+            if (currentShape == null)
+            {
+                return;
+            }
 
             currentShape.SetPenColour(lineColour);
             currentShape.SetHighlightColour(highlightColour);

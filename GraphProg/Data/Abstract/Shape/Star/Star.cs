@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GraphProg
+namespace GraphProg.Data.Implementation.Shape.Star
 {
-    //Implementation inspired by code from http://csharphelper.com/blog/2014/08/draw-a-star-with-a-given-number-of-points-in-c/
-    //The code below is not entirely based on it as only a part was needed
-
+  
     public abstract class Star : Shape
     {
         protected Star(Graphics g, Pen pen) : base(g, pen) { shapeType = "Star"; }
@@ -26,7 +20,10 @@ namespace GraphProg
             this.fill = fill;
             Pen pen = highlight ? highLightPen : this.pen;
             DrawLinesThrough(pen, points);
-            if (fill) g.FillPolygon(fillBrush, points);
+            if (fill)
+            {
+                g.FillPolygon(fillBrush, points);
+            }
         }
 
         private PointF[] MakeStarPoints(int num_points)
@@ -66,7 +63,10 @@ namespace GraphProg
         private double CalculateConcaveRadius(int num_points)
         {
             // For really small numbers of points.
-            if (num_points < 5) return 0.33f;
+            if (num_points < 5)
+            {
+                return 0.33f;
+            }
 
             // Calculate angles to key points.
             double dtheta = 2 * Math.PI / num_points;
@@ -109,37 +109,4 @@ namespace GraphProg
             return new PointF(mP[0].X + dx12 * t1, mP[0].Y + dy12 * t1);
         }
     }
-
-    public class VariablePointedStar : Star
-    {
-        //Number of points on the star
-        int pointNumber;
-
-        public int PointNumber => pointNumber;
-
-        public VariablePointedStar(Graphics g, Pen p, int numberOfPoints) : base(g, p) 
-        {
-            SetStarPoints(numberOfPoints);
-        }
-        
-        public VariablePointedStar(int numberOfPoints) : this(null, null, numberOfPoints) { }
-
-        public void InitalizeDrawSettings(Graphics g, Pen p)
-        {
-            SetGraphics(g);
-            SetPen(p);
-        }
-
-        public void SetStarPoints(int num)
-        {
-            //Set number of points on the star
-            pointNumber = num;
-        }
-
-        public override void Draw(bool highlight)
-        {
-            DrawStar(pointNumber, fill, highlight);
-        }
-    }
-
 }

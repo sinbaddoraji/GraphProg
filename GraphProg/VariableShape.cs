@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GraphProg.Data.Implementation.Shape;
+using GraphProg.Data.Implementation.Shape.Polygon;
+using GraphProg.Data.Implementation.Shape.Star;
 
 namespace GraphProg
 {

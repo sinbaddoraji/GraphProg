@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using GraphProg.Data.Implementation.Shape;
 
 namespace GraphProg
 {
@@ -442,11 +443,18 @@ namespace GraphProg
 
         private void ChangeHighlightColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (selectedShapes == null || selectedShapes.Count == 0) return;
+            if (selectedShapes == null || selectedShapes.Count == 0)
+            {
+                return;
+            }
 
             using (ColorDialog cd = new ColorDialog())
             {
-                if (cd.ShowDialog() != DialogResult.OK) return;
+                if (cd.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
                 Shape shape = canvas1.shapeVersionControl.GetShapeList()[0];
                 shape.SetHighlightColour(cd.Color);
             }
@@ -477,12 +485,18 @@ namespace GraphProg
         {
             ChangeFillColour(); //Change fill colour of selected shapes
 
-            if (selectedShapes == null || selectedShapes.Count == 0) return;
+            if (selectedShapes == null || selectedShapes.Count == 0)
+            {
+                return;
+            }
             //Check if there are shapes that are'nt filled
 
             for (int i = 0; i < selectedShapes.Count; i++)
             {
-                if (selectedShapes[i].DoFill) continue;
+                if (selectedShapes[i].DoFill)
+                {
+                    continue;
+                }
 
                 var msg = MessageBox.Show("Do you want to fill selected shapes?", "One or more of the selected shapes are not filled", MessageBoxButtons.YesNo);
                 if (msg == DialogResult.Yes)
@@ -505,7 +519,11 @@ namespace GraphProg
             //Change fill colour of selected shapes to the selected colour of the colorDialog
             using (ColorDialog cd = new ColorDialog())
             {
-                if (cd.ShowDialog() != DialogResult.OK) return;
+                if (cd.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
                 for (int i = 0; i < selectedShapes.Count; i++)
                 {
                     selectedShapes[i].SetFillBrush(new SolidBrush(cd.Color));
@@ -521,7 +539,9 @@ namespace GraphProg
                 cd.Color = BackColor;
 
                 if (cd.ShowDialog() == DialogResult.OK)
+                {
                     canvas1.BackColor = cd.Color; //Set background colour to colour dialog
+                }
             }
         }
 

@@ -1,61 +1,14 @@
-﻿shapes get deselected after each use
-
-
-Extra features:
-
-	a better drawing system than the 2 point clicking system found in the demo code
-		This allows you to see what you are drawing as you draw it
-
-	///drag and drop shape
-	extra shapes
-	graphics produced can be stored to file
-	Graphics are not cleared after resizing control like a lot of c# graphic programs
-
-	Potential change background colour
-
-	change shape line thickness
-
-	change shape line colour
-
-	Undo and Redo drawing
-
-
-	Right angled triangle, Diamond, Star, 6-Point star, Pentagon, Heptagon, Octagon
-
-
-	Shapes like traingles can be drawn in reverse
-
-	choose fill shape
-
-	Ability to select multiple shapes
-
-	Drag over multiple shapes even
-
-
-	Picture boxes do not enable key press event handlers so a custom 
-	picture box that allows it had to be created
-
-	Click on empty space to deselect 
-	shapes can be moved by keyboard or (mouse drag (Pending)) in select mode
-
-
-	Notes:
-
-	Draw a custom polygon (variable) and try to move it...
-
-	Multiple select now messes everything up
-
-	shapes below the width and height of 10 will not be drawn as they are too small to select
-
-	Shapes within shapes will have to be moved out using the key board because dragging thre shapes will not be allowed
-
-
-	To select a shape click within the boundaries of the shape and not a corner 
-
-	
-	Can duplicate shape from context menu
-
-
+﻿
 	limits:
 
 	Changing the attributes of a shape, the size or even moving the shape are not registered as actions
+
+	Todo:
+
+	- Add a way to register the actions of changing the attributes of a shape, the size or even moving the shape
+
+	- Add a way to group shapes or drawn items as components
+
+	- Implement a pencil, brush and line draw tool
+
+	- Redesign toolbox and tool select process

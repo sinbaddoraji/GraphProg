@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GraphProg.Data.Implementation.Shape;
 
 namespace GraphProg
 {
@@ -38,17 +39,28 @@ namespace GraphProg
             for (int i = 0; i < listView1.Items.Count; i++)
             {
                 var item = listView1.Items[i];
-                if (item.Checked) internalShapes.Add(shapes[i]);
+                if (item.Checked)
+                {
+                    internalShapes.Add(shapes[i]);
+                }
             }
 
-            if (listView1.CheckedItems.Count == 0) canvas.Redraw(null); //Redraw all shapes
-            else canvas.Redraw(internalShapes); //Redraw shapes highlighting selected shapes
+            if (listView1.CheckedItems.Count == 0)
+            {
+                canvas.Redraw(null); //Redraw all shapes
+            }
+            else
+            {
+                canvas.Redraw(internalShapes); //Redraw shapes highlighting selected shapes
+            }
         }
 
         private void TransformToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(internalShapes.Count > 1)
-                 MessageBox.Show("Only the first shape will be transfomed");
+            {
+                MessageBox.Show("Only the first shape will be transfomed");
+            }
 
             //Create transform form for selected shape
             using (Transform t = new Transform(canvas.Redraw,canvas.shapeVersionControl))
@@ -73,7 +85,10 @@ namespace GraphProg
                 }
                 canvas.DeleteShapes(internalShapes); //Delete shapes
 
-                if (shapes.Count == 0) Close();//Close shapes if no shapes are left
+                if (shapes.Count == 0)
+                {
+                    Close();//Close shapes if no shapes are left
+                }
             }
         }
     }

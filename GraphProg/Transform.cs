@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using GraphProg.Data.Implementation.Shape;
 
 namespace GraphProg
 {
@@ -171,23 +166,26 @@ namespace GraphProg
                 shapeComboBox.Text == "Polygon" || shapeComboBox.Text == "Star";
 
             //Change shape
-            shapeVersionControl.ChangeShape(ref internalShape, shapeComboBox.Text, Num);
-            redraw(null); //Redraw shapes
+            //shapeVersionControl.ChangeShape(ref internalShape, shapeComboBox.Text, Num);
+            //redraw(null); //Redraw shapes
             
         }
         private void Button3_Click(object sender, EventArgs e)
         {
             //Decrease value in numTextbox (for number of sides)
             if (Num > 6)
+            {
                 num.Text = (int.Parse(num.Text) - 1).ToString();
+            }
         }
 
         private void Button11_Click(object sender, EventArgs e)
         {
             //Increase value in numTextbox (for number of sides)
             if (Num < 12)
+            {
                 num.Text = (int.Parse(num.Text) + 1).ToString();
-            
+            }
         }
 
         private void Button9_Click(object sender, MouseEventArgs e)
@@ -268,7 +266,9 @@ namespace GraphProg
             clickTimer.Tick += delegate
             {
                 if(RotateAmount >= 2)
+                {
                     rotateTextBox.Text = (int.Parse(rotateTextBox.Text) - 2).ToString();  //Decrease value in rotateTextbox
+                }
             };
             clickTimer.Start();
             
@@ -281,7 +281,9 @@ namespace GraphProg
             clickTimer.Tick += delegate
             {
                 if (RotateAmount <= 364)
+                {
                     rotateTextBox.Text = (int.Parse(rotateTextBox.Text) + 2).ToString(); //increase value in rotateTextbox
+                }
             };
             clickTimer.Start();
             
